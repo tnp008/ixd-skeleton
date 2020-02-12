@@ -1,0 +1,22 @@
+{
+	"search": [
+		{
+			"brand": "Vans",
+			"owner": "DJ", 
+			"description": "size: 8M, worn once",
+			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib31426.jpg?preset=details"			
+		},
+		{
+			"brand": "Vans",
+			"owner": "Chris", 
+			"description": "size: 9M, worn 5+ times, but it's still in great condition!",
+			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details"			
+		},
+		{
+			"brand": "Vans",
+			"owner": "Allen",
+			"description": "size: 9M, worn 3 times",
+			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib00915.jpg?preset=details"
+		}
+	]
+}

@@ -1,8 +1,139 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Test Page</title>
+  <link href="css/onsenui.css" rel="stylesheet">
+  <link href="css/onsen-css-components.css" rel="stylesheet">
+  	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.css" rel="stylesheet">
+	 <script src="js/onsenui.js"></script>
+  	<script src="js/jquery-1.11.0.js"></script>
+  	<script src="js/bootstrap.js"></script>
+
 </head>
 <body>
-Begin here (or replace this with any static code already written).
+  
+  <ons-page>
+
+  <ons-tabbar swipeable position="auto">
+    <ons-tab page="tab1.html" label="Home" icon="md-home" active>
+    </ons-tab>
+    <ons-tab page="tab2.html" label="Search" icon="md-search">
+    </ons-tab>
+    <ons-tab page="tab3.html" label="Notification" icon="md-notifications"></ons-tab>
+    <ons-tab page="tab4.html" label="Profile" icon="md-face"></ons-tab>
+  </ons-tabbar>
+</ons-page>
+
+<template id="tab1.html">
+  <ons-page id="Tab1">
+  	<ons-toolbar>
+  		
+    <div class="left">
+    	<ons-toolbar-button style="color: gray">Footwear</ons-toolbar-button>
+    </div>
+    <div class="center">
+    	<ons-toolbar-button style="color: gray">Apparel</ons-toolbar-button>
+    </div>
+    <div class="right">
+    	<ons-toolbar-button style="color: gray">Accs</ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+    <h style="text-align: left;">Tops</h>
+    <div class="scrollmenu">
+  		<a href="#item1">Item 1</a>
+  		<a href="#item2">Item 2</a>
+  		<a href="#item3">Item 3</a>
+  	</div>
+  	<h style="text-align: left;">Bottoms</h>
+  	<div class="scrollmenu">
+  		<a href="#item1">Item 1</a>
+  		<a href="#item2">Item 2</a>
+  		<a href="#item3">Item 3</a>
+  	</div>
+  	<h style="text-align: left;">Outerwear</h>
+  	<div class="scrollmenu">
+  		<a href="#item1">Item 1</a>
+  		<a href="#item2">Item 2</a>
+  		<a href="#item3">Item 3</a>
+  	</div>
+
+  </ons-page>
+</template>
+
+<template id="tab2.html">
+  <ons-page id="Tab2">
+    <p style="text-align: center;">
+      This is the search page.
+      {{#each friends}}
+		<div class="search">
+		<img src = {{imageURL}} class ="img-responsive">
+		<a href="#"><h3>{{brand}}</h3></a>
+		<p>{{owner}}</p>
+		<p>{{description}}</p>
+		</div>
+	{{/each}}
+    </p>
+  </ons-page>
+</template>
+
+<template id="tab3.html">
+  <ons-page id="Tab3">
+    <p style="text-align: center;">
+      This is the notification page.
+    </p>
+  </ons-page>
+</template>
+
+<template id="tab4.html">
+  <ons-page id="Tab4">
+
+  <div class="header">
+  		<a  style="border-bottom: 2px solid black"href="#item1">Borrow 4</a>
+  		<a href="#item2">Lend 0</a>
+  		<a href="#item3">Closet</a>
+  </div>
+
+
+  <ons-toolbar>
+    <div class="left">
+    	<ons-toolbar-button style="color: gray">100c</ons-toolbar-button>
+    </div>
+    <div class="center">
+    	<ons-toolbar-button style="color: gray">Name</ons-toolbar-button>
+    </div>
+    <div class="right">
+    	<ons-toolbar-button style="color: gray" icon="fa-cog"></ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+
+  <div class="borrow1">
+  		<a style= "background-color: lightgray" href="#item1">Item 1</a>
+  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+  		<a href="#item3">2 Days<br> Left</a>
+  </div>
+
+  <div class="borrow2">
+  		<a style= "background-color: lightgray" href="#item1">Item 2</a>
+  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+  		<a href="#item3">1 Day<br> Left</a>
+  </div>
+
+  <div class="borrow3">
+  		<a style= "background-color: lightgray" href="#item1">Item 3</a>
+  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+  		<a href="#item3">3 Days<br> Left</a>
+  </div>
+
+  <div class="borrow4">
+  		<a style= "background-color: lightgray" href="#item4">Item 2</a>
+  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+  		<a href="#item3">5 Days<br> Left</a>
+  </div>
+
+
+
+  </ons-page>
+</template>
+
 </body>
 </html>
