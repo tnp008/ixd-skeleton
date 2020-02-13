@@ -27,14 +27,7 @@
 <template id="tab1.html">
   <ons-page id="Tab1">
   	<ons-toolbar>
-  		<ons-page>
-  		<p style="text-align: center; margin-top: 10px;">
-    	<ons-search-input
-      		placeholder="Search"
-     		onchange="ons.notification.alert('Searched for: ' + this.value)"
-    	></ons-search-input>
-  		</p>
-		</ons-page>
+
     <div class="left">
     	<ons-toolbar-button style="color: gray">Footwear</ons-toolbar-button>
     </div>
@@ -42,7 +35,12 @@
     	<ons-toolbar-button style="color: gray">Apparel</ons-toolbar-button>
     </div>
     <div class="right">
-    	<ons-toolbar-button style="color: gray">Accs</ons-toolbar-button>
+    	<p style="text-align: right; margin-top: 10px;">
+    	<ons-search-input
+      		placeholder="Search"
+     		onchange="ons.notification.alert('Searched for: ' + this.value)"
+    	></ons-search-input>
+  		</p>
     </div>
   </ons-toolbar>
     <h style="text-align: left;">Tops</h>
@@ -72,7 +70,7 @@
   		<p style="text-align: center; margin-top: 10px;">
     	<ons-search-input
       		placeholder="Search"
-     		onchange="ons.notification.alert('Searched for: ' + this.value)"
+     		onchange="ons.notification.alert('Searched for: Vans')"
     	></ons-search-input>
   		</p>
      
