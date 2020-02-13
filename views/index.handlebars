@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title> Cloth Borrowing App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/onsenui.css" rel="stylesheet">
   <link href="css/onsen-css-components.css" rel="stylesheet">
-  	<link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-theme.css" rel="stylesheet">
-	 <script src="js/onsenui.js"></script>
-  	<script src="js/jquery-1.11.0.js"></script>
-  	<script src="js/bootstrap.js"></script>
-
+	<script src="js/onsenui.js"></script>
+  <script src="js/jquery-1.11.0.js"></script>
+  <script src="js/bootstrap.js"></script>
 </head>
 <body>
   
-  <ons-page>
-
+<!-- Tabbar bottom -->
+<ons-page>
   <ons-tabbar swipeable position="auto">
-    <ons-tab page="tab1.html" label="Home" icon="md-home" active>
-    </ons-tab>
-    <ons-tab page="tab2.html" label="Search" icon="md-search">
-    </ons-tab>
+    <ons-tab page="tab1.html" label="Home" icon="md-home" active></ons-tab>
+
+    <ons-tab page="tab2.html" label="Add" icon="md-plus"></ons-tab>
+
     <ons-tab page="tab3.html" label="Notification" icon="md-notifications"></ons-tab>
+    
     <ons-tab page="tab4.html" label="Profile" icon="md-face"></ons-tab>
   </ons-tabbar>
 </ons-page>
 
+<!-- Home-tab -->
 <template id="tab1.html">
   <ons-page id="Tab1">
-  	<ons-toolbar>
-  		
+  	<!-- Tool-bar for categories -->
+    <ons-toolbar>
     <div class="left">
     	<ons-toolbar-button style="color: gray">Footwear</ons-toolbar-button>
     </div>
-    <div class="center">
+    <div class="right">
     	<ons-toolbar-button style="color: gray">Apparel</ons-toolbar-button>
     </div>
-    <div class="right">
-    	<ons-toolbar-button style="color: gray">Accs</ons-toolbar-button>
-    </div>
   </ons-toolbar>
+<!-- Headings and items -->
     <h style="text-align: left;">Tops</h>
     <div class="scrollmenu">
   		<a href="#item1">Item 1</a>
@@ -56,26 +58,29 @@
   		<a href="#item2">Item 2</a>
   		<a href="#item3">Item 3</a>
   	</div>
-
   </ons-page>
 </template>
 
+<!-- Add-tab -->
 <template id="tab2.html">
   <ons-page id="Tab2">
-    <p style="text-align: center;">
-      This is the search page.
-      {{#each friends}}
-		<div class="search">
-		<img src = {{imageURL}} class ="img-responsive">
-		<a href="#"><h3>{{brand}}</h3></a>
-		<p>{{owner}}</p>
-		<p>{{description}}</p>
-		</div>
-	{{/each}}
-    </p>
+    <form id="addItemForm" role="form" method="get" action="/add">
+    <h3>Post an Item</h3>
+      <div class="form-group">
+        <label for="brand">Brand:</label>
+        <input type="text" class="form-control" id="brand" placeholder="Ex. Aime Leon Dore" name="brand">
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" id="description" placeholder="Ex. Type, size, condition,..." name="description">
+      </div>
+      <ons-button modifier="large"><ons-icon icon="camera"></ons-icon></ons-button>
+      <input type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input>
+  </form>
   </ons-page>
 </template>
 
+<!-- Notification-tab -->
 <template id="tab3.html">
   <ons-page id="Tab3">
     <p style="text-align: center;">
@@ -84,15 +89,15 @@
   </ons-page>
 </template>
 
+<!-- Profile-tab -->
 <template id="tab4.html">
   <ons-page id="Tab4">
-
+<!--
   <div class="header">
   		<a  style="border-bottom: 2px solid black"href="#item1">Borrow 4</a>
   		<a href="#item2">Lend 0</a>
   		<a href="#item3">Closet</a>
   </div>
-
 
   <ons-toolbar>
     <div class="left">
@@ -106,29 +111,185 @@
     </div>
   </ons-toolbar>
 
+  <ons-tabbar positions="top">
+      <ons-tab page="borrowTab.html" label="Borrow" active="true"></ons-tab>
+      <ons-tab page="page2.html" label="Lend"></ons-tab>
+      <ons-tab page="page3.html" label="Closet"></ons-tab>
+  </ons-tabbar>
+
+<ons-template id="borrowTab.html">
+  <on-page id="borrowTab">
   <div class="borrow1">
-  		<a style= "background-color: lightgray" href="#item1">Item 1</a>
-  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-  		<a href="#item3">2 Days<br> Left</a>
+      <a style= "background-color: lightgray" href="#item1">Item 1</a>
+      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+      <a href="#item3">2 Days<br> Left</a>
   </div>
 
   <div class="borrow2">
-  		<a style= "background-color: lightgray" href="#item1">Item 2</a>
-  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-  		<a href="#item3">1 Day<br> Left</a>
+      <a style= "background-color: lightgray" href="#item1">Item 2</a>
+      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+      <a href="#item3">1 Day<br> Left</a>
   </div>
 
   <div class="borrow3">
-  		<a style= "background-color: lightgray" href="#item1">Item 3</a>
-  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-  		<a href="#item3">3 Days<br> Left</a>
+      <a style= "background-color: lightgray" href="#item1">Item 3</a>
+      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+      <a href="#item3">3 Days<br> Left</a>
   </div>
 
   <div class="borrow4">
-  		<a style= "background-color: lightgray" href="#item4">Item 2</a>
-  		<a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-  		<a href="#item3">5 Days<br> Left</a>
+      <a style= "background-color: lightgray" href="#item4">Item 2</a>
+      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
+      <a href="#item3">5 Days<br> Left</a>
   </div>
+  </on-page>
+</ons-template>
+-->
+<ons-splitter>
+  <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+    <ons-page>
+      <ons-list>
+        <ons-list-item onclick="fn.load('borrow.html')" tappable>
+          Borrow
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('lend.html')" tappable>
+          Lend
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('closet.html')" tappable>
+          Closet
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-splitter-side>
+  <ons-splitter-content id="content" page="borrow.html"></ons-splitter-content>
+</ons-splitter>
+
+<template id="borrow.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Borrow
+      </div>
+    </ons-toolbar>
+
+    <h1>Borrow Item</h1>
+    <h3>Brand: Acne Studio</h3>
+    <h4>Owner: Jason</h4>
+    <h4>Day Left: 3</h4>
+    <ons-button onclick="showTemplateDialog()">Return item</ons-button>
+    <ons-button onclick="openForm()">Message Owner</ons-button>
+    <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 100px">
+
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+         Return completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+  <div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+  </ons-page>
+</template>
+
+<template id="lend.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Lend
+      </div>
+    </ons-toolbar>
+
+    <h1>Lend Item</h1>
+    <h3>Brand: Comme des Garcons</h3>
+    <h4>User: Kyle</h4>
+    <h4>Day Left: 3</h4>
+    <ons-button onclick="showTemplateDialog()">Request item</ons-button>
+    <ons-button onclick="openForm()">Message user</ons-button>
+    <img src=https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg style="width: 100px">
+
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+        Request completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+  <div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+  </ons-page>
+</template>
+
+<template id="closet.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Closet
+      </div>
+    </ons-toolbar>
+    <h1>My Item</h1>
+    {{#each add}}
+      <div class="add">
+      <h3><a href="#">{{brand}}</a></h3>
+      <p>Description: {{description}}</p>
+      <ons-button><ons-icon icon="trash"></ons-icon></ons-button>
+      <img src="{{imageURL}}" class="img-responsive" style="width: 200px">
+      </div>
+      <hr>
+    {{/each}}
+  </ons-page>
+</template>
+
+  
 
 
 
@@ -136,4 +297,35 @@
 </template>
 
 </body>
+
+<script type="text/javascript">
+  //for dialog return 
+var showTemplateDialog = function() {
+  var dialog = document.getElementById('my-dialog');
+
+  if (dialog) {
+    dialog.show();
+  } else {
+    ons.createElement('dialog.html', { append: true })
+      .then(function(dialog) {
+        dialog.show();
+      });
+  }
+};
+
+var hideDialog = function(id) {
+  document
+    .getElementById(id)
+    .hide();
+  };
+
+var openForm = function() {
+  document.getElementById("myForm").style.display = "block";
+};
+
+var closeForm = function() {
+  document.getElementById("myForm").style.display = "none";
+};
+
+</script>
 </html>

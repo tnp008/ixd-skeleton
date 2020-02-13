@@ -18,5 +18,13 @@
 			"description": "size: 9M, worn 3 times",
 			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib00915.jpg?preset=details"
 		}
+	],
+	"add": [
+		{
+			"brand": "Nike- Cortez",
+			 "description": "size: 7.5M, worn once",
+			 "imageURL": "https://s7d5.scene7.com/is/image/UrbanOutfitters/41339359_069_b?$xlarge$&hei=900&qlt=80&fit=constrain"
+		}
 	]
+	
 }
