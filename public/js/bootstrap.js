@@ -2003,17 +2003,33 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     })
   })
 
-//For Profile Menu
-  window.fn = {};
+//For Main Menu
+window.fn = {};
 
-window.fn.open = function() {
+window.fn.open1 = function() {
   var menu = document.getElementById('menu');
   menu.open();
 };
 
-window.fn.load = function(page) {
+window.fn.load1 = function(page) {
   var content = document.getElementById('content');
   var menu = document.getElementById('menu');
+  content.load(page)
+    .then(menu.close.bind(menu));
+};
+
+
+//For Profile Menu
+  //window.fn = {};
+
+window.fn.open = function() {
+  var menu = document.getElementById('menu2');
+  menu.open();
+};
+
+window.fn.load = function(page) {
+  var content = document.getElementById('content2');
+  var menu = document.getElementById('menu2');
   content.load(page)
     .then(menu.close.bind(menu));
 };
