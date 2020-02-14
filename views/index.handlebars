@@ -68,6 +68,16 @@
         Footwear
       </div>
     </ons-toolbar>
+
+    <!--Search Bar-->
+    <div class="center">
+      <p style="text-align: center; margin-top: 10px;">
+        <ons-search-input
+          placeholder="Search.."
+          onchange="ons.notification.alert('Searched for Vans')"
+        ></ons-search-input>
+      </p>
+    </div>
     <h1>Sneakers</h1>
     {{#each search}}
       <div class="search">
@@ -93,6 +103,17 @@
         Apparel
       </div>
     </ons-toolbar>
+
+    <!--Search Bar-->
+    <div class="center">
+      <p style="text-align: center; margin-top: 10px;">
+        <ons-search-input
+          placeholder="Search.."
+          onchange="ons.notification.alert('Searching for ' + this.value)"
+        ></ons-search-input>
+      </p>
+    </div>
+
       <h style="text-align: left;">Tops</h>
     <div class="scrollmenu">
       <a href="#item1">Item 1</a>
