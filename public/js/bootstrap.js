@@ -2007,27 +2007,25 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 window.fn = {};
 
 window.fn.open1 = function() {
-  var menu = document.getElementById('menu');
+  var menu = document.getElementById('menu1');
   menu.open();
 };
 
 window.fn.load1 = function(page) {
-  var content = document.getElementById('content');
-  var menu = document.getElementById('menu');
+  var content = document.getElementById('content1');
+  var menu = document.getElementById('menu1');
   content.load(page)
     .then(menu.close.bind(menu));
 };
 
 
 //For Profile Menu
-  //window.fn = {};
-
-window.fn.open = function() {
+window.fn.open2 = function() {
   var menu = document.getElementById('menu2');
   menu.open();
 };
 
-window.fn.load = function(page) {
+window.fn.load2 = function(page) {
   var content = document.getElementById('content2');
   var menu = document.getElementById('menu2');
   content.load(page)
