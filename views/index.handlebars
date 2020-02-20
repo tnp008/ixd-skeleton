@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/login.css" rel="stylesheet">
+  <link href="css/notification.css" rel="stylesheet">
   <link href="css/onsenui.css" rel="stylesheet">
   <link href="css/onsen-css-components.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
@@ -12,6 +13,7 @@
 	<script src="js/onsenui.js"></script>
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script src="js/notification.js"></script>
 </head>
 <body>
   
@@ -82,13 +84,14 @@
     <h1>Sneakers</h1>
     {{#each search}}
       <div class="search">
-      <h3><a href="#">{{brand}}</a></h3>
-      <h4>{{owner}}</h2>
-      <p>Description: {{description}}</p>
-      <img src="{{imageURL}}" class="img-responsive" style="width: 200px">
+      <p><img src="{{imageURL}}" width= "175" height="175"><br>
+        <b>Owner:</b>{{owner}}<br>
+        <b>Brand:</b>{{brand}}<br>
+        <b>Description:</b>{{description}}
+      </p>
       </div>
-      <hr>
     {{/each}}
+
   </ons-page>
 </template>
 <!-- Apparel -->
@@ -184,21 +187,78 @@
 <!-- Notification-tab -->
 <template id="tab3.html">
   <ons-page id="Tab3">
-     <ons-toolbar>
+    <ons-toolbar>
 	    <div class="center">Notifications</div>
- 	 </ons-toolbar>
+ 	  </ons-toolbar>
+    <!-- Notification 1 -->
     <div class="notification1">
-    	<a href="#notif1"> 
-    	<img src="https://st.mngbcn.com/rcs/pics/static/T3/fotos/S20/31045019_43_B.jpg?ts=1533809460495&imwidth=1440&imdensity=1" width= "175" height="175">
-         </a>
-  		<a style= "text-align: center" href="#notif2">Kath has requested to borrow "Flower Dress"</a>
+  		<p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
   	</div>
+    <!-- See item -->
+    <ons-button onclick="showNotificationDialog()">See Item</ons-button>
+      <template id="notification1.html">
+      <ons-dialog id="my-notification1">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
+            <p><b>Owner:</b> User<br>
+            <b>Brand:</b> Lakers<br>
+            <b>Item:</b> Kobe Bryant Jersey<br>
+            <b>Description:</b> size: M, borrowed twice already</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+    <!-- Accept button -->
+    <ons-button onclick="showAcceptDialog()">Accept</ons-button>
+      <template id="accept.html">
+        <ons-dialog id="my-accept">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request accepted!</p>
+            <p>
+              <ons-button onclick="hideAcceptDialog('my-accept')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+         <!-- Decline button -->
+    <ons-button onclick="showDeclineDialog()">Decline</ons-button>
+      <template id="decline.html">
+        <ons-dialog id="my-decline">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request declined!</p>
+            <p>
+              <ons-button onclick="hideDeclineDialog('my-decline')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
 
+      <!-- Notification 2 -->
     <div class="notification2">
-    	<a href="#notif1"> 
-    	<img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
-         </a>
-  		<a style= "text-align: center" href="#notif2">Daniel accepted your request to borrow "Black Vans"</a>
+      <p><img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175" align = "middle">Daniel accepted your request to borrow "Black Vans"</p>
+    </div>
+    <!-- See item -->
+    <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
+      <template id="notification2.html">
+      <ons-dialog id="my-notification2">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
+            <p><b>Owner:</b> Daniel<br>
+            <b>Brand:</b> Vans<br>
+            <b>Item:</b> Black Vans<br>
+            <b>Description:</b> size: 8</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
 
   </ons-page>
 </template>
@@ -403,12 +463,9 @@
   </ons-page>
 </template>
 
-  
-
-
-
   </ons-page>
 </template>
+
 
 </body>
 
@@ -464,4 +521,77 @@ function check(form)
     }
     
 </script>
+    <!-- Notification -->
+    <script type="text/javascript">
+        var showNotificationDialog = function() {
+          var dialog = document.getElementById('my-notification1');
+
+          if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('notification1.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+        };
+        var showNotification2Dialog = function() {
+          var dialog2 = document.getElementById('my-notification2');
+
+          if (dialog2) {
+            dialog2.show();
+          } else {
+            ons.createElement('notification2.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+        };
+        var hideNotificationDialog = function(id) {
+          document
+            .getElementById(id)
+            .hide();
+        };
+        </script>
+
+    <!-- Accept -->
+    <script type="text/javascript">
+        var showAcceptDialog = function() {
+      var dialog = document.getElementById('my-accept');
+      if (dialog) {
+        dialog.show();
+      } else {
+        ons.createElement('accept.html', { append: true })
+          .then(function(dialog) {
+            dialog.show();
+          });
+      }
+    };
+    var hideAcceptDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+    </script>
+
+    <!-- Decline -->
+    <script type="text/javascript">
+        var showDeclineDialog = function() {
+      var dialog = document.getElementById('my-decline');
+      if (dialog) {
+        dialog.show();
+      } else {
+        ons.createElement('decline.html', { append: true })
+          .then(function(dialog) {
+            dialog.show();
+          });
+      }
+    };
+    var hideDeclineDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+    </script>
+
 </html>
