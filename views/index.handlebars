@@ -85,12 +85,25 @@
     {{#each search}}
       <div class="search">
       <p><img src="{{imageURL}}" width= "175" height="175"><br>
-        <b>Owner:</b>{{owner}}<br>
-        <b>Brand:</b>{{brand}}<br>
-        <b>Description:</b>{{description}}
+        <b>Owner:</b> {{owner}}<br>
+        <b>Item:</b> {{item}}<br>
+        <b>Brand:</b> {{brand}}<br>
+        <b>Description:</b> {{description}}
       </p>
+      <ons-button onclick="showBorrowDialog()">Borrow Item</ons-button>
+          <template id="borrow.html">
+          <ons-dialog id="my-borrow">
+            <div style="text-align: center; padding: 10px;">
+              <p>Borrow requested!</p>
+              <p>
+                <ons-button onclick="hideNotificationDialog('my-borrow')">Close</ons-button>
+              </p>
+            </div>
+          </ons-dialog>
+        </template>
       </div>
     {{/each}}
+    
 
   </ons-page>
 </template>
@@ -202,8 +215,8 @@
           <p>
             <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
             <p><b>Owner:</b> User<br>
-            <b>Brand:</b> Lakers<br>
             <b>Item:</b> Kobe Bryant Jersey<br>
+            <b>Brand:</b> Lakers<br>
             <b>Description:</b> size: M, borrowed twice already</p>
           </p>
           <p>
@@ -249,8 +262,8 @@
           <p>
             <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
             <p><b>Owner:</b> Daniel<br>
-            <b>Brand:</b> Vans<br>
             <b>Item:</b> Black Vans<br>
+            <b>Brand:</b> Vans<br>
             <b>Description:</b> size: 8</p>
           </p>
           <p>
@@ -588,6 +601,25 @@ function check(form)
       }
     };
     var hideDeclineDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+    </script>
+    <!-- Borrow -->
+    <script type="text/javascript">
+        var showBorrowDialog = function() {
+      var dialog = document.getElementById('my-borrow');
+      if (dialog) {
+        dialog.show();
+      } else {
+        ons.createElement('borrow.html', { append: true })
+          .then(function(dialog) {
+            dialog.show();
+          });
+      }
+    };
+    var hideBorrowDialog = function(id) {
       document
         .getElementById(id)
         .hide();
