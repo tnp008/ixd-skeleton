@@ -158,25 +158,30 @@
         </form>
       </p>
     </div>
+    <h1>Apperal</h1>
+    {{#each clothes}}
+      <div class="search">
+      <p><img src="{{imageURL}}" width= "175" height="175"><br>
+        <b>Owner:</b> {{owner}}<br>
+        <b>Item:</b> {{item}}<br>
+        <b>Brand:</b> {{brand}}<br>
+        <b>Description:</b> {{description}}
+      </p>
+      <ons-button onclick="showBorrowDialog()">Borrow Item</ons-button>
+          <template id="borrow.html">
+          <ons-dialog id="my-borrow">
+            <div style="text-align: center; padding: 10px;">
+              <p>Borrow requested!</p>
+              <p>
+                <ons-button onclick="hideNotificationDialog('my-borrow')">Close</ons-button>
+              </p>
+            </div>
+          </ons-dialog>
+        </template>
+      </div>
+    {{/each}}
 
-      <h style="text-align: left;">Tops</h>
-    <div class="scrollmenu">
-      <a href="#item1">Item 1</a>
-      <a href="#item2">Item 2</a>
-      <a href="#item3">Item 3</a>
-    </div>
-    <h style="text-align: left;">Bottoms</h>
-    <div class="scrollmenu">
-      <a href="#item1">Item 1</a>
-      <a href="#item2">Item 2</a>
-      <a href="#item3">Item 3</a>
-    </div>
-    <h style="text-align: left;">Outerwear</h>
-    <div class="scrollmenu">
-      <a href="#item1">Item 1</a>
-      <a href="#item2">Item 2</a>
-      <a href="#item3">Item 3</a>
-    </div>
+     
   </ons-page>
 </template>
     
