@@ -13,6 +13,8 @@
 	<script src="js/onsenui.js"></script>
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+    {{> facebook}}
 </head>
 <body>
   
@@ -121,27 +123,17 @@
         Apparel
       </div>
       <!-- Log-in on toolbar -->
-      <div class = "right">
-        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-        <div id="id01" class="modal">
-          <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+       <div id="facebookPhoto" class="right">
+              <img id="photo" class="roundrect" style = "width: 40px" src="" />
             </div>
 
-            <div class="container">
-              <label for="uname" style="position: left;"><b>Username</b></label> <br>
-              <input type="text" placeholder="Enter Username" name="uname" required><br>
-              <label for="psw"><b>Password</b></label> <br>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-                <br>
-             <input type = "button" onclick="document.getElementById('id01').style.display='none'" value="Login"/> <br>
-            </div>
+              <div class = "right">
 
-          </form>
-        </div>
-      </div>
+                <p class="facebookLogin">
+                  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                  </fb:login-button>
+                </p>
+            </div>
 
     </ons-toolbar>
 
@@ -490,19 +482,6 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-function check(form)
-    {
-      if(form.uname.value == "cogs" && form.psw.value =="120"){
-        login.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-      }
-      else{
-        alert("the username and password you entered do not match")
-      }
-    }
 </script>
 
     <!-- Notification -->
