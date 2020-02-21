@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> Cloth Borrowing App</title>
+  <title> Borrow Clothes App</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/login.css" rel="stylesheet">
@@ -9,14 +9,14 @@
   <link href="css/onsenui.css" rel="stylesheet">
   <link href="css/onsen-css-components.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/bootstrap-theme.css" rel="stylesheet">
-	<script src="js/onsenui.js"></script>
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <script src="js/onsenui.js"></script>
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
 </head>
 <body>
   
-<!-- Tabbar bottom -->
+<!-- Tabbar-bottom -->
 <ons-page>
   <ons-tabbar swipeable position="auto">
     <ons-tab page="tab1.html" label="Home" icon="md-home" active></ons-tab>
@@ -51,8 +51,10 @@
   <ons-splitter-content id="content1" page="footwear.html"></ons-splitter-content>
 </ons-splitter>
 
+<!-- Footwear template -->
 <template id="footwear.html">
   <ons-page>
+    <!-- Horizontal-toolbar -->
     <ons-toolbar>
       <div class="left">
         <ons-toolbar-button onclick="fn.open1()">
@@ -76,6 +78,8 @@
         </form>
       </p>
     </div>
+
+    <!-- Template contents-->
     <h1>Sneakers</h1>
     {{#each shoes}}
       <div class="search">
@@ -85,7 +89,9 @@
         <b>Brand:</b> {{brand}}<br>
         <b>Description:</b> {{description}}
       </p>
+      <!-- Borrow Dialog Button-->
       <ons-button onclick="showBorrowDialog()">Borrow Item</ons-button>
+          <!-- Dialog template -->
           <template id="borrow.html">
           <ons-dialog id="my-borrow">
             <div style="text-align: center; padding: 10px;">
@@ -98,13 +104,15 @@
         </template>
       </div>
     {{/each}}
-    
 
+    <!-- End footwear template -->
   </ons-page>
 </template>
-<!-- Apparel -->
+
+<!-- Apparel Template-->
 <template id="apparel.html">
   <ons-page>
+    <!-- Horizontal-toolbar -->
     <ons-toolbar>
       <div class="left">
         <ons-toolbar-button onclick="fn.open1()">
@@ -114,11 +122,11 @@
       <div class="center">
         Apparel
       </div>
+      <!-- Log-in on toolbar -->
       <div class = "right">
         <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
         <div id="id01" class="modal">
-          
           <form class="modal-content animate" action="/action_page.php" method="post">
             <div class="imgcontainer">
               <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -127,19 +135,19 @@
             <div class="container">
               <label for="uname" style="position: left;"><b>Username</b></label> <br>
               <input type="text" placeholder="Enter Username" name="uname" required><br>
-
               <label for="psw"><b>Password</b></label> <br>
               <input type="password" placeholder="Enter Password" name="psw" required>
                 <br>
              <input type = "button" onclick="document.getElementById('id01').style.display='none'" value="Login"/> <br>
             </div>
+
           </form>
         </div>
-
       </div>
+
     </ons-toolbar>
 
-    <!--Search Bar-->
+    <!-- Search Bar-->
     <div class="center">
       <p style="text-align: center; margin-top: 10px;">
         <form id="searchShoesForm" role="form" method="get" action="/searchClothes">
@@ -152,27 +160,338 @@
       </p>
     </div>
 
-      <h style="text-align: left;">Tops</h>
+    <!-- Template contents -->
+    <h style="text-align: left;">Tops</h>
     <div class="scrollmenu">
-      <a href="#item1">Item 1</a>
-      <a href="#item2">Item 2</a>
-      <a href="#item3">Item 3</a>
+      <!-- Item 1 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg" width="38%" height="38%" id="item1" onclick="showItem1Dialog()">
+      <!-- Dialog for item1 -->
+      <template id="item1.html">
+      <ons-dialog id="my-item1">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg" width= "175" height="175">
+            <p><b>A Kind Of Gusto Shirt</b><br>
+            Faded Check<br>
+            <b>Size:</b> M<br>
+            <b>Point:</b> 199<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest1Dialog()">Borrow</ons-button>
+      <template id="request1.html">
+        <ons-dialog id="my-request1">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest1Dialog('my-request1')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem1Dialog('my-item1')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+    <!-- Item 2 -->
+    <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg" width="38%" height="38%" id="item1" onclick="showItem2Dialog()">
+      <!-- Dialog for item2 -->
+      <template id="item2.html">
+      <ons-dialog id="my-item2">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg" width= "175" height="175">
+            <p><b>Stussy Long Sleeve Stock Tee</b><br>
+            Black<br>
+            <b>Size:</b> L<br>
+            <b>Point:</b> 59<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest2Dialog()">Borrow</ons-button>
+      <template id="request2.html">
+        <ons-dialog id="my-request2">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest2Dialog('my-request2')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem2Dialog('my-item2')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+    <!-- Item 3 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg" width="38%" height="38%" id="item3" onclick="showItem3Dialog()">
+      <!-- Dialog for item3 -->
+      <template id="item3.html">
+      <ons-dialog id="my-item3">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg" width= "175" height="175">
+            <p><b>Penfield Hunter vacation Shirt</b><br>
+            White<br>
+            <b>Size:</b> M<br>
+            <b>Point:</b> 79<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest3Dialog()">Borrow</ons-button>
+      <template id="request3.html">
+        <ons-dialog id="my-request3">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest3Dialog('my-request3')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem3Dialog('my-item3')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+    <!-- Bottom Section -->
     </div>
     <h style="text-align: left;">Bottoms</h>
     <div class="scrollmenu">
-      <a href="#item1">Item 1</a>
-      <a href="#item2">Item 2</a>
-      <a href="#item3">Item 3</a>
+      <!-- Item 4 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/7/27-11-2019_paulsmith_classicswimshort_navy_m1a-239b-b40675-47_tc_1.jpg" width="38%" height="38%" id="item1" onclick="showItem4Dialog()">
+      <!-- Dialog for item4 -->
+      <template id="item4.html">
+      <ons-dialog id="my-item4">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/7/27-11-2019_paulsmith_classicswimshort_navy_m1a-239b-b40675-47_tc_1.jpg" width= "175" height="175">
+            <p><b>Paul Smith Classic Swim Short</b><br>
+            Navy<br>
+            <b>Size: </b> X-Large<br>
+            <b>Point:</b> 105<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest4Dialog()">Borrow</ons-button>
+      <template id="request4.html">
+        <ons-dialog id="my-request4">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest4Dialog('my-request4')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem4Dialog('my-item4')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+      <!-- Item 5 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-12-2019_poloralphlauren_travellerswimshort_redvintagehibiscus_710787084001_bb_1.jpg" width="38%" height="38%" width="38%" height="38%" id="item5"onclick="showItem5Dialog()">
+      <!-- Dialog for item5 -->
+      <template id="item5.html">
+      <ons-dialog id="my-item5">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-12-2019_poloralphlauren_travellerswimshort_redvintagehibiscus_710787084001_bb_1.jpg" width= "175" height="175">
+            <p><b>Polo Ralph Lauren Traveller Swim Short</b><br>
+            Red & Vintage Hibiscus<br>
+            <b>Size: </b> L<br>
+            <b>Point:</b> 89<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest5Dialog()">Borrow</ons-button>
+      <template id="request5.html">
+        <ons-dialog id="my-request5">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest5Dialog('my-request5')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem5Dialog('my-item5')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+      <!-- Item 6 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg" width="38%" height="38%" id="item6"onclick="showItem6Dialog()">
+      <!-- Dialog for item6 -->
+      <template id="item6.html">
+      <ons-dialog id="my-item6">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg" height="175">
+            <p><b>Carhartt Wip Bib Overall</b><br>
+            Black<br>
+            <b>Size: </b> S<br>
+            <b>Point:</b> 215<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest6Dialog()">Borrow</ons-button>
+      <template id="request6.html">
+        <ons-dialog id="my-request6">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest6Dialog('my-request6')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem6Dialog('my-item6')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
     </div>
+
+    <!-- Outerwear Section -->
     <h style="text-align: left;">Outerwear</h>
     <div class="scrollmenu">
-      <a href="#item1">Item 1</a>
-      <a href="#item2">Item 2</a>
-      <a href="#item3">Item 3</a>
+
+      <!-- Item 7 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-12-2019_stoneisland_garmentdyedcrewsweat_orangered_721563051-v0037_mb_1.jpg" width="38%" height="38%" id="item7" onclick="showItem7Dialog()">
+      <!-- Dialog for item 7 -->
+      <template id="item7.html">
+      <ons-dialog id="my-item7">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-12-2019_stoneisland_garmentdyedcrewsweat_orangered_721563051-v0037_mb_1.jpg" height="175">
+            <p><b>Stone Island Garment Dyed Crew Seat</b><br>
+            Orange Red<br>
+            <b>Size: </b> M<br>
+            <b>Point:</b> 260<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest7Dialog()">Borrow</ons-button>
+      <template id="request7.html">
+        <ons-dialog id="my-request7">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest7Dialog('my-request7')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem7Dialog('my-item7')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+      <!-- Item 8 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/2/12-02-2020_adidas_essentialcrewsweat_nightmarine_fm9947_ja_1.jpg" width="38%" height="38%" id="item8" onclick="showItem8Dialog()">
+      <!-- Dialog for item 8 -->
+      <template id="item8.html">
+      <ons-dialog id="my-item8">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/2/12-02-2020_adidas_essentialcrewsweat_nightmarine_fm9947_ja_1.jpg" height="175">
+            <p><b>Adidas Essential Crew Sweat</b><br>
+            Night Marine<br>
+            <b>Size: </b> L<br>
+            <b>Point:</b> 55<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest8Dialog()">Borrow</ons-button>
+      <template id="request8.html">
+        <ons-dialog id="my-request8">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest8Dialog('my-request8')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem8Dialog('my-item8')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+      <!-- Item 9 -->
+      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg" width="38%" height="38%" id="item9" onclick="showItem9Dialog()">
+      <!-- Dialog for item 9 -->
+      <template id="item9.html">
+      <ons-dialog id="my-item9">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg" height="175">
+            <p><b>Polo Ralph Lauren Yachting Bear Sweat</b><br>
+            Andover Heather<br>
+            <b>Size: </b> S<br>
+            <b>Point:</b> 175<br></p>
+          </p>
+          
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showRequest9Dialog()">Borrow</ons-button>
+      <template id="request9.html">
+        <ons-dialog id="my-request9">
+          <div style="text-align: center; padding: 10px;">
+            <p>Borrow Request Sent!</p>
+            <p>
+              <ons-button onclick="hideRequest9Dialog('my-request9')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+            <!-- Hide Button -->
+            <ons-button onclick="hideItem9Dialog('my-item9')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
     </div>
+    <!-- End apparel template -->
   </ons-page>
 </template>
-    
+    <!-- End home-tab template -->
   </ons-page>
 </template>
 
@@ -180,6 +499,7 @@
 <template id="tab2.html">
   <ons-page id="Tab2">
     <form id="addItemForm" role="form" method="get" action="/add">
+
     <h3>Post an Item</h3>
       <div class="form-group">
         <label for="brand">Brand:</label>
@@ -189,8 +509,10 @@
         <label for="description">Description:</label>
         <input type="text" class="form-control" id="description" placeholder="Ex. Type, size, condition,..." name="description">
       </div>
+      
       <ons-button modifier="large"><ons-icon icon="camera"></ons-icon></ons-button>
       <input type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input>
+
   </form>
   </ons-page>
 </template>
@@ -198,14 +520,16 @@
 <!-- Notification-tab -->
 <template id="tab3.html">
   <ons-page id="Tab3">
+    <!-- Horizontal-toolbar -->
     <ons-toolbar>
-	    <div class="center">Notifications</div>
- 	  </ons-toolbar>
+      <div class="center">Notifications</div>
+    </ons-toolbar>
+
     <!-- Notification 1 -->
     <div class="notification1">
-  		<p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
-  	</div>
-    <!-- See item -->
+      <p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
+    </div>
+    <!-- See item button -->
     <ons-button onclick="showNotificationDialog()">See Item</ons-button>
       <template id="notification1.html">
       <ons-dialog id="my-notification1">
@@ -277,83 +601,35 @@
 <!-- Profile-tab -->
 <template id="tab4.html">
   <ons-page id="Tab4">
-<!--
-  <div class="header">
-  		<a  style="border-bottom: 2px solid black"href="#item1">Borrow 4</a>
-  		<a href="#item2">Lend 0</a>
-  		<a href="#item3">Closet</a>
-  </div>
-
-  <ons-toolbar>
-    <div class="left">
-    	<ons-toolbar-button style="color: gray">100c</ons-toolbar-button>
-    </div>
-    <div class="center">
-    	<ons-toolbar-button style="color: gray">Name</ons-toolbar-button>
-    </div>
-    <div class="right">
-    	<ons-toolbar-button style="color: gray" icon="fa-cog"></ons-toolbar-button>
-    </div>
-  </ons-toolbar>
-
-  <ons-tabbar positions="top">
-      <ons-tab page="borrowTab.html" label="Borrow" active="true"></ons-tab>
-      <ons-tab page="page2.html" label="Lend"></ons-tab>
-      <ons-tab page="page3.html" label="Closet"></ons-tab>
-  </ons-tabbar>
-
-<ons-template id="borrowTab.html">
-  <on-page id="borrowTab">
-  <div class="borrow1">
-      <a style= "background-color: lightgray" href="#item1">Item 1</a>
-      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-      <a href="#item3">2 Days<br> Left</a>
-  </div>
-
-  <div class="borrow2">
-      <a style= "background-color: lightgray" href="#item1">Item 2</a>
-      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-      <a href="#item3">1 Day<br> Left</a>
-  </div>
-
-  <div class="borrow3">
-      <a style= "background-color: lightgray" href="#item1">Item 3</a>
-      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-      <a href="#item3">3 Days<br> Left</a>
-  </div>
-
-  <div class="borrow4">
-      <a style= "background-color: lightgray" href="#item4">Item 2</a>
-      <a style= "text-align: left" href="#item2">Brand <br>Owner <br> return | extend | massage</a>
-      <a href="#item3">5 Days<br> Left</a>
-  </div>
-  </on-page>
-</ons-template>
--->
+<!-- Side-menu -->
 <ons-splitter>
   <ons-splitter-side id="menu2" side="left" width="220px" collapse swipeable>
     <ons-page>
       <ons-list>
-        <ons-list-item onclick="fn.load('borrow.html')" tappable>
+        <!-- Labels on menu -->
+        <ons-list-item onclick="fn.load2('borrow.html')" tappable>
           Borrow
         </ons-list-item>
-        <ons-list-item onclick="fn.load('lend.html')" tappable>
+        <ons-list-item onclick="fn.load2('lend.html')" tappable>
           Lend
         </ons-list-item>
-        <ons-list-item onclick="fn.load('closet.html')" tappable>
+        <ons-list-item onclick="fn.load2('closet.html')" tappable>
           Closet
         </ons-list-item>
       </ons-list>
     </ons-page>
   </ons-splitter-side>
+  <!-- Default-page on menu -->
   <ons-splitter-content id="content2" page="borrow.html"></ons-splitter-content>
 </ons-splitter>
 
+<!-- Borrow template -->
 <template id="borrow.html">
+  <!-- Horizontal toolbar -->
   <ons-page>
     <ons-toolbar>
       <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
+        <ons-toolbar-button onclick="fn.open2()">
           <ons-icon icon="md-menu"></ons-icon>
         </ons-toolbar-button>
       </div>
@@ -362,14 +638,18 @@
       </div>
     </ons-toolbar>
 
+    <!-- Contents -->
     <h1>Borrow Item</h1>
     <h3>Brand: Acne Studio</h3>
     <h4>Owner: Jason</h4>
     <h4>Day Left: 3</h4>
+      <!-- Return and message buttons -->
     <ons-button onclick="showTemplateDialog()">Return item</ons-button>
     <ons-button onclick="openForm()">Message Owner</ons-button>
+      <!-- Image for item -->
     <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 100px">
 
+        <!-- Dialog for return button -->
   <template id="dialog.html">
   <ons-dialog id="my-dialog">
     <div style="text-align: center; padding: 10px;">
@@ -383,7 +663,7 @@
     </div>
   </ons-dialog>
 </template>
-
+      <!-- Chat-popup -->
   <div class="chat-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
     <h1>Chat</h1>
@@ -396,14 +676,17 @@
   </form>
 </div>
 
+<!-- End borrow template -->
   </ons-page>
 </template>
 
+<!-- Lend template -->
 <template id="lend.html">
+  <!-- Horizontal toolbar -->
   <ons-page>
     <ons-toolbar>
       <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
+        <ons-toolbar-button onclick="fn.open2()">
           <ons-icon icon="md-menu"></ons-icon>
         </ons-toolbar-button>
       </div>
@@ -411,15 +694,18 @@
         Lend
       </div>
     </ons-toolbar>
-
+    <!-- Content -->
     <h1>Lend Item</h1>
     <h3>Brand: Comme des Garcons</h3>
     <h4>User: Kyle</h4>
     <h4>Day Left: 3</h4>
+    <!-- Request and message buttons -->
     <ons-button onclick="showTemplateDialog()">Request item</ons-button>
     <ons-button onclick="openForm()">Message user</ons-button>
+    <!-- Item image -->
     <img src=https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg style="width: 100px">
 
+    <!-- Dialog for request button -->
   <template id="dialog.html">
   <ons-dialog id="my-dialog">
     <div style="text-align: center; padding: 10px;">
@@ -434,6 +720,7 @@
   </ons-dialog>
 </template>
 
+  <!-- Chat-popup -->
   <div class="chat-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
     <h1>Chat</h1>
@@ -446,14 +733,17 @@
   </form>
 </div>
 
+  <!-- End lend-tab -->
   </ons-page>
 </template>
 
+<!-- Closet-tab -->
 <template id="closet.html">
+  <!-- Horizontal toolbar -->
   <ons-page>
     <ons-toolbar>
       <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
+        <ons-toolbar-button onclick="fn.open2()">
           <ons-icon icon="md-menu"></ons-icon>
         </ons-toolbar-button>
       </div>
@@ -461,6 +751,8 @@
         Closet
       </div>
     </ons-toolbar>
+
+    <!-- Content -->
     <h1>My Item</h1>
     {{#each add}}
       <div class="add">
@@ -471,17 +763,21 @@
       </div>
       <hr>
     {{/each}}
+
+    <!-- End closet-tab -->
   </ons-page>
 </template>
 
+
+  <!-- End App template -->
   </ons-page>
 </template>
-
-
 </body>
 
+
+
 <script type="text/javascript">
-  //for dialog return 
+  //for profile- borrow, lend dialogs  
 var showTemplateDialog = function() {
   var dialog = document.getElementById('my-dialog');
 
@@ -501,6 +797,7 @@ var hideDialog = function(id) {
     .hide();
   };
 
+// For pop-up chat
 var openForm = function() {
   document.getElementById("myForm").style.display = "block";
 };
@@ -509,6 +806,7 @@ var closeForm = function() {
   document.getElementById("myForm").style.display = "none";
 };
 
+// For Log-in modal on home-tab
 var modal = document.getElementById('id01');
 
 // When the user clicks anywhere outside of the modal, close it
@@ -530,8 +828,8 @@ function check(form)
         alert("the username and password you entered do not match")
       }
     }
-    
 </script>
+
     <!-- Notification -->
     <script type="text/javascript">
         var showNotificationDialog = function() {
@@ -604,6 +902,7 @@ function check(form)
         .hide();
     };
     </script>
+
     <!-- Borrow -->
     <script type="text/javascript">
         var showBorrowDialog = function() {
@@ -623,5 +922,351 @@ function check(form)
         .hide();
     };
     </script>
+
+<!-- For Home-tab items -->
+<script type="text/javascript">
+//For item 1
+var showItem1Dialog = function() {
+  var dialog = document.getElementById('my-item1');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item1.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem1Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 1
+var showRequest1Dialog = function() {
+  var dialog = document.getElementById('my-request1');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request1.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest1Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For item 2
+var showItem2Dialog = function() {
+  var dialog = document.getElementById('my-item2');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item2.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem2Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 2
+var showRequest2Dialog = function() {
+  var dialog = document.getElementById('my-request2');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request2.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest2Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For item 3
+var showItem3Dialog = function() {
+  var dialog = document.getElementById('my-item3');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item3.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem3Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 3
+var showRequest3Dialog = function() {
+  var dialog = document.getElementById('my-request3');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request3.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest3Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 4
+var showItem4Dialog = function() {
+  var dialog = document.getElementById('my-item4');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item4.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem4Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 4
+var showRequest4Dialog = function() {
+  var dialog = document.getElementById('my-request4');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request4.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest4Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 5
+var showItem5Dialog = function() {
+  var dialog = document.getElementById('my-item5');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item5.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem5Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 5
+var showRequest5Dialog = function() {
+  var dialog = document.getElementById('my-request5');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request5.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest5Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+// For Item 6
+var showItem6Dialog = function() {
+  var dialog = document.getElementById('my-item6');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item6.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem6Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 6
+var showRequest6Dialog = function() {
+  var dialog = document.getElementById('my-request6');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request6.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest6Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 7
+var showItem7Dialog = function() {
+  var dialog = document.getElementById('my-item7');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item7.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem7Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 7
+var showRequest6Dialog = function() {
+  var dialog = document.getElementById('my-request6');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request6.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest7Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 8
+var showItem8Dialog = function() {
+  var dialog = document.getElementById('my-item8');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item8.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem8Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 8
+var showRequest8Dialog = function() {
+  var dialog = document.getElementById('my-request8');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request8.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest8Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 9
+var showItem9Dialog = function() {
+  var dialog = document.getElementById('my-item9');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item9.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem9Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 9
+var showRequest9Dialog = function() {
+  var dialog = document.getElementById('my-request9');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request9.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest9Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+</script>
 
 </html>
