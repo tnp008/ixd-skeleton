@@ -86,30 +86,43 @@
     </div>
 
     <!-- Template contents-->
-    <h1>Sneakers</h1>
-    {{#each shoes}}
-      <div class="search">
-      <p><img src="{{imageURL}}" width= "175" height="175"><br>
-        <b>Owner:</b> {{owner}}<br>
-        <b>Item:</b> {{item}}<br>
-        <b>Brand:</b> {{brand}}<br>
-        <b>Description:</b> {{description}}
-      </p>
-      <!-- Borrow Dialog Button-->
-      <ons-button onclick="showBorrowDialog()">Borrow Item</ons-button>
-          <!-- Dialog template -->
-          <template id="borrow.html">
-          <ons-dialog id="my-borrow">
-            <div style="text-align: center; padding: 10px;">
-              <p>Borrow requested!</p>
-              <p>
-                <ons-button onclick="hideNotificationDialog('my-borrow')">Close</ons-button>
-              </p>
-            </div>
-          </ons-dialog>
-        </template>
-      </div>
-    {{/each}}
+    <h style="text-align: left;">Sneakers</h>
+    <div class="scrollmenu">
+      <!-- Sneakers -->
+      {{#each shoes}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Sneakers -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                  </p>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
 
     <!-- End footwear template -->
   </ons-page>
@@ -174,16 +187,16 @@
           <p>
             <!-- Borrow Button -->
             <ons-button onclick="showRequest1Dialog()">Borrow</ons-button>
-      <template id="request1.html">
-        <ons-dialog id="my-request1">
-          <div style="text-align: center; padding: 10px;">
-            <p>Borrow Request Sent!</p>
-            <p>
-              <ons-button onclick="hideRequest1Dialog('my-request1')">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
+            <template id="request1.html">
+              <ons-dialog id="my-request1">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideRequest1Dialog('my-request1'), hideItem1Dialog('my-item1')">Close</ons-button>
+                  </p>
+                </div>
+              </ons-dialog>
+            </template>
             <!-- Hide Button -->
             <ons-button onclick="hideItem1Dialog('my-item1')">Close</ons-button>
           </p>
@@ -214,7 +227,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest2Dialog('my-request2')">Close</ons-button>
+                    <ons-button onclick="hideRequest2Dialog('my-request2'), hideItem2Dialog('my-item2')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -249,7 +262,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest3Dialog('my-request3')">Close</ons-button>
+                    <ons-button onclick="hideRequest3Dialog('my-request3'), hideItem3Dialog('my-item3')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -288,7 +301,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest4Dialog('my-request4')">Close</ons-button>
+                    <ons-button onclick="hideRequest4Dialog('my-request4'), hideItem4Dialog('my-item4')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -323,7 +336,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest5Dialog('my-request5')">Close</ons-button>
+                    <ons-button onclick="hideRequest5Dialog('my-request5'), hideItem5Dialog('my-item5')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -358,7 +371,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest6Dialog('my-request6')">Close</ons-button>
+                    <ons-button onclick="hideRequest6Dialog('my-request6'), hideItem6Dialog('my-item6')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -398,7 +411,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest7Dialog('my-request7')">Close</ons-button>
+                    <ons-button onclick="hideRequest7Dialog('my-request7'), hideItem7Dialog('my-item7')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -433,7 +446,7 @@
           <div style="text-align: center; padding: 10px;">
             <p>Borrow Request Sent!</p>
             <p>
-              <ons-button onclick="hideRequest8Dialog('my-request8')">Close</ons-button>
+              <ons-button onclick="hideRequest8Dialog('my-request8'), hideItem8Dialog('my-item8')">Close</ons-button>
             </p>
           </div>
         </ons-dialog>
@@ -468,7 +481,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest9Dialog('my-request9')">Close</ons-button>
+                    <ons-button onclick="hideRequest9Dialog('my-request9'), hideItem9Dialog('my-item9')">Close</ons-button>
                   </p>
                 </div>
               </ons-dialog>
@@ -887,11 +900,11 @@ window.onclick = function(event) {
     <!-- Borrow -->
     <script type="text/javascript">
         var showBorrowDialog = function() {
-      var dialog = document.getElementById('my-borrow');
+      var dialog = document.getElementById('my-borrowItem');
       if (dialog) {
         dialog.show();
       } else {
-        ons.createElement('borrow.html', { append: true })
+        ons.createElement('borrowItem.html', { append: true })
           .then(function(dialog) {
             dialog.show();
           });
@@ -1247,6 +1260,25 @@ var hideRequest9Dialog = function(id) {
         .getElementById(id)
         .hide();
     };
+
+var showDescriptionDialog = function() {
+  var dialog = document.getElementById('my-sneakers');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('sneakers.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideDescriptionDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
 
 </script>
 
