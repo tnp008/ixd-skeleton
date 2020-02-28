@@ -6,11 +6,16 @@
 var data = require('../data.json');
 
 exports.view = function(request, response){
-	data["viewAlt"] = false;
+	data["pageA"] = true;
 	response.render('index', data);
 };
 
-exports.viewAlt = function(request, response){
-	data["viewAlt"] = true;
+exports.pageA = function(request, response){
+	data["pageA"] = true;
+	response.render('index', data);
+};
+
+exports.pageB = function(request, response){
+	data["pageA"] = false;
 	response.render('index', data);
 };
