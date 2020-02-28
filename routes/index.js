@@ -6,18 +6,11 @@
 var data = require('../data.json');
 
 exports.view = function(request, response){
-	var arr = data['shoes'];
-	var answer = [];
-	var userKey = "Vans";
-	console.log(data['shoes']);
+	data["viewAlt"] = false;
+	response.render('index', data);
+};
 
-	for(var i = 0; i < arr.length; i++){
-		if (arr[i]["brand"] == userKey){
-			answer.push(arr[i]);
-		}
-	}
-
-	response.render('index', {
-		"shoes": answer
-	});
+exports.viewAlt = function(request, response){
+	data["viewAlt"] = true;
+	response.render('index', data);
 };

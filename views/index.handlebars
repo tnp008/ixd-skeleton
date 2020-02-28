@@ -544,6 +544,8 @@
 <template id="tab3.html">
   <ons-page id="Tab3">
 
+  {{#if viewAlt}}
+
   <!-- Side-menu -->
   <ons-splitter>
   <ons-splitter-side id="menu2" side="left" width="220px" collapse swipeable>
@@ -775,6 +777,84 @@
   <!-- End Notificaion-tab -->
   </ons-page>
 </template>
+
+{{else}}
+<!-- Horizontal-toolbar -->
+    <ons-toolbar>
+      <div class="center">Notifications</div>
+    </ons-toolbar>
+
+    <!-- Notification 1 -->
+    <div class="notification1">
+      <p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
+    </div>
+    <!-- See item button -->
+    <ons-button onclick="showNotificationDialog()">See Item</ons-button>
+      <template id="notification1.html">
+      <ons-dialog id="my-notification1">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
+            <p><b>Owner:</b> User<br>
+            <b>Item:</b> Kobe Bryant Jersey<br>
+            <b>Brand:</b> Lakers<br>
+            <b>Description:</b> size: M, borrowed twice already</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+    <!-- Accept button -->
+    <ons-button onclick="showAcceptDialog()">Accept</ons-button>
+      <template id="accept.html">
+        <ons-dialog id="my-accept">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request accepted!</p>
+            <p>
+              <ons-button onclick="hideAcceptDialog('my-accept')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+         <!-- Decline button -->
+    <ons-button onclick="showDeclineDialog()">Decline</ons-button>
+      <template id="decline.html">
+        <ons-dialog id="my-decline">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request declined!</p>
+            <p>
+              <ons-button onclick="hideDeclineDialog('my-decline')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+
+      <!-- Notification 2 -->
+    <div class="notification2">
+      <p><img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175" align = "middle">Daniel accepted your request to borrow "Black Vans"</p>
+    </div>
+    <!-- See item -->
+    <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
+      <template id="notification2.html">
+      <ons-dialog id="my-notification2">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
+            <p><b>Owner:</b> Daniel<br>
+            <b>Item:</b> Black Vans<br>
+            <b>Brand:</b> Vans<br>
+            <b>Description:</b> size: 8</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+{{/if}}
     <!-- End Notification-bottomtab -->
   </ons-page>
 </template>
