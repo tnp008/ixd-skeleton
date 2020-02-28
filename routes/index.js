@@ -6,18 +6,16 @@
 var data = require('../data.json');
 
 exports.view = function(request, response){
-	var arr = data['shoes'];
-	var answer = [];
-	var userKey = "Vans";
-	console.log(data['shoes']);
+	data["pageA"] = true;
+	response.render('index', data);
+};
 
-	for(var i = 0; i < arr.length; i++){
-		if (arr[i]["brand"] == userKey){
-			answer.push(arr[i]);
-		}
-	}
+exports.pageA = function(request, response){
+	data["pageA"] = true;
+	response.render('index', data);
+};
 
-	response.render('index', {
-		"shoes": answer
-	});
+exports.pageB = function(request, response){
+	data["pageA"] = false;
+	response.render('index', data);
 };

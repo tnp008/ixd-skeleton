@@ -37,6 +37,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', index.view);
+app.get('/pageA', index.pageA);
+app.get('/pageB', index.pageB);
 // Example route
 // app.get('/users', user.list);
 app.get('/add', add.addItem);
