@@ -17,7 +17,8 @@ exports.view = function(request, response){
 		}
 	}
 
-	response.render('searchshoes', {
-		"shoes": answer
+	response.render('index', {
+		"shoes": answer,
+		"clothes" : []
 	});
 };

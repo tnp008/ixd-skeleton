@@ -127,6 +127,48 @@
         </ons-dialog>
       </template>
       {{/each}}
+  </div>
+
+
+
+       <h style="text-align: left;">Sneakers</h>
+    <div class="scrollmenu">
+      <!-- Sneakers -->
+      {{#each shirts}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Sneakers -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                  </p>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
+  </div>
 
     <!-- End footwear template -->
   </ons-page>
@@ -175,6 +217,9 @@
     <!-- Template contents -->
     <h style="text-align: left;">Tops</h>
     <div class="scrollmenu">
+
+
+
       <!-- Item 1 -->
       <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg" width="38%" height="38%" id="item1" onclick="showItem1Dialog()">
       <!-- Dialog for item1 -->

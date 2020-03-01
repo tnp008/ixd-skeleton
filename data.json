@@ -101,6 +101,77 @@
 			 "description": "size: s, runs large",
 			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
 		}
+	],
+	"shirts":[
+		{
+			"owner": "Kenji",
+			"brand": "A Kind of Guise",
+			"item": "Gusto Shirt",
+			 "description": "size: S, Faded Check",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg"
+		},
+		{
+			"owner": "Ben",
+			"brand": "Stussy",
+			"item": "Long Sleeve Stock Tee",
+			 "description": "size: L, Black",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg"
+		},
+		{
+			"owner": "Sean",
+			"brand": "A Kind of Guise",
+			"item": "Hunter Vacation Shirt",
+			 "description": "size: S, Faded Check",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg"
+		}
+
+	],
+	"bottoms":[
+		{
+			"owner": "Aarron",
+			"brand": "Paul Smith",
+			"item": "Classic Swim Short",
+			 "description": "size: X-Large, Navy",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/7/27-11-2019_paulsmith_classicswimshort_navy_m1a-239b-b40675-47_tc_1.jpg"
+		},
+		{
+			"owner": "Luke",
+			"brand": "Polo Ralph Lauren",
+			"item": "Traveller Swim Short",
+			 "description": "size: L, Black",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-12-2019_poloralphlauren_travellerswimshort_redvintagehibiscus_710787084001_bb_1.jpg"
+		},
+		{
+			"owner": "Ricardo",
+			"brand": "Varhartt Wip",
+			"item": "Bib Overall",
+			 "description": "size: S, Black",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg"
+		}
+
+	],
+	"outerwear":[
+		{
+			"owner": "Kai",
+			"brand": "Stone Island",
+			"item": "Garment Dyed Crew Seat",
+			"description": "size: M, Orange Red",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-12-2019_stoneisland_garmentdyedcrewsweat_orangered_721563051-v0037_mb_1.jpg"
+		},
+		{
+			"owner": "Donny",
+			"brand": "Adidas",
+			"item": "Essential crew Sweat",
+			"description": "size: L, Night Marine",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/2/12-02-2020_adidas_essentialcrewsweat_nightmarine_fm9947_ja_1.jpg"
+		},
+		{
+			"owner": "Pat",
+			"brand": "Polo Ralph Lauren",
+			"item": "Yachting Bear Sweat",
+			"description": "size: S, Andover Heather",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg"
+		}
 	]
 	
 }
