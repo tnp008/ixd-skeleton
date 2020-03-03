@@ -1,3 +1,4 @@
+
 {
 	"shoes": [
 		{
@@ -44,10 +45,17 @@
 		},
 		{
 			"brand": "Chucks",
-			"item": "sandals",
+			"item": "causal shoes",
 			"owner": "Kims",
 			"description": "Size: 11, good condition",
 			"imageURL":"https://www.famousfootwear.com/ProductImages/shoes_ia69926.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter"
+		},
+		{
+			"brand": "Nike",
+			"item": "Running shoes",
+			"owner": "Kims",
+			"description": "Size: 6.5, good condition",
+			"imageURL":"https://www.famousfootwear.com/ProductImages/shoes_ia00945.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter"
 		}
 
 	],
@@ -58,71 +66,35 @@
 			 "imageURL": "https://s7d5.scene7.com/is/image/UrbanOutfitters/41339359_069_b?$xlarge$&hei=900&qlt=80&fit=constrain"
 		}
 	],
-	"clothes": [
-		{
-			"brand": "Zara",
-			"item": "dress",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/4437/051/400/2/w/1120/4437051400_1_1_1.jpg?ts=1582013169150"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
-		},
-		{
-			"brand": "Forever 21",
-			"item": "Dress",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://www.forever21.com/images/4_full_750/00391855-02.jpg"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://www.bygoods.com/media/catalog/product/cache/1/image/650x/1dd3c1054c06760f44f47a9755af505d/1/_/1_27_49.jpg"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
-		}
-	],
-	"shirts":[
+
+	"shirts" : [
 		{
 			"owner": "Kenji",
 			"brand": "A Kind of Guise",
 			"item": "Gusto Shirt",
-			 "description": "size: S, Faded Check",
-			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg"
+			"description": "size: S, Faded Check",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg"
 		},
 		{
 			"owner": "Ben",
 			"brand": "Stussy",
 			"item": "Long Sleeve Stock Tee",
-			 "description": "size: L, Black",
-			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg"
+			"description": "size: L, Black",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg"
 		},
 		{
 			"owner": "Sean",
 			"brand": "A Kind of Guise",
 			"item": "Hunter Vacation Shirt",
-			 "description": "size: S, Faded Check",
-			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg"
+			"description": "size: S, Faded Check",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg"
+		},
+		{
+			"owner": "Maddie",
+			"brand": "Shein",
+			"item": "White banana drink shirt",
+			"description": "size: S, white shirt with some color",
+			"imageURL": "img.shein.com/images/shein.com/201705/71/14940538616737484145.jpg"
 		}
 
 	],
@@ -148,8 +120,8 @@
 			 "description": "size: S, Black",
 			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg"
 		}
-
 	],
+
 	"outerwear":[
 		{
 			"owner": "Kai",
@@ -172,6 +144,36 @@
 			"description": "size: S, Andover Heather",
 			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg"
 		}
+	],
+
+		"clothes": [
+		{
+			"brand": "Zara",
+			"item": "dress",
+			 "description": "size: s, runs large",
+			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/4437/051/400/2/w/1120/4437051400_1_1_1.jpg?ts=1582013169150"
+		},
+		{
+			"brand": "Zara",
+			"item": "shirt",
+			 "description": "size: s, runs large",
+			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
+		},
+		{
+			"brand": "Forever 21",
+			"item": "Dress",
+			 "description": "size: s, runs large",
+			 "imageURL": "https://www.forever21.com/images/4_full_750/00391855-02.jpg"
+		},
+		{
+			"brand": "Zara",
+			"item": "shirt",
+			 "description": "size: s, runs large",
+			 "imageURL": "https://www.bygoods.com/media/catalog/product/cache/1/image/650x/1dd3c1054c06760f44f47a9755af505d/1/_/1_27_49.jpg"
+		}
 	]
-	
+
 }
+
+  
+	

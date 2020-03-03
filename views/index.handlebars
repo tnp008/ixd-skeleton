@@ -9,17 +9,18 @@
   <link href="css/onsenui.css" rel="stylesheet">
   <link href="css/onsen-css-components.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-storage.js"></script>
-	<script src="js/onsenui.js"></script>
+  <script src="js/onsenui.js"></script>
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
     {{> facebook}}
   <script src="/js/facebook.js"></script>
+
 </head>
 </head>
 <body>
@@ -40,37 +41,14 @@
 <!-- Home-tab -->
 <template id="tab1.html">
   <ons-page id="Tab1">
-  <!-- Side-menu -->
-  <ons-splitter>
-  <ons-splitter-side id="menu1" side="left" width="220px" collapse swipeable>
-    <ons-page>
-      <ons-list>
-        <!-- Labels on menu -->
-        <ons-list-item onclick="fn.load1('apparel.html')" tappable>
-          Apparel
-        </ons-list-item>
-        <ons-list-item onclick="fn.load1('footwear.html')" tappable>
-          Footwear
-        </ons-list-item>
-      </ons-list>
-    </ons-page>
-  </ons-splitter-side>
-  <!-- Default-page on menu -->
-  <ons-splitter-content id="content1" page="apparel.html"></ons-splitter-content>
-</ons-splitter>
+  
 
-<!-- Footwear template -->
-<template id="footwear.html">
   <ons-page>
     <!-- Horizontal-toolbar -->
     <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open1()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
+      
       <div class="center" style="font-size: 150%; font-weight: bolder;">
-        Footwear
+       HOME 
       </div>
       
 
@@ -88,14 +66,15 @@
         </form>
       </p>
     </div>
-
-    <!-- Template contents-->
+  <br>
+    <!-- SHOES START-->
     <h style="text-align: left;">Sneakers</h>
     <div class="scrollmenu">
       <!-- Sneakers -->
       {{#each shoes}}
       <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
-      <!-- Dialog for Sneakers -->
+
+      <!-- Dialog for Clothes -->
       <template id="sneakers.html">
       <ons-dialog id="my-sneakers">
         <div style="text-align: center; padding: 10px;">
@@ -127,16 +106,16 @@
         </ons-dialog>
       </template>
       {{/each}}
-  </div>
-
-
-
-       <h style="text-align: left;">Sneakers</h>
-    <div class="scrollmenu">
-      <!-- Sneakers -->
+    </div>
+    <!-- SHOES END-->
+    <br>
+    <br>
+   <!-- SHIRTS START-->
+    <h style="text-align: left;">SHIRTS</h>
+    <div class="scrollmenu"> 
       {{#each shirts}}
       <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
-      <!-- Dialog for Sneakers -->
+      <!-- Dialog for Clothes -->
       <template id="sneakers.html">
       <ons-dialog id="my-sneakers">
         <div style="text-align: center; padding: 10px;">
@@ -168,384 +147,90 @@
         </ons-dialog>
       </template>
       {{/each}}
-  </div>
-
-    <!-- End footwear template -->
-  </ons-page>
-</template>
-
-<!-- Apparel Template-->
-<template id="apparel.html">
-  <ons-page>
-    <!-- Horizontal-toolbar -->
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open1()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
       </div>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">
-        Apparel
-      </div>
-       <!-- Log-in on toolbar -->
-              <div id="facebookPhoto" class="right">
-              <img id="photo" class="roundrect" style = "width: 40px" src="" />
-            </div>
-
-              <div class = "right">
-
-                <p class="facebookLogin">
-                  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-                  </fb:login-button>
-                </p>
-            </div>
-    </ons-toolbar>
-
-    <!-- Search Bar-->
-    <div class="center">
-      <p style="text-align: center; margin-top: 10px;">
-        <form id="searchShoesForm" role="form" method="get" action="/searchClothes">
-            <h3>Search for a brand!</h3>
-            <div class="form-group">
-              <label for="brand">Brand:</label>
-              <input  style="border: 2px solid black" type="text" class="form-control" id="brand" placeholder="Brand" name="brand">
-             </div>
-        </form>
-      </p>
-    </div>
-
-    <!-- Template contents -->
-    <h style="text-align: left;">Tops</h>
-    <div class="scrollmenu">
-
-
-
-      <!-- Item 1 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg" width="38%" height="38%" id="item1" onclick="showItem1Dialog()">
-      <!-- Dialog for item1 -->
-      <template id="item1.html">
-      <ons-dialog id="my-item1">
+  <!-- END SHIRTS-->
+<br>
+    <br>
+   <!-- BOTTOMS START-->
+    <h style="text-align: left;">BOTTOMS</h>
+    <div class="scrollmenu"> 
+      {{#each bottoms}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Clothes -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
         <div style="text-align: center; padding: 10px;">
           <!-- Description -->
           <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg" width= "175" height="175">
-            <p><b>Owner:</b> Kenji<br>
-            <b>Item:</b> Gusto Shirt<br>
-            <b>Brand:</b> A Kind of Guise<br>
-            <b>Description:</b> size: S, Faded Check</p>
-
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
           <p>
             <!-- Borrow Button -->
-            <ons-button onclick="showRequest1Dialog()">Borrow</ons-button>
-            <template id="request1.html">
-              <ons-dialog id="my-request1">
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest1Dialog('my-request1'), hideItem1Dialog('my-item1')">Close</ons-button>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
                   </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem1Dialog('my-item1')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-    <!-- Item 2 -->
-    <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg" width="38%" height="38%" id="item1" onclick="showItem2Dialog()">
-      <!-- Dialog for item2 -->
-      <template id="item2.html">
-      <ons-dialog id="my-item2">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg" width= "175" height="175">            
-            <p><b>Owner:</b> Ben<br>
-            <b>Item:</b> Long Sleeve Stock Tee<br>
-            <b>Brand:</b> Stussy<br>
-            <b>Description:</b> size: L, Black</p>
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest2Dialog()">Borrow</ons-button>
-            <template id="request2.html">
-              <ons-dialog id="my-request2">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideRequest2Dialog('my-request2'), hideItem2Dialog('my-item2')">Close</ons-button>
-                  </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem2Dialog('my-item2')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-    <!-- Item 3 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg" width="38%" height="38%" id="item3" onclick="showItem3Dialog()">
-      <!-- Dialog for item3 -->
-      <template id="item3.html">
-      <ons-dialog id="my-item3">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg" width= "175" height="175">
-            <p><b>Owner:</b> Sean<br>
-            <b>Item:</b> Hunter Vacation Shirt<br>
-            <b>Brand:</b> Penfield<br>
-            <b>Description:</b> size: M, White</p>
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest3Dialog()">Borrow</ons-button>
-            <template id="request3.html">
-              <ons-dialog id="my-request3">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideRequest3Dialog('my-request3'), hideItem3Dialog('my-item3')">Close</ons-button>
-                  </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem3Dialog('my-item3')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-    <!-- Bottom Section -->
-    </div>
-    <h style="text-align: left;">Bottoms</h>
-    <div class="scrollmenu">
-      <!-- Item 4 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/7/27-11-2019_paulsmith_classicswimshort_navy_m1a-239b-b40675-47_tc_1.jpg" width="38%" height="38%" id="item1" onclick="showItem4Dialog()">
-      <!-- Dialog for item4 -->
-      <template id="item4.html">
-      <ons-dialog id="my-item4">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/7/27-11-2019_paulsmith_classicswimshort_navy_m1a-239b-b40675-47_tc_1.jpg" width= "175" height="175">
-            <p><b>Owner:</b> Aaron<br>
-            <b>Item:</b> Clsasic Swim Short<br>
-            <b>Brand:</b> Paul Smith<br>
-            <b>Description:</b> size: X-Large, Navy</p>
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest4Dialog()">Borrow</ons-button>
-            <template id="request4.html">
-              <ons-dialog id="my-request4">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideRequest4Dialog('my-request4'), hideItem4Dialog('my-item4')">Close</ons-button>
-                  </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem4Dialog('my-item4')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-      <!-- Item 5 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-12-2019_poloralphlauren_travellerswimshort_redvintagehibiscus_710787084001_bb_1.jpg" width="38%" height="38%" width="38%" height="38%" id="item5"onclick="showItem5Dialog()">
-      <!-- Dialog for item5 -->
-      <template id="item5.html">
-      <ons-dialog id="my-item5">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-12-2019_poloralphlauren_travellerswimshort_redvintagehibiscus_710787084001_bb_1.jpg" width= "175" height="175">
-            <p><b>Owner:</b> Luke<br>
-            <b>Item:</b> Traveller Swim Short<br>
-            <b>Brand:</b> Polo Ralph Lauren<br>
-            <b>Description:</b> size: L, Red & Vintage Hibiscus</p>
-
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest5Dialog()">Borrow</ons-button>
-            <template id="request5.html">
-              <ons-dialog id="my-request5">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideRequest5Dialog('my-request5'), hideItem5Dialog('my-item5')">Close</ons-button>
-                  </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem5Dialog('my-item5')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-      <!-- Item 6 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg" width="38%" height="38%" id="item6"onclick="showItem6Dialog()">
-      <!-- Dialog for item6 -->
-      <template id="item6.html">
-      <ons-dialog id="my-item6">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg" height="175">
-            <p><b>Owner:</b> Ricardo<br>
-            <b>Item:</b> Bib Overall<br>
-            <b>Brand:</b> Varhartt Wip<br>
-            <b>Description:</b> size: S, Black</p>
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest6Dialog()">Borrow</ons-button>
-            <template id="request6.html">
-              <ons-dialog id="my-request6">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideRequest6Dialog('my-request6'), hideItem6Dialog('my-item6')">Close</ons-button>
-                  </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem6Dialog('my-item6')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-    </div>
-
-    <!-- Outerwear Section -->
-    <h style="text-align: left;">Outerwear</h>
-    <div class="scrollmenu">
-
-      <!-- Item 7 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-12-2019_stoneisland_garmentdyedcrewsweat_orangered_721563051-v0037_mb_1.jpg" width="38%" height="38%" id="item7" onclick="showItem7Dialog()">
-      <!-- Dialog for item 7 -->
-      <template id="item7.html">
-      <ons-dialog id="my-item7">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-12-2019_stoneisland_garmentdyedcrewsweat_orangered_721563051-v0037_mb_1.jpg" height="175">
-            <p><b>Owner:</b> Kai<br>
-            <b>Item:</b> Garment Dyed Crew Seat<br>
-            <b>Brand:</b> Stone Island<br>
-            <b>Description:</b> size: M, Orange Red</p>
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest7Dialog()">Borrow</ons-button>
-            <template id="request7.html">
-              <ons-dialog id="my-request7">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideRequest7Dialog('my-request7'), hideItem7Dialog('my-item7')">Close</ons-button>
-                  </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem7Dialog('my-item7')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-      <!-- Item 8 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/2/12-02-2020_adidas_essentialcrewsweat_nightmarine_fm9947_ja_1.jpg" width="38%" height="38%" id="item8" onclick="showItem8Dialog()">
-      <!-- Dialog for item 8 -->
-      <template id="item8.html">
-      <ons-dialog id="my-item8">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/2/12-02-2020_adidas_essentialcrewsweat_nightmarine_fm9947_ja_1.jpg" height="175">
-            <p><b>Owner:</b> Donny<br>
-            <b>Item:</b> Essential crew Sweat<br>
-            <b>Brand:</b> Adidas<br>
-            <b>Description:</b> size: L, Night Marine</p>
-          </p>
-          
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showRequest8Dialog()">Borrow</ons-button>
-      <template id="request8.html">
-        <ons-dialog id="my-request8">
-          <div style="text-align: center; padding: 10px;">
-            <p>Borrow Request Sent!</p>
-            <p>
-              <ons-button onclick="hideRequest8Dialog('my-request8'), hideItem8Dialog('my-item8')">Close</ons-button>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
             </p>
           </div>
         </ons-dialog>
       </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem8Dialog('my-item8')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-      <!-- Item 9 -->
-      <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg" width="38%" height="38%" id="item9" onclick="showItem9Dialog()">
-      <!-- Dialog for item 9 -->
-      <template id="item9.html">
-      <ons-dialog id="my-item9">
+      {{/each}}
+      </div>
+  <!-- END BOTTOMS-->
+  <br>
+    <br>
+   <!-- OUTERWEAR START-->
+    <h style="text-align: left;">OUTERWEAR</h>
+    <div class="scrollmenu"> 
+      {{#each outerwear}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Clothes -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
         <div style="text-align: center; padding: 10px;">
           <!-- Description -->
           <p>
-            <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg" height="175">
-            <p><b>Owner:</b> Pat<br>
-            <b>Item:</b> Yachting Bear Sweat<br>
-            <b>Brand:</b> Polo Ralph Lauren<br>
-            <b>Description:</b> size: S, Andover Heather</p>
-          </p>
-          
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
           <p>
             <!-- Borrow Button -->
-            <ons-button onclick="showRequest9Dialog()">Borrow</ons-button>
-            <template id="request9.html">
-              <ons-dialog id="my-request9">
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideRequest9Dialog('my-request9'), hideItem9Dialog('my-item9')">Close</ons-button>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
                   </p>
-                </div>
-              </ons-dialog>
-            </template>
-            <!-- Hide Button -->
-            <ons-button onclick="hideItem9Dialog('my-item9')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-    </div>
-    <!-- End apparel template -->
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
+      </div>
+  <!-- END OUTERWEAR-->
   </ons-page>
 </template>
     <!-- End home-tab template -->
@@ -1747,6 +1432,10 @@ var hideDescriptionDialog = function(id) {
         .getElementById(id)
         .hide();
     };
+
+function showBorrow(url, item) {
+  alert(item);  
+}
 
 </script>
 
