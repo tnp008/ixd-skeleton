@@ -9,6 +9,7 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
+var home = require('./routes/home');
 // Example route
 // var user = require('./routes/user');
 var add = require('./routes/add');
@@ -37,10 +38,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', index.view);
-app.get('/pageA', index.pageA);
-app.get('/pageB', index.pageB);
 // Example route
 // app.get('/users', user.list);
+app.get('/home', home.view);
+app.get('/pageA', home.pageA);
+app.get('/pageB', home.pageB);
 app.get('/add', add.addItem);
 app.get('/searchshoes', searchshoes.view);
 app.get('/searchClothes', searchClothes.view);

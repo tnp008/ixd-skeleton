@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Borrow Clothes App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/login.css" rel="stylesheet">
+  <link href="css/notification.css" rel="stylesheet">
+  <link href="css/onsenui.css" rel="stylesheet">
+  <link href="css/onsen-css-components.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-storage.js"></script>
+  <script src="js/onsenui.js"></script>
+  <script src="js/jquery-1.11.0.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+    {{> facebook}}
+  <script src="/js/facebook.js"></script>
+
+</head>
+</head>
+<body>
+  
+<!-- Tabbar-bottom -->
+<ons-page>
+  <ons-tabbar swipeable position="auto">
+    <ons-tab page="tab1.html" label="Home" icon="md-home" active></ons-tab>
+
+    <ons-tab page="tab2.html" label="Add" icon="md-plus"></ons-tab>
+
+    <ons-tab page="tab3.html" label="Notification" icon="md-notifications"></ons-tab>
+    
+    <ons-tab page="tab4.html" label="Closet" icon="md-face"></ons-tab>
+  </ons-tabbar>
+</ons-page>
+
+<!-- Home-tab -->
+<template id="tab1.html">
+  <ons-page id="Tab1">
+  
+
+  <ons-page>
+    <!-- Horizontal-toolbar -->
+    <ons-toolbar>
+      
+      <div class="center" style="font-size: 150%; font-weight: bolder;">
+       HOME 
+      </div>
+      
+
+    </ons-toolbar>
+
+    <!--Search Bar-->
+    <div class="center">
+      <p style="text-align: center; margin-top: 10px;">
+        <form id="searchShoesForm" role="form" method="get" action="/searchshoes">
+            <h3>Search for a brand!</h3>
+            <div class="form-group">
+              <input style="border: 2px solid black" type="text" class="form-control" id="brand" placeholder="Ex: Nike" name="brand">
+             </div>
+        </form>
+      </p>
+    </div>
+  <br>
+    <!-- SHOES START-->
+    <h style="text-align: left;">Sneakers</h>
+    <div class="scrollmenu">
+      <!-- Sneakers -->
+      {{#each shoes}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+
+      <!-- Dialog for Clothes -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                  </p>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
+    </div>
+    <!-- SHOES END-->
+    <br>
+    <br>
+   <!-- SHIRTS START-->
+    <h style="text-align: left;">Shirts</h>
+    <div class="scrollmenu"> 
+      {{#each shirts}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Clothes -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                  </p>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
+      </div>
+  <!-- END SHIRTS-->
+<br>
+    <br>
+   <!-- BOTTOMS START-->
+    <h style="text-align: left;">Bottoms</h>
+    <div class="scrollmenu"> 
+      {{#each bottoms}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Clothes -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                  </p>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
+      </div>
+  <!-- END BOTTOMS-->
+  <br>
+    <br>
+   <!-- OUTERWEAR START-->
+    <h style="text-align: left;">Outerwear</h>
+    <div class="scrollmenu"> 
+      {{#each outerwear}}
+      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+      <!-- Dialog for Clothes -->
+      <template id="sneakers.html">
+      <ons-dialog id="my-sneakers">
+        <div style="text-align: center; padding: 10px;">
+          <!-- Description -->
+          <p>
+            <img src="{{imageURL}}" width= "175" height="175">
+            <p><b>Owner:</b> {{owner}}<br>
+            <b>Item:</b> {{item}}<br>
+            <b>Brand:</b> {{brand}}<br>
+            <b>Description:</b> {{description}}</p>
+          <p>
+            <!-- Borrow Button -->
+            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
+            <!-- Dialog template -->
+             <template id="borrowItem.html">
+              <ons-dialog id="my-borrowItem">
+                <div style="text-align: center; padding: 10px;">
+                  <p>Borrow Request Sent!</p>
+                  <p>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                  </p>
+                  </div>
+                </ons-dialog>
+              </template>
+              <!-- Hide Button -->
+              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+      {{/each}}
+      </div>
+  <!-- END OUTERWEAR-->
+  </ons-page>
+</template>
+    <!-- End home-tab template -->
+  </ons-page>
+</template>
+
+<!-- Add-tab -->
+<template id="tab2.html">
+  <ons-page id="Tab2">
+    <ons-toolbar>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">Post an item</div>
+    </ons-toolbar>
+
+    <form id="addItemForm" role="form" method="get" action="/add">
+      <div class="form-group">
+        <label for="item" style="font-size: 30px">Item:</label>
+        <input type="text" class="form-control" id="itemInput" placeholder="Ex. brand, item type, etc." name="item" style="border: 2px solid black">
+      </div>
+      <div class="form-group">
+        <label for="description" style="font-size: 30px">Description:</label>
+        <input type="text" class="form-control" id="descriptionInput" placeholder="Ex. colorway, condition, etc." name="description" style="border: 2px solid black">
+      </div>
+      <div class="form-group">
+        <label for="size" style="font-size: 30px">Size:</label>
+        <input type="text" class="form-control" id="sizeInput" placeholder="Ex. item size"name="size" style="border: 2px solid black">
+      </div>
+      <div class="form-group">
+        <input id="imgInput" type="file" accept="image/*">
+        <!-- photo icon
+        <ons-button modifier="large"><ons-icon icon="camera"></ons-icon></ons-button>-->
+      </div>
+
+      <!-- Submit input 
+      <input onclick="addItem()" type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input> -->
+      <div>
+        <ons-button onclick="addItem()" id=testBt style="background-color: black; width: 100%; text-align: center;">Post</ons-button>
+      </div>
+
+      <!-- Dialog for add complete-->
+      <template id="added.html">
+        <ons-dialog id="my-added">
+          <div style="text-align: center; padding: 10px;">
+            <p>Item is added to your Closet!</p>
+            <p>
+              <ons-button onclick="hideAddedDialog('my-added')">X</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+
+      <script>
+        function hideAddedDialog(id) {
+          document
+          .getElementById(id)
+          .hide();
+        };
+      </script>
+
+
+  </form>
+  </ons-page>
+</template>
+
+<!-- Notification-tab -->
+<template id="tab3.html">
+  <ons-page id="Tab3">
+
+  {{#if pageA}}
+
+  <!-- Side-menu -->
+  <ons-splitter>
+  <ons-splitter-side id="menu2" side="left" width="220px" collapse swipeable>
+    <ons-page>
+      <ons-list>
+        <!-- Labels on menu -->
+        <ons-list-item onclick="fn.load2('borrow.html')" tappable>
+          Borrow
+        </ons-list-item>
+        <ons-list-item onclick="fn.load2('lend.html')" tappable>
+          Lend
+        </ons-list-item>
+        <ons-list-item onclick="fn.load2('notification.html')" tappable>
+          Notification
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-splitter-side>
+  <!-- Default-page on menu -->
+  <ons-splitter-content id="content2" page="notification.html"></ons-splitter-content>
+</ons-splitter>
+
+  <!-- Borrow template -->
+<template id="borrow.html">
+  <!-- Horizontal toolbar -->
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open2()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">
+        Borrow Item
+      </div>
+    </ons-toolbar>
+
+    <!-- Contents -->
+
+    <!-- Image for item -->
+    <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 100px; float: left">
+
+    <h3 style="font-size:140%; font-weight:bold; padding:3px">Acne Studio Pant</h3>
+    <h4 style="font-size:140%; text-color:light gray; padding:3px">Khaki | size: 29 | Owner: Jason</h4>
+    <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 3</h4>
+      <!-- Return and message buttons -->
+    <ons-button style="background-color: black; padding: 9px" onclick="showTemplateDialog()">Return item</ons-button>
+    <ons-button style="background-color: black; padding: 9px" onclick="openForm()">Message Owner</ons-button>
+      
+        <!-- Dialog for return button -->
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+         Return completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+      <!-- Chat-popup -->
+  <div style="position:absolute; bottom:0px; right:0px" class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<!-- End borrow template -->
+  </ons-page>
+</template>
+
+
+<!-- Lend template -->
+<template id="lend.html">
+  <!-- Horizontal toolbar -->
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open2()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">
+        Lend
+      </div>
+    </ons-toolbar>
+
+    <!-- Contents -->
+
+    <!-- Image for item -->
+    <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px; float: left">
+
+    <h3 style="font-size:140%; font-weight:bold; padding:3px">Comme des Garcons Hoodie</h3>
+    <h4 style="font-size:140%; text-color:light gray; padding:3px">Gray | size: M | Owner: Kyle</h4>
+    <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 7</h4>
+      <!-- Return and message buttons -->
+    <ons-button style="background-color: black; padding: 9px; float:right" onclick="showTemplateDialog()">Request item</ons-button>
+    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openForm()">Message User</ons-button>
+
+
+    <!-- Dialog for request button -->
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+        Request completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+  <!-- Chat-popup -->
+  <div style="position:absolute; bottom:0px; right:0px"class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+  <!-- End lend-tab -->
+  </ons-page>
+</template>
+
+<!-- Borrow template -->
+<template id="notification.html">
+  <!-- Horizontal toolbar -->
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open2()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">
+        Notification
+      </div>
+    </ons-toolbar>
+
+    <!-- Content -->
+    <!-- Notification 1 -->
+    <div class="notification1">
+      <p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
+    </div>
+    <!-- See item button -->
+    <ons-button onclick="showNotificationDialog()">See Item</ons-button>
+      <template id="notification1.html">
+      <ons-dialog id="my-notification1">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
+            <p><b>Owner:</b> User<br>
+            <b>Item:</b> Kobe Bryant Jersey<br>
+            <b>Brand:</b> Lakers<br>
+            <b>Description:</b> size: M, borrowed twice already</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+    <!-- Accept button -->
+    <ons-button onclick="showAcceptDialog()">Accept</ons-button>
+      <template id="accept.html">
+        <ons-dialog id="my-accept">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request accepted!</p>
+            <p>
+              <ons-button onclick="hideAcceptDialog('my-accept')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+         <!-- Decline button -->
+    <ons-button onclick="showDeclineDialog()">Decline</ons-button>
+      <template id="decline.html">
+        <ons-dialog id="my-decline">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request declined!</p>
+            <p>
+              <ons-button onclick="hideDeclineDialog('my-decline')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+
+      <!-- Notification 2 -->
+    <div class="notification2">
+      <p><img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175" align = "middle">Daniel accepted your request to borrow "Black Vans"</p>
+    </div>
+    <!-- See item -->
+    <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
+      <template id="notification2.html">
+      <ons-dialog id="my-notification2">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
+            <p><b>Owner:</b> Daniel<br>
+            <b>Item:</b> Black Vans<br>
+            <b>Brand:</b> Vans<br>
+            <b>Description:</b> size: 8</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+  <!-- End Notificaion-tab -->
+  </ons-page>
+</template>
+
+{{else}}
+<!-- Horizontal-toolbar -->
+    <ons-toolbar>
+      <div class="center">Notifications</div>
+    </ons-toolbar>
+
+    <!-- Notification 1 -->
+    <div class="notification1">
+      <p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
+    </div>
+    <!-- See item button -->
+    <ons-button onclick="showNotificationDialog()">See Item</ons-button>
+      <template id="notification1.html">
+      <ons-dialog id="my-notification1">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
+            <p><b>Owner:</b> User<br>
+            <b>Item:</b> Kobe Bryant Jersey<br>
+            <b>Brand:</b> Lakers<br>
+            <b>Description:</b> size: M, borrowed twice already</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+    <!-- Accept button -->
+    <ons-button onclick="showAcceptDialog()">Accept</ons-button>
+      <template id="accept.html">
+        <ons-dialog id="my-accept">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request accepted!</p>
+            <p>
+              <ons-button onclick="hideAcceptDialog('my-accept')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+         <!-- Decline button -->
+    <ons-button onclick="showDeclineDialog()">Decline</ons-button>
+      <template id="decline.html">
+        <ons-dialog id="my-decline">
+          <div style="text-align: center; padding: 10px;">
+            <p>Request declined!</p>
+            <p>
+              <ons-button onclick="hideDeclineDialog('my-decline')">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
+
+      <!-- Notification 2 -->
+    <div class="notification2">
+      <p><img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175" align = "middle">Daniel accepted your request to borrow "Black Vans"</p>
+    </div>
+    <!-- See item -->
+    <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
+      <template id="notification2.html">
+      <ons-dialog id="my-notification2">
+        <div style="text-align: center; padding: 10px;">
+          <p>
+            <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
+            <p><b>Owner:</b> Daniel<br>
+            <b>Item:</b> Black Vans<br>
+            <b>Brand:</b> Vans<br>
+            <b>Description:</b> size: 8</p>
+          </p>
+          <p>
+            <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
+          </p>
+        </div>
+      </ons-dialog>
+    </template>
+
+{{/if}}
+    <!-- End Notification-bottomtab -->
+  </ons-page>
+</template>
+
+
+<!-- Profile-tab -->
+<template id="tab4.html">
+  <ons-page id="Tab4">
+
+    <ons-toolbar>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">My Items</div>
+    </ons-toolbar>
+
+    <!-- Content -->
+    
+
+    <!-- Old items
+    <ons-button onclick = "deleteItem()"><ons-icon icon="trash"></ons-icon></ons-button>
+
+    {{#each add}}
+      <div class="add">
+      <h3><a href="#">{{brand}}</a></h3>
+      <p>Description: {{description}}</p>
+      <img src="{{imageURL}}" class="img-responsive" style="width: 200px">
+      </div>
+      <hr>
+    {{/each}}
+    <ons-button onclick="allItems()">Show Data</ons-button>-->
+    <ul style='list-style: none; padding: 0'>
+
+    </ul>
+    
+
+    <!-- End closet-tab -->
+  </ons-page>
+</template>
+  <!-- End App template -->
+  </ons-page>
+</template>
+
+
+<script>
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBMRWYBAvXadbTiM8yYHkzLNvYqg9sF2Ec",
+    authDomain: "borrowing-clothes.firebaseapp.com",
+    databaseURL: "https://borrowing-clothes.firebaseio.com",
+    projectId: "borrowing-clothes",
+    storageBucket: "gs://borrowing-clothes.appspot.com",
+    messagingSenderId: "695144611565",
+    appId: "1:695144611565:web:a2527d104159604e7ed6e4",
+    measurementId: "G-FG3LKTNH37"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</body>
+
+<!-- Script to for Database Function -->
+<script type="text/javascript">
+const database = firebase.database();
+const storage = firebase.storage();
+
+  function addItem() {
+    const item = document.getElementById('itemInput').value;
+    const description = document.getElementById('descriptionInput').value;
+    const size = document.getElementById('sizeInput').value;
+    const imgFile = document.getElementById('imgInput').files[0];
+
+    var data = {
+      item: item,
+      description: description,
+      size: size,
+    }
+
+    //database.ref('closet/').remove();
+    var closetRef = database.ref('borrowing-clothes/closet/');
+
+    var key = closetRef.push(data).key;
+
+    var uploadTask = storage.ref('images/' + key).put(imgFile);
+
+    // Listen for state changes, errors, and completion of the upload.
+uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+  function(snapshot) {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+      case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+    }
+  }, function(error) {
+
+  // A full list of error codes is available at
+  // https://firebase.google.com/docs/storage/web/handle-errors
+  switch (error.code) {
+    case 'storage/unauthorized':
+      // User doesn't have permission to access the object
+      break;
+
+    case 'storage/canceled':
+      // User canceled the upload
+      break;
+
+    case 'storage/unknown':
+      // Unknown error occurred, inspect error.serverResponse
+      console.log('Unknown error');
+      break;
+  }
+}, function() {
+  //Show added complete dialog
+  var dialog = document.getElementById('my-added');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('added.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+
+
+
+  //Create references
+  var closetRef = database.ref('borrowing-clothes/closet/');
+  //Sync object changes
+  closetRef.on('value', gotData);
+  
+  function gotData(data) {
+    
+    const list = document.querySelector('ul');
+    list.innerHTML = '';
+
+    if(data.exists()) {
+
+    var items = data.val();
+    var keys = Object.keys(items);
+
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var item = items[k].item;
+      var description = items[k].description;
+      var size = items[k].size;
+      var img = items[k].img;
+
+      // Create li element
+      const addItem = document.createElement('li');
+      addItem.id = k;
+      addItem.setAttribute('style', 'white-space:pre; margin-bottom: 60px');
+
+      // Create elements for info
+      var newline = '\r\n';
+      var itemDiv = document.createElement('div');
+      var descriptionDiv = document.createElement('div');
+
+      itemDiv.textContent = item + newline; 
+      descriptionDiv.textContent = description + " | " + "size: " + size + newline;
+
+      itemDiv.setAttribute('style', 'font-size:140%; font-weight:bold; padding:3px');
+      
+      descriptionDiv.setAttribute('style', 'font-size:140%; text-color:light gray; padding:3px');
+     
+
+      // Create img element
+      const itemImg = document.createElement('img');
+      var imgRef = storage.ref('images/' + k).getDownloadURL().then(function(url){
+          itemImg.src = url;
+      }).catch(function(error) {
+            console.log('error: ' + error);
+        });
+      
+      itemImg.setAttribute('width', '130px');
+      itemImg.setAttribute('height', '170px');
+      itemImg.setAttribute('style', 'float:left');
+
+      // Create delelete button element
+      var button = document.createElement('ons-button');
+      button.innerHTML = 'delete';
+      button.setAttribute('style', 'float:none; background-color: black; padding: 9px');
+
+      // Create horizontal rule
+      var elem = document.createElement('hr');
+      elem.setAttribute('height', '100px');
+
+  
+
+      addItem.appendChild(itemImg);
+      addItem.appendChild(itemDiv);
+      addItem.appendChild(descriptionDiv);
+      addItem.appendChild(button);
+      addItem.appendChild(elem);
+
+      list.appendChild(addItem);
+
+      // Event for delete button
+      button.addEventListener('click', (e) =>{
+        e.stopPropagation();
+        var idTG = e.target.parentNode.id;
+        console.log(idTG);
+        database.ref('borrowing-clothes/closet/' + idTG).remove();
+        storage.ref('items/' + idTG).delete().
+        then(function() {
+            console.log('Delete storage completed!')
+        }).catch(function(error) {
+            console.log('error: ' + error);
+        });
+      });
+
+      //End for-loop
+      };
+    //End if statement
+    };
+    //End gotData function
+    }; 
+  // End last function function 
+  });
+//End add function
+}
+</script>
+
+
+
+
+
+
+
+
+<!-- Script for listing items from database to closet 
+<script type="text/javascript"> -->
+<script type="text/javascript">
+  //Create references
+  var closetRef = database.ref('borrowing-clothes/closet/');
+  //Sync object changes
+  closetRef.on('value', gotData);
+  
+  function gotData(data) {
+    
+    const list = document.querySelector('ul');
+    list.innerHTML = '';
+
+    if(data.exists()) {
+
+    var items = data.val();
+    var keys = Object.keys(items);
+
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var item = items[k].item;
+      var description = items[k].description;
+      var size = items[k].size;
+      var img = items[k].img;
+
+      // Create li element
+      const addItem = document.createElement('li');
+      addItem.id = k;
+      addItem.setAttribute('style', 'white-space:pre; margin-bottom: 60px');
+
+      // Create elements for info
+      var newline = '\r\n';
+      var itemDiv = document.createElement('div');
+      var descriptionDiv = document.createElement('div');
+
+      itemDiv.textContent = item + newline; 
+      descriptionDiv.textContent = description + " | " + "size: " + size + newline;
+
+      itemDiv.setAttribute('style', 'font-size:140%; font-weight:bold; padding:3px');
+      
+      descriptionDiv.setAttribute('style', 'font-size:140%; text-color:light gray; padding:3px');
+     
+
+      // Create img element
+      const itemImg = document.createElement('img');
+      var imgRef = storage.ref('images/' + k).getDownloadURL().then(function(url){
+          itemImg.src = url;
+      }).catch(function(error) {
+            console.log('error: ' + error);
+        });
+      
+      itemImg.setAttribute('width', '130px');
+      itemImg.setAttribute('height', '170px');
+      itemImg.setAttribute('style', 'float:left');
+
+      // Create delelete button element
+      var button = document.createElement('ons-button');
+      button.innerHTML = 'delete';
+      button.setAttribute('style', 'float:none; background-color: black; padding: 9px');
+
+  
+
+      addItem.appendChild(itemImg);
+      addItem.appendChild(itemDiv);
+      addItem.appendChild(descriptionDiv);
+      addItem.appendChild(button);
+
+      list.appendChild(addItem);
+
+      // Event for delete button
+      button.addEventListener('click', (e) =>{
+        e.stopPropagation();
+        var idTG = e.target.parentNode.id;
+        console.log(idTG);
+        database.ref('borrowing-clothes/closet/' + idTG).remove();
+        storage.ref().child('items/' + idTG).delete().then(function() {
+            console.log('Delete storage completed!')
+        }).catch(function(error) {
+            console.log('error: ' + error);
+        });
+      });
+
+    //End for-loop
+    };
+  // End if statement
+  };
+  //End gotData function
+  };  
+</script>
+
+
+
+<script type="text/javascript">
+  //for profile- borrow, lend dialogs  
+var showTemplateDialog = function() {
+  var dialog = document.getElementById('my-dialog');
+
+  if (dialog) {
+    dialog.show();
+  } else {
+    ons.createElement('dialog.html', { append: true })
+      .then(function(dialog) {
+        dialog.show();
+      });
+  }
+};
+
+var hideDialog = function(id) {
+  document
+    .getElementById(id)
+    .hide();
+  };
+
+// For pop-up chat
+var openForm = function() {
+  document.getElementById("myForm").style.display = "block";
+};
+
+var closeForm = function() {
+  document.getElementById("myForm").style.display = "none";
+};
+
+// For Log-in modal on home-tab
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>
+
+    <!-- Notification -->
+    <script type="text/javascript">
+        var showNotificationDialog = function() {
+          var dialog = document.getElementById('my-notification1');
+
+          if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('notification1.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+        };
+        var showNotification2Dialog = function() {
+          var dialog2 = document.getElementById('my-notification2');
+
+          if (dialog2) {
+            dialog2.show();
+          } else {
+            ons.createElement('notification2.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+        };
+        var hideNotificationDialog = function(id) {
+          document
+            .getElementById(id)
+            .hide();
+        };
+        </script>
+
+    <!-- Accept -->
+    <script type="text/javascript">
+        var showAcceptDialog = function() {
+      var dialog = document.getElementById('my-accept');
+      if (dialog) {
+        dialog.show();
+      } else {
+        ons.createElement('accept.html', { append: true })
+          .then(function(dialog) {
+            dialog.show();
+          });
+      }
+    };
+    var hideAcceptDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+    </script>
+
+    <!-- Decline -->
+    <script type="text/javascript">
+        var showDeclineDialog = function() {
+      var dialog = document.getElementById('my-decline');
+      if (dialog) {
+        dialog.show();
+      } else {
+        ons.createElement('decline.html', { append: true })
+          .then(function(dialog) {
+            dialog.show();
+          });
+      }
+    };
+    var hideDeclineDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+    </script>
+
+    <!-- Borrow -->
+    <script type="text/javascript">
+        var showBorrowDialog = function() {
+      var dialog = document.getElementById('my-borrowItem');
+      if (dialog) {
+        dialog.show();
+      } else {
+        ons.createElement('borrowItem.html', { append: true })
+          .then(function(dialog) {
+            dialog.show();
+          });
+      }
+    };
+    var hideBorrowDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+    </script>
+
+<!-- For Home-tab items -->
+<script type="text/javascript">
+//For item 1
+var showItem1Dialog = function() {
+  var dialog = document.getElementById('my-item1');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item1.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem1Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 1
+var showRequest1Dialog = function() {
+  var dialog = document.getElementById('my-request1');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request1.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest1Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For item 2
+var showItem2Dialog = function() {
+  var dialog = document.getElementById('my-item2');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item2.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem2Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 2
+var showRequest2Dialog = function() {
+  var dialog = document.getElementById('my-request2');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request2.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest2Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For item 3
+var showItem3Dialog = function() {
+  var dialog = document.getElementById('my-item3');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item3.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem3Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 3
+var showRequest3Dialog = function() {
+  var dialog = document.getElementById('my-request3');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request3.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest3Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 4
+var showItem4Dialog = function() {
+  var dialog = document.getElementById('my-item4');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item4.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem4Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 4
+var showRequest4Dialog = function() {
+  var dialog = document.getElementById('my-request4');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request4.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest4Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 5
+var showItem5Dialog = function() {
+  var dialog = document.getElementById('my-item5');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item5.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem5Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 5
+var showRequest5Dialog = function() {
+  var dialog = document.getElementById('my-request5');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request5.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest5Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+// For Item 6
+var showItem6Dialog = function() {
+  var dialog = document.getElementById('my-item6');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item6.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem6Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 6
+var showRequest6Dialog = function() {
+  var dialog = document.getElementById('my-request6');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request6.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest6Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 7
+var showItem7Dialog = function() {
+  var dialog = document.getElementById('my-item7');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item7.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem7Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 7
+var showRequest6Dialog = function() {
+  var dialog = document.getElementById('my-request6');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request6.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest7Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 8
+var showItem8Dialog = function() {
+  var dialog = document.getElementById('my-item8');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item8.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem8Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 8
+var showRequest8Dialog = function() {
+  var dialog = document.getElementById('my-request8');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request8.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest8Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For Item 9
+var showItem9Dialog = function() {
+  var dialog = document.getElementById('my-item9');
+
+  if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('item9.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideItem9Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+//For request 9
+var showRequest9Dialog = function() {
+  var dialog = document.getElementById('my-request9');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('request9.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideRequest9Dialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+var showDescriptionDialog = function() {
+  var dialog = document.getElementById('my-sneakers');
+
+            if (dialog) {
+            dialog.show();
+          } else {
+            ons.createElement('sneakers.html', { append: true })
+              .then(function(dialog) {
+                dialog.show();
+              });
+          }
+};
+var hideDescriptionDialog = function(id) {
+      document
+        .getElementById(id)
+        .hide();
+    };
+
+function showBorrow(url, item) {
+  alert(item);  
+}
+
+</script>
+
+</html>

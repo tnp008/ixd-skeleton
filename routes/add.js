@@ -8,5 +8,5 @@ exports.addItem = function(request, response) { 
 		"imageURL": "https://i.pinimg.com/originals/47/85/cb/4785cb6aa6e544d57908dd49d38d796f.jpg" });
 
 	console.log(data)
-	response.render('index', data);
+	response.render('home', data);
  }

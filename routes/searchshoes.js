@@ -39,7 +39,7 @@ exports.view = function(request, response){
 			answer_outerwear.push(arr_outerwear[i]);
 		}
 	}
-	response.render('index', {
+	response.render('home', {
 		"shoes": answer_shoes,
 		"shirts": answer_shirts,
 		"bottoms": answer_bottoms,
