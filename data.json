@@ -95,8 +95,35 @@
 			"item": "White banana drink shirt",
 			"description": "size: S, white shirt with some color",
 			"imageURL": "img.shein.com/images/shein.com/201705/71/14940538616737484145.jpg"
+		},
+		{
+			"owner": "Maddie",
+			"brand": "Nike",
+			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
+			"description": "size: S, white shirt with some color",
+			"imageURL": "https://c.static-nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/e441d2b8-979d-40c1-b105-2b432ef3410e/dri-blend-mesh-logo-fashion-atlanta-braves-womens-v-neck-t-shirt-lpwv4p.jpg"
+		},
+		{
+			"brand": "Zara",
+			"item": "shirt",
+			 "description": "size: s, runs large",
+			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
+		},
+		{
+			"owner": "Maddie",
+			"brand": "Nike",
+			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
+			"description": "size: S, white shirt with some color",
+			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/34f8c13c-8a10-4e71-9920-83c5ff11bc52/sportswear-womens-dress-CCKzbn.jpg"
+		},
+		{
+			"owner": "Maddie",
+			"brand": "Nike",
+			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
+			"description": "size: S, white shirt with some color",
+			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0c3ba00e-9493-42e2-8590-a9ea2a7f2122/infinite-womens-short-sleeve-running-top-zzX9MB.jpg"
 		}
-
+		
 	],
 	"bottoms":[
 		{
@@ -119,6 +146,27 @@
 			"item": "Bib Overall",
 			 "description": "size: S, Black",
 			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg"
+		},
+		{
+			"owner": "Jimmy",
+			"brand": "Nike",
+			"item": "workout leggings",
+			 "description": "size: S, Black",
+			 "imageURL": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-3527c1b3-caba-44c5-8cd1-f0e9df18b0f5/paris-saint-germain-womens-leggings-KQkN7c.jpg"
+		},
+		{
+			"owner": "Kimmy",
+			"brand": "Nike",
+			"item": "workout leggings",
+			 "description": "size: S, Black",
+			 "imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/96f73508-733f-4ef8-a454-a9821d7a525e/nikelab-womens-fleece-shorts-0L36dF.jpg"
+		},
+		{
+			"owner": "Kimmy",
+			"brand": "Nike",
+			"item": "workout leggings",
+			 "description": "size: S, Black",
+			 "imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-e33cf082-1adc-47b4-ae91-405b6fc41d1a/dri-fit-vapor-womens-slider-softball-tights-stock-1GWGg2.jpg"
 		}
 	],
 
@@ -143,6 +191,27 @@
 			"item": "Yachting Bear Sweat",
 			"description": "size: S, Andover Heather",
 			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-02-2020_poloralphlauren_yachtingbearcrewsweat_andoverheather_710792903002_bb_1.jpg"
+		},
+		{
+			"owner": "Pat",
+			"brand": "Nike",
+			"item": "Yachting Bear Sweat",
+			"description": "size: S, Andover Heather",
+			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/00741cb6-8f24-4ad7-bffc-f2d7c117e565/air-womens-fleece-hoodie-plus-size-KCL0Sw.jpg"
+		},
+		{
+			"owner": "Maddie",
+			"brand": "Nike",
+			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
+			"description": "size: S, white shirt with some color",
+			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/003f9e1a-11e2-4213-9238-696b34f3e8ba/sportswear-womens-cropped-fleece-s7Ntj7.jpg"
+		},
+		{
+			"owner": "Maddie",
+			"brand": "Nike",
+			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
+			"description": "size: S, white shirt with some color",
+			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/5f4db6db-08f8-4f7e-a4fc-42b865de749d/sportswear-windrunner-womens-jacket-LdBGjK.jpg"
 		}
 	],
 
@@ -152,12 +221,6 @@
 			"item": "dress",
 			 "description": "size: s, runs large",
 			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/4437/051/400/2/w/1120/4437051400_1_1_1.jpg?ts=1582013169150"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
 		},
 		{
 			"brand": "Forever 21",
