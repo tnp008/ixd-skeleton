@@ -2,35 +2,33 @@
 <html>
 
 <head>
-	<title> Login</title>
- 	<meta charset="UTF-8">
- 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<link href = "css/login.css" rel ="stylesheet">
+  <title> Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href = "css/login.css" rel ="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+   {{> facebook}}
+  <script src="/js/facebook.js"></script>
 
 </head>
-<body oncontextmenu="return false">
-	<div class ="body"></div>
-		<div class ="grad"></div>
-		<form name = "login">
-		<div class = "login">
-			<input type = "text" placeholder="username" name ="userid"> <br>
-			<input type = "password" placeholder="password" name="pswrd"> <br>
-			<input type = "button" onclick = "check(this.form)" value="Login"/>
-		</div>
-		</form>
+<body>
 
-	<script language="javascript">
-	function check(form)
-		{
-			if(form.userid.value == "COGS" && form.pswrd.value =="120"){
-				window.open('home')
-
-			}
-			else{
-				alert("the username and password you entered do not match")
-			}
-		}
-		
-	</script>
+    <form name = "login">
+    <div class = "login">
+      <input type = "text" placeholder="username" name ="userid"> <br>
+      <input type = "password" placeholder="password" name="pswrd"> <br>
+      <div>
+        <a href = "home">
+        <input type = "button" onclick = "check(this.form)" value="Login"/>
+      </div>
+    </div>
+    </form>
+     <!-- Log-in on toolbar -->
+        <p class="facebookLogin">
+          <a href = "home">
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button>
+        </p>
 </body>
 </html>
