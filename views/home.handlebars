@@ -21,7 +21,7 @@
  
     {{> facebook}}
   <script src="/js/facebook.js"></script>
-   <script src="/js/introHCI.js"></script>
+  <script src="/js/introHCI.js"></script>
   <!-- Google Analytics -->
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,6 +30,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-159639041-1', 'auto');
+ga('require', 'GTM-MGMXH6P');
 ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
@@ -635,7 +636,7 @@ ga('send', 'pageview');
     <h4 style="font-size:140%; text-color:light gray; padding:3px">Gray | size: M | Owner: Kyle</h4>
     <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 7</h4>
       <!-- Return and message buttons -->
-    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openForm()" class = "google">Request Item</ons-button>
+    <ons-button style="background-color: black; padding: 9px; float:right" onclick="showTemplateDialog()">Request item</ons-button>
     <ons-button style="background-color: black; padding: 9px; float:right" onclick="openForm()">Message User</ons-button>
 
 
@@ -1002,6 +1003,10 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 var showTemplateDialog = function() {
   var dialog = document.getElementById('my-dialog');
 
+
+  ga('create', 'UA-159639041-1', 'auto');
+  ga('send', 'event', 'like', 'click');
+
   if (dialog) {
     dialog.show();
   } else {
@@ -1021,6 +1026,8 @@ var hideDialog = function(id) {
 // For pop-up chat
 var openForm = function() {
   document.getElementById("myForm").style.display = "block";
+  ga('create', 'UA-159639041-1', 'auto');
+  ga('send', 'event', 'like', 'click');
 };
 
 var closeForm = function() {
