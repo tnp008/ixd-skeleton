@@ -18,9 +18,21 @@
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
+ 
     {{> facebook}}
   <script src="/js/facebook.js"></script>
+   <script src="/js/introHCI.js"></script>
+  <!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-159639041-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
 </head>
 </head>
 <body>
@@ -32,9 +44,9 @@
 
     <ons-tab page="tab2.html" label="Add" icon="md-plus"></ons-tab>
 
-    <ons-tab page="tab3.html" label="Notification" icon="md-notifications"></ons-tab>
+    <ons-tab page="tab3.html" label="Borrow/Lend" icon="md-notifications"></ons-tab>
     
-    <ons-tab page="tab4.html" label="Closet" icon="md-face"></ons-tab>
+    <ons-tab page="tab4.html" label="My Closet" icon="md-face"></ons-tab>
   </ons-tabbar>
 </ons-page>
 
@@ -607,6 +619,56 @@
       </ons-dialog>
     </template>
 
+<br>
+<br>
+<br>
+    <!--  -->
+
+    <!-- Image for item -->
+  <!-- Horizontal toolbar -->
+    <!-- Contents -->
+
+    <!-- Image for item -->
+    <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px; float: left">
+
+    <h3 style="font-size:140%; font-weight:bold; padding:3px">Comme des Garcons Hoodie</h3>
+    <h4 style="font-size:140%; text-color:light gray; padding:3px">Gray | size: M | Owner: Kyle</h4>
+    <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 7</h4>
+      <!-- Return and message buttons -->
+    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openForm()" class = "google">Request Item</ons-button>
+    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openForm()">Message User</ons-button>
+
+
+    <!-- Dialog for request button -->
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+        Request completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+  <!-- Chat-popup -->
+  <div style="position:absolute; bottom:0px; right:0px"class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+  <!-- End lend-tab -->
 {{/if}}
     <!-- End Notification-bottomtab -->
   </ons-page>
