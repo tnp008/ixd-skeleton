@@ -10,6 +10,8 @@
   <link href="css/onsen-css-components.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
@@ -30,9 +32,9 @@
   <ons-tabbar swipeable position="auto">
     <ons-tab page="tab1.html" label="Home" icon="md-home" active></ons-tab>
 
-    <ons-tab page="tab2.html" label="Add" icon="md-plus"></ons-tab>
+    <ons-tab page="tab2.html" label="Post" icon="md-plus"></ons-tab>
 
-    <ons-tab page="tab3.html" label="Notification" icon="md-notifications"></ons-tab>
+    <ons-tab page="tab3.html" label="Request" icon="md-globe" onclick="showPanel(0)"></ons-tab>
     
     <ons-tab page="tab4.html" label="Closet" icon="md-face"></ons-tab>
   </ons-tabbar>
@@ -48,7 +50,7 @@
     <ons-toolbar>
       
       <div class="center" style="font-size: 150%; font-weight: bolder;">
-       HOME 
+       Borrow 'n Go 
       </div>
       
 
@@ -93,7 +95,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
                   </p>
                   </div>
                 </ons-dialog>
@@ -134,7 +136,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
                   </p>
                   </div>
                 </ons-dialog>
@@ -175,7 +177,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
                   </p>
                   </div>
                 </ons-dialog>
@@ -216,7 +218,7 @@
                 <div style="text-align: center; padding: 10px;">
                   <p>Borrow Request Sent!</p>
                   <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers')">Close</ons-button>
+                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
                   </p>
                   </div>
                 </ons-dialog>
@@ -346,7 +348,7 @@
     <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 3</h4>
       <!-- Return and message buttons -->
     <ons-button style="background-color: black; padding: 9px" onclick="showTemplateDialog()">Return item</ons-button>
-    <ons-button style="background-color: black; padding: 9px" onclick="openForm()">Message Owner</ons-button>
+    <ons-button style="background-color: black; padding: 9px" onclick="openChat1('chat1')">Message Owner</ons-button>
       
         <!-- Dialog for return button -->
   <template id="dialog.html">
@@ -364,17 +366,28 @@
 </template>
 
       <!-- Chat-popup -->
-  <div style="position:absolute; bottom:0px; right:0px" class="chat-popup" id="myForm">
+  <div style="position:absolute; bottom:0px; right:0px" class="chat-popup" id="chat1">
   <form action="/action_page.php" class="form-container">
     <h1>Chat</h1>
 
     <label for="msg"><b>Message</b></label>
     <textarea placeholder="Type message.." name="msg" required></textarea>
 
-    <button type="button" class="btn">Send</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    <button type="button" class="btn" onclick="chatSent()">Send</button>
+    <button type="button" class="btn cancel" onclick="closeChat1('chat1')">Close</button>
   </form>
 </div>
+
+<!-- Script for Chat-popup close and open -->
+  <script type="text/javascript">
+    function closeChat1(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    function openChat1(id){
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
 
 <!-- End borrow template -->
   </ons-page>
@@ -406,7 +419,7 @@
     <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 7</h4>
       <!-- Return and message buttons -->
     <ons-button style="background-color: black; padding: 9px; float:right" onclick="showTemplateDialog()">Request item</ons-button>
-    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openForm()">Message User</ons-button>
+    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openChat2('chat2')">Message User</ons-button>
 
 
     <!-- Dialog for request button -->
@@ -425,23 +438,34 @@
 </template>
 
   <!-- Chat-popup -->
-  <div style="position:absolute; bottom:0px; right:0px"class="chat-popup" id="myForm">
+  <div style="position:absolute; bottom:0px; right:0px"class="chat-popup" id="chat2">
   <form action="/action_page.php" class="form-container">
     <h1>Chat</h1>
 
     <label for="msg"><b>Message</b></label>
     <textarea placeholder="Type message.." name="msg" required></textarea>
 
-    <button type="button" class="btn">Send</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    <button type="button" class="btn" onclick="chatSent()">Send</button>
+    <button type="button" class="btn cancel" onclick="closeChat2('chat2')">Close</button>
   </form>
 </div>
+
+<!-- Script for Chat-popup close and open -->
+  <script type="text/javascript">
+    function closeChat2(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    function openChat2(id){
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
 
   <!-- End lend-tab -->
   </ons-page>
 </template>
 
-<!-- Borrow template -->
+<!-- Notification template -->
 <template id="notification.html">
   <!-- Horizontal toolbar -->
   <ons-page>
@@ -534,24 +558,38 @@
 {{else}}
 <!-- Horizontal-toolbar -->
     <ons-toolbar>
-      <div class="center">Notifications</div>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">My Requests</div>
     </ons-toolbar>
 
+    <div class="tabContainer">
+
+      <div class="buttonContainer">
+        <button class='noBts' onclick="showPanel(0)">Request</button>
+        <button class='noBts' onclick="showPanel(1)">Borrow</button>
+        <button class='noBts' onclick="showPanel(2)">Lend</button>
+      </div>
+      
+      <!-- Noti Panel Start -->
+      <div class="tabPanel">
+        <!-- Content -->
+    <div>
+    <div style="position: relative; padding-bottom: 15px; padding-top: 0px">
     <!-- Notification 1 -->
-    <div class="notification1">
-      <p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
-    </div>
+      <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px;height: 130px; float: left">
+      <h3 style="font-size:80%; font-weight:bold; padding:0px"> New request from Jason:</h3>
+      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Comme des Garcons Hoodie</h4>
+      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Duration: 7 days</h4>
+      
     <!-- See item button -->
     <ons-button onclick="showNotificationDialog()">See Item</ons-button>
       <template id="notification1.html">
       <ons-dialog id="my-notification1">
         <div style="text-align: center; padding: 10px;">
           <p>
-            <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
-            <p><b>Owner:</b> User<br>
-            <b>Item:</b> Kobe Bryant Jersey<br>
-            <b>Brand:</b> Lakers<br>
-            <b>Description:</b> size: M, borrowed twice already</p>
+            <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" width= "175" height="175">
+            <p><b>Owner:</b> Me<br>
+            <b>Item:</b> Comme des Garcons Hoodie<br>
+            <b>Description:</b> Gray | size: M<br></p>
           </p>
           <p>
             <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
@@ -564,9 +602,10 @@
       <template id="accept.html">
         <ons-dialog id="my-accept">
           <div style="text-align: center; padding: 10px;">
-            <p>Request accepted!</p>
+            <p><b>Request completed!</b><br><br>
+        You can track the item in your <b>Lend</b></p>
             <p>
-              <ons-button onclick="hideAcceptDialog('my-accept')">Close</ons-button>
+              <ons-button onclick="hideAcceptDialog('my-accept'); showPanel(2);">Close</ons-button>
             </p>
           </div>
         </ons-dialog>
@@ -583,22 +622,24 @@
           </div>
         </ons-dialog>
       </template>
-
-      <!-- Notification 2 -->
-    <div class="notification2">
-      <p><img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175" align = "middle">Daniel accepted your request to borrow "Black Vans"</p>
     </div>
+    <div style="position: relative;">
+      <!-- Notification 2 -->
+      <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 120px;height: 130px; float: left">
+      <h3 style="font-size:80%; font-weight:bold; padding:0px">Daniel accepted your request!</h3>
+      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Acne Studio Pant</h4>
+      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Duration: 3 days</h4>
+    
     <!-- See item -->
     <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
       <template id="notification2.html">
       <ons-dialog id="my-notification2">
         <div style="text-align: center; padding: 10px;">
           <p>
-            <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
+            <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" width= "175" height="175">
             <p><b>Owner:</b> Daniel<br>
-            <b>Item:</b> Black Vans<br>
-            <b>Brand:</b> Vans<br>
-            <b>Description:</b> size: 8</p>
+            <b>Item:</b> Acne Studio Pant<br>
+            <b>Description:</b> Khaki | size: 29</p>
           </p>
           <p>
             <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
@@ -606,6 +647,127 @@
         </div>
       </ons-dialog>
     </template>
+
+    <ons-button onclick="showPanel(1)">View</ons-button>
+  </div>
+</div>
+      <!-- Noti Panel End -->
+      </div>
+
+
+      <!-- Borrow Panel Start -->
+      <div class="tabPanel">
+        <!-- Contents -->
+
+    <!-- Image for item -->
+    <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 120px;height: 130px; float: left">
+
+    <h3 style="font-size:80%; font-weight:bold; padding:0px">Acne Studio Pant</h3>
+    <h4 style="font-size:80%; text-color:light gray; padding:0px">Khaki | size: 29 | Owner: Daniel</h4>
+    <h4 style="font-size:80%; text-color:light gray; padding:0px">Day Left: 3</h4>
+      <!-- Return and message buttons -->
+    <ons-button style="background-color: black; padding: 9px" onclick="showTemplateDialog()">Return item</ons-button>
+    <ons-button style="background-color: black; padding: 9px" onclick="openChat1('chat1')">Message Owner</ons-button>
+      
+        <!-- Dialog for return button -->
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+         Return completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+      <!-- Chat-popup -->
+  <div style="position:absolute; bottom:0px; right:0px" class="chat-popup" id="chat1">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn" onclick="chatSent()">Send</button>
+    <button type="button" class="btn cancel" onclick="closeChat1('chat1')">Close</button>
+  </form>
+</div>
+
+  <!-- Script for Chat-popup close and open -->
+  <script type="text/javascript">
+    function closeChat1(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    function openChat1(id){
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+    <!-- Borrow Panel End -->
+</div>
+      
+      <!-- Lend Panel Start -->
+      <div class="tabPanel">
+
+        <!-- Contents -->
+    <!-- Image for item -->
+    <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px; height: 120px; float: left">
+
+    <h3 style="font-size:80%; font-weight:bold; padding:0px">Comme des Garcons Hoodie</h3>
+    <h4 style="font-size:80%; text-color:light gray; padding:0px">Gray | size: M | To: Jason</h4>
+    <h4 style="font-size:80%; text-color:light gray; padding:0px">Day Left: 7</h4>
+      <!-- Return and message buttons -->
+    <ons-button style="background-color: black; padding: 9px;" onclick="showTemplateDialog()">Request item</ons-button>
+    <ons-button style="background-color: black; padding: 9px;" onclick="openChat2('chat2')">Message User</ons-button>
+
+
+    <!-- Dialog for request button -->
+  <template id="dialog.html">
+  <ons-dialog id="my-dialog">
+    <div style="text-align: center; padding: 10px;">
+      <p>
+        Request completed!
+      </p>
+
+      <p>
+        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+      </p>
+    </div>
+  </ons-dialog>
+</template>
+
+  <!-- Chat-popup -->
+  <div style="position:absolute; bottom:0px; right:0px; "class="chat-popup" id="chat2">
+  <form action="/action_page.php" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="button" class="btn" onclick="chatSent()">Send</button>
+    <button type="button" class="btn cancel" onclick="closeChat2('chat2')">Close</button>
+  </form>
+  </div>
+
+  <!-- Script for Chat-popup close and open -->
+  <script type="text/javascript">
+    function closeChat2(id){
+      document.getElementById(id).style.display = "none";
+    }
+
+    function openChat2(id){
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+
+      <!-- End Lend tab --> 
+      </div>
+    <!-- End Lend Panel -->
+    </div>
 
 {{/if}}
     <!-- End Notification-bottomtab -->
@@ -956,14 +1118,6 @@ var hideDialog = function(id) {
     .hide();
   };
 
-// For pop-up chat
-var openForm = function() {
-  document.getElementById("myForm").style.display = "block";
-};
-
-var closeForm = function() {
-  document.getElementById("myForm").style.display = "none";
-};
 
 // For Log-in modal on home-tab
 var modal = document.getElementById('id01');
@@ -1436,6 +1590,39 @@ function showBorrow(url, item) {
   alert(item);  
 }
 
+</script>
+
+<!-- For notification topbar -->
+<script type="text/javascript">
+  var tabButtons=document.getElementsByClassName('noBts');
+  var tabPanels=document.getElementsByClassName('tabPanel');
+
+  function showPanel(panelIndex) {
+    for(var i = 0; i < tabButtons.length; i++){
+      tabButtons[i].style.backgroundColor='';
+      tabButtons[i].style.color='';
+    };
+    tabButtons[panelIndex].style.backgroundColor='gray';
+
+    for(var k = 0; k < tabPanels.length; k++){
+      tabPanels[k].style.display='none';
+    };
+
+    tabPanels[panelIndex].style.display='block';
+  }
+  //Set default panel
+  showPanel(0);
+</script>
+
+<!-- Script for new request and chat sent -->
+<script type="text/javascript">
+  function showRequest(){
+    alert("You have new requests!");
+  }
+
+  function chatSent(){
+    alert("Your message has been delivered!");
+  }
 </script>
 
 </html>

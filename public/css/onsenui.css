@@ -894,3 +894,41 @@ div.borrow4 a {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+.tabContainer{
+  width: 100%;
+  height:350px;
+}
+.tabContainer .buttonContainer{
+  height:15%;
+}
+.tabContainer .buttonContainer button{
+  width: 33%;
+  height: 100%;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  color:black;
+  background-color: white;
+}
+.tabContainer .buttonContainer button:hover{
+  background-color: gray;
+  }
+.tabContainer .tabPanel{
+  height: 100vh;
+  width: 100%;
+  background-color: #f0f0f0;
+  color: black;
+  text-align: left;
+  padding-top: 2px;
+  box-sizing: border-box;
+  font-size: 22px;
+  display:none;
+}
+
+
+
+
