@@ -3,32 +3,47 @@
 
 <head>
   <title> Login</title>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href = "css/login.css" rel ="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/bootstrap-theme.css" rel="stylesheet">
    {{> facebook}}
   <script src="/js/facebook.js"></script>
+  <style>
+  	body{
+  		background-image: url(https://media.treehugger.com/assets/images/2020/01/clothes_in_a_pile.jpeg.860x0_q70_crop-scale.jpg);
+  		background-position: left top;
+  		background-size: 300%;
+  	}
+  	div.container{
+  		position: absolute;
+  		top: 200px;
+  		left: 100px;
+  	}
+  </style>
 
 </head>
 <body>
-
-    <form name = "login">
-    <div class = "login">
-      <input type = "text" placeholder="username" name ="userid"> <br>
-      <input type = "password" placeholder="password" name="pswrd"> <br>
-      <div>
-        <a href = "home">
-        <input type = "button" onclick = "check(this.form)" value="Login"/>
-      </div>
-    </div>
+	<div class = "container">
+	<form name = "login">
+      <h1> <b>Borrow 'n Go </b> </h1>
+	    <div class = "login">
+	      <input type = "text" placeholder="username" name ="userid"> <br>
+	      <input type = "password" placeholder="password" name="pswrd"> <br>
+	      <div>
+	        <a href = "home">
+	        <input type = "button" onclick = "check(this.form)" value="Login"/>
+	      </div>
+	    </div>
     </form>
+    <h4> Or sign in with Facebook</h4>
      <!-- Log-in on toolbar -->
-        <p class="facebookLogin">
-          <a href = "home">
-            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-            </fb:login-button>
-        </p>
+    <p class="facebookLogin">
+      <a href = "home">
+      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>
+    </p>
+</div>
 </body>
 </html>

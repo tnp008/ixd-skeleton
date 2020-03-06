@@ -17,7 +17,7 @@ exports.view = function(request, response){
 		}
 	}
 
-	response.render('index', {
+	response.render('home', {
 		"clothes": answer
 	});
 };
