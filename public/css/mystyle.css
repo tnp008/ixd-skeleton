@@ -1,0 +1,19 @@
+body {
+	font-family: 'Varela Round', sans-serif;
+}
+.col-6 {
+	height:325px;
+	background-color: white;
+	padding:4em 2em;
+	text-align: center;
+	border: 0.5px solid lightgray;
+}
+
+.lTitle {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+
+
