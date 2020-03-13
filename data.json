@@ -1,172 +1,325 @@
 
 {
 	"shoes": [
-		{
-			"brand": "Vans",
-			"item": "White Checkered Vans",
+		{	
+			"index": "shoes0",
+			"dialogID": "my-sneakers0",
+			"borrowTemp": "borrowShoe0",
+			"borrowDialog": "my-borrowShow0",
+			"brand": "Nike",
+			"item": "Fragment Design x Air Jordan 1",
 			"owner": "DJ", 
-			"description": "size: 8M, worn once",
-			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib31426.jpg?preset=details"			
+			"description": "Blue | size: 8M",
+			"imageURL": "https://image.goat.com/crop/1800/attachments/product_template_additional_pictures/images/008/488/331/original/14957_01.jpg.jpeg?1513115759",			
+			"cost": "165 Pts",
+			"duration": "7 days"
 		},
-		{
-			"brand": "Vans",
-			"item": "Black Vans",
+		{	
+			"index": "shoes1",
+			"dialogID": "my-sneakers1",
+			"borrowTemp": "borrowShoe1",
+			"borrowDialog": "my-borrowShow1",
+			"brand": "Nike",
+			"item": "Air Jordan 1 Retro High OG",
 			"owner": "Chris", 
-			"description": "size: 9M, worn 5+ times, but it's still in great condition!",
-			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details"			
+			"description": "Turbo Green | size: 9M",
+			"imageURL": "https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/018/552/911/original/404758_01.jpg.jpeg?1549569770",			
+			"cost": "180 Pts",
+			"duration": "10 days"
 		},
 		{
-			"brand": "Vans",
-			"item": "Camo Checkered Vans",
+			"index": "shoes2",
+			"dialogID": "my-sneakers2",
+			"borrowTemp": "borrowShoe2",
+			"borrowDialog": "my-borrowShow2",
+			"brand": "Nike",
+			"item": "Air Jordon 1 Retro High OG",
 			"owner": "Allen",
-			"description": "size: 9M, worn 3 times",
-			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ib00915.jpg?preset=details"
+			"description": " Neutral grey | size: 9M",
+			"imageURL": "https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/018/192/677/original/404759_01.jpg.jpeg?1548457407",
+			"cost": "100 Pts",
+			"duration": "7 days"
 		},
 		{
+			"index": "shoes3",
+			"dialogID": "my-sneakers3",
+			"borrowTemp": "borrowShoe3",
+			"borrowDialog": "my-borrowShow3",
 			"brand": "Nike",
-			"item": "Running shoes",
+			"item": "Air Jordan 5 Retro T23 Tokyo",
 			"owner": "Mark",
-			"description": "size: 9M, worn 3 times",
-			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ia93755.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter&fbclid=IwAR096dTaIfGgbRDs1k5Ls2vGwOm3RucLqEruS4xLNNbv3qDUytYTCa3CawU"
+			"description": "Yellow | size: 9M",
+			"imageURL": "https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/012/618/052/original/14001_01.jpg.jpeg?1528855420",
+			"cost": "200 Pts",
+			"duration": "20 days"
 		},
-		{
+		{	
+			"index": "shoes4",
+			"dialogID": "my-sneakers4",
+			"borrowTemp": "borrowShoe4",
+			"borrowDialog": "my-borrowShow4",
 			"brand": "Nike",
-			"item": "running shoes",
+			"item": "Supreme x AirForce 1 Low",
 			"owner": "Jared",
-			"description": "Size: 11, good condition",
-			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ia54552.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter"
+			"description": "White | size: 11",
+			"imageURL": "https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/033/118/805/original/585307_01.jpg.jpeg?1582311282",
+			"cost": "220 Pts",
+			"duration": "15 days"
 		},
-		{
-			"brand": "Crocs",
-			"item": "sandals",
-			"owner": "Kims",
-			"description": "Size: 11, good condition",
-			"imageURL": "https://www.famousfootwear.com/ProductImages/shoes_ia73105.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter"
-		},
-		{
-			"brand": "Chucks",
-			"item": "causal shoes",
-			"owner": "Kims",
-			"description": "Size: 11, good condition",
-			"imageURL":"https://www.famousfootwear.com/ProductImages/shoes_ia69926.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter"
-		},
-		{
+		{	
+			"index": "shoes5",
+			"dialogID": "my-sneakers5",
+			"borrowTemp": "borrowShoe5",
+			"borrowDialog": "my-borrowShow5",
 			"brand": "Nike",
-			"item": "Running shoes",
+			"item": "Air Max 1 OG Anniversary",
 			"owner": "Kims",
-			"description": "Size: 6.5, good condition",
-			"imageURL":"https://www.famousfootwear.com/ProductImages/shoes_ia00945.jpg?trim.threshold=105&width=600&height=350&paddingWidth=40&anchor=bottomcenter"
+			"description": "Red | size: 11",
+			"imageURL": "https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/008/489/729/original/206809_01.jpg.jpeg?1513116420",
+			"cost": "220 Pts",
+			"duration": "7 days"
+		},
+		{
+			"index": "shoes6",
+			"dialogID": "my-sneakers6",
+			"borrowTemp": "borrowShoe6",
+			"borrowDialog": "my-borrowShow6",
+			"brand": "Nike",
+			"item": "OFF-White x Air Max 90 The Ten",
+			"owner": "Kims",
+			"description": "Grey | size: 11",
+			"imageURL":"https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/008/488/258/original/149380_01.jpg.jpeg?1513115704",
+			"cost": "400 Pts",
+			"duration": "10 days"
+		},
+		{
+			"index": "shoes7",
+			"dialogID": "my-sneakers7",
+			"borrowTemp": "borrowShoe7",
+			"borrowDialog": "my-borrowShow7",
+			"brand": "Adidas",
+			"item": "Yeezy Boost 700 Wave Runner",
+			"owner": "Kims",
+			"description": " Suede | size: 6.5",
+			"imageURL":"https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/014/507/858/original/195483_01.jpg.jpeg?1536271278",
+			"cost": "350 Pts",
+			"duration": "12 days"
 		}
 
 	],
-	"add": [
-		{
-			"brand": "Nike- Cortez",
-			 "description": "size: 7.5M, worn once",
-			 "imageURL": "https://s7d5.scene7.com/is/image/UrbanOutfitters/41339359_069_b?$xlarge$&hei=900&qlt=80&fit=constrain"
-		}
-	],
 
-	"shirts" : [
+
+	"tops" : [
 		{
+			"index": "tops0",
+			"dialogID": "my-tops0",
+			"borrowTemp": "borrowTop0",
+			"borrowDialog": "my-borrowTop0",
+			"cost": "325 Pts",
+			"owner": "Ken",
+			"brand": "Fear of God",
+			"item": "Varsity Jacket",
+			"description": "Brown | size: L",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/5/15-10-2019_fearofgod_6thcollectionvarsityjacket_greymelange_brown_6f19-6026mwl-65_blr_1.jpg",
+			"duration": "7 days"
+		},
+		{	
+			"index": "tops1",
+			"dialogID": "my-tops1",
+			"borrowTemp": "borrowTop1",
+			"borrowDialog": "my-borrowTop1",
+			"cost": "325 Pts",
 			"owner": "Kenji",
 			"brand": "A Kind of Guise",
 			"item": "Gusto Shirt",
-			"description": "size: S, Faded Check",
-			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg"
+			"description": "Faded Check | size: S",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/4/14-02-2020_akindofguise_gustoshirt_fadedcheck_010704_jm_1.jpg",
+			"duration": "10 days"
 		},
-		{
-			"owner": "Ben",
+		{	
+			"index": "tops2",
+			"dialogID": "my-tops2",
+			"borrowTemp": "borrowTop2",
+			"borrowDialog": "my-borrowTop2",
+			"cost": "79 Pts",
+			"owner": "Kai",
 			"brand": "Stussy",
-			"item": "Long Sleeve Stock Tee",
-			"description": "size: L, Black",
-			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-11-2019_stussy_longsleevestocktee_black_1994496-bk_mb_1.jpg"
+			"item": "Long Sleeve Crew",
+			"description": "Rust | size: M",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/9/19-02-2020_stussy_longsleevestocklogocrewtee_rust_1140195-rust_jb_1.jpg",
+			"duration": "8 days"
 		},
-		{
-			"owner": "Sean",
-			"brand": "A Kind of Guise",
-			"item": "Hunter Vacation Shirt",
-			"description": "size: S, Faded Check",
-			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-02-2020_penfield_huntervacationshirt_white_pfm512844120-012_bl_1.jpg"
+		{	
+			"index": "tops3",
+			"dialogID": "my-tops3",
+			"borrowTemp": "borrowTop3",
+			"borrowDialog": "my-borrowTop3",
+			"cost": "269 Pts",
+			"owner": "Pat",
+			"brand": "John Elliott",
+			"item": "Hooded Pullover",
+			"description": "Carbon | size: S",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/7/17-12-2019_johnelliott_villainhoodedpullover_carbon_b000b00425b-crb_mo_1.jpg",
+			"duration": "5 days"
 		},
-		{
+		{	
+			"index": "tops4",
+			"dialogID": "my-tops4",
+			"borrowTemp": "borrowTop4",
+			"borrowDialog": "my-borrowTop4",
+			"cost": "416 Pts",
+			"owner": "Kai",
+			"brand": "Aime Leon Dore",
+			"item": "Woolrich Knit",
+			"description": "Parmesan | size: L",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/6/26-11-2019_aimeleondorexwoolrich_aimeknit_parmesan_ald-ksw00-pm_mb_1x.jpg",
+			"duration": "7 days"
+		},
+		{	
+			"index": "tops5",
+			"dialogID": "my-tops5",
+			"borrowTemp": "borrowTop5",
+			"borrowDialog": "my-borrowTop5",
+			"cost": "399 Pts",
+			"owner": "Nicholas",
+			"brand": "Aime Leon Dore",
+			"item": "Woolrich Vest",
+			"description": "Green | size: M",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/6/26-11-2019_aim_leondorexwoolrichworkvest_botanicalgreen_ald-wjw00-gn_jd_1.jpg",
+			"duration": "7 days"
+		},
+		{	
+			"index": "tops6",
+			"dialogID": "my-tops6",
+			"borrowTemp": "borrowTop6",
+			"borrowDialog": "my-borrowTop6",
+			"cost": "185 Pts",
 			"owner": "Maddie",
-			"brand": "Shein",
-			"item": "White banana drink shirt",
-			"description": "size: S, white shirt with some color",
-			"imageURL": "img.shein.com/images/shein.com/201705/71/14940538616737484145.jpg"
+			"brand": "Stone Island",
+			"item": "Dyed Crew Sweat",
+			"description": "Black | size: L",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/1/11-12-2019_stoneisland_juniorgarmentdyedcrewsweat_black_7216-61040-v0029_blr_1.jpg",
+			"duration": "7 days"
 		},
 		{
-			"owner": "Maddie",
-			"brand": "Nike",
-			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
-			"description": "size: S, white shirt with some color",
-			"imageURL": "https://c.static-nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/e441d2b8-979d-40c1-b105-2b432ef3410e/dri-blend-mesh-logo-fashion-atlanta-braves-womens-v-neck-t-shirt-lpwv4p.jpg"
-		},
-		{
-			"brand": "Zara",
-			"item": "shirt",
-			 "description": "size: s, runs large",
-			 "imageURL": "https://static.zara.net/photos///2020/V/0/1/p/5039/001/250/2/w/1624/5039001250_1_1_1.jpg?ts=1581691344081"
-		},
-		{
-			"owner": "Maddie",
-			"brand": "Nike",
-			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
-			"description": "size: S, white shirt with some color",
-			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/34f8c13c-8a10-4e71-9920-83c5ff11bc52/sportswear-womens-dress-CCKzbn.jpg"
-		},
-		{
-			"owner": "Maddie",
-			"brand": "Nike",
-			"item": "Dri-Blend Mesh Logo Fashion (MLB Atlanta Braves)",
-			"description": "size: S, white shirt with some color",
-			"imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0c3ba00e-9493-42e2-8590-a9ea2a7f2122/infinite-womens-short-sleeve-running-top-zzX9MB.jpg"
+			"index": "tops7",
+			"dialogID": "my-tops7",
+			"borrowTemp": "borrowTop7",
+			"borrowDialog": "my-borrowTop7",
+			"cost": "300 Pts",
+			"owner": "Will",
+			"brand": "Acne Studios",
+			"item": "Crew Knit",
+			"description": "Iris Purple | size: M",
+			"imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/4/24-01-2020_acnestudios_kaishetlandcrewknit_irispurple_29g173-brg_ll_1.jpg",
+			"duration": "10 days"
 		}
 		
 	],
 	"bottoms":[
 		{
+			"index": "bottoms0",
+			"dialogID": "my-bottoms0",
+			"borrowTemp": "borrowBottom0",
+			"borrowDialog": "my-borrowBottom0",
+			"cost": "119 Pts",
 			"owner": "Aarron",
-			"brand": "Paul Smith",
-			"item": "Classic Swim Short",
-			 "description": "size: X-Large, Navy",
-			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/7/27-11-2019_paulsmith_classicswimshort_navy_m1a-239b-b40675-47_tc_1.jpg"
+			"brand": "Stussy",
+			"item": "Logo Pant",
+			 "description": "Teal | size: L",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/1/21-02-2020_stussy_stocklogopant_teal_116431-teal_tc_1.jpg",
+			 "duration": "7 days"
 		},
 		{
-			"owner": "Luke",
-			"brand": "Polo Ralph Lauren",
-			"item": "Traveller Swim Short",
-			 "description": "size: L, Black",
-			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-12-2019_poloralphlauren_travellerswimshort_redvintagehibiscus_710787084001_bb_1.jpg"
+			"index": "bottoms1",
+			"dialogID": "my-bottoms1",
+			"borrowTemp": "borrowBottom1",
+			"borrowDialog": "my-borrowBottom1",
+			"cost": "119 Pts",
+			"owner": "Aarron",
+			"brand": "Stussy",
+			"item": "Logo Pant",
+			 "description": "Navy | size: M",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/5/05-02-2020_stussy_stocklogopant_navy_116431-navy_jd_1.jpg",
+			 "duration": "7 days"
 		},
-		{
+		{	
+			"index": "bottoms2",
+			"dialogID": "my-bottoms2",
+			"borrowTemp": "borrowBottom2",
+			"borrowDialog": "my-borrowBottom2",
+			"cost": "89 Pts",
 			"owner": "Ricardo",
-			"brand": "Varhartt Wip",
-			"item": "Bib Overall",
-			 "description": "size: S, Black",
-			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-02-2020_carhartt_wipbiboverall_black_i024878-89gd_jb_1.jpg"
-		},
-		{
-			"owner": "Jimmy",
 			"brand": "Nike",
-			"item": "workout leggings",
-			 "description": "size: S, Black",
-			 "imageURL": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-3527c1b3-caba-44c5-8cd1-f0e9df18b0f5/paris-saint-germain-womens-leggings-KQkN7c.jpg"
+			"item": "Fleece Jogger",
+			 "description": "Grey | size: S",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/N/i/Nike-Tech-Fleece-Jogger---Smoke-Grey_-Platinum-_-White---_805162-077_1_1.jpg",
+			 "duration": "8 days"
+		},
+		{	
+			"index": "bottoms3",
+			"dialogID": "my-bottoms3",
+			"borrowTemp": "borrowBottom3",
+			"borrowDialog": "my-borrowBottom3",
+			"cost": "119 Pts",
+			"owner": "Aarron",
+			"brand": "Stussy",
+			"item": "Fleece Pant",
+			 "description": "Orange | size: M",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/4/24-09-2019_stussy_basicpolarfleecepant_orange_116404-oran_jb_1.jpg",
+			 "duration": "7 days"
 		},
 		{
+			"index": "bottoms4",
+			"dialogID": "my-bottoms4",
+			"borrowTemp": "borrowBottom4",
+			"borrowDialog": "my-borrowBottom4",
+			"cost": "435 Pts",
+			"owner": "Michael",
+			"brand": "OFF-White",
+			"item": "Sweat Pant",
+			 "description": "Grey | size: XS",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/7/07-06-2019_off-white_logoslimsweatpant_grey_omch020e19d250190710_gh_1.jpg",
+			 "duration": "5 days"
+		},
+		{
+			"index": "bottoms5",
+			"dialogID": "my-bottoms5",
+			"borrowTemp": "borrowBottom5",
+			"borrowDialog": "my-borrowBottom5",
+			"cost": "75 Pts",
 			"owner": "Kimmy",
 			"brand": "Nike",
-			"item": "workout leggings",
-			 "description": "size: S, Black",
-			 "imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/96f73508-733f-4ef8-a454-a9821d7a525e/nikelab-womens-fleece-shorts-0L36dF.jpg"
+			"item": "Phantom Pant",
+			 "description": "Black | size: M",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/8/28-01-2020_nike_tokyophantompants_black_ct2849-010_tc_1.jpg",
+			 "duration": "15 days"
 		},
 		{
-			"owner": "Kimmy",
-			"brand": "Nike",
-			"item": "workout leggings",
-			 "description": "size: S, Black",
-			 "imageURL": "https://c.static-nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/i1-e33cf082-1adc-47b4-ae91-405b6fc41d1a/dri-fit-vapor-womens-slider-softball-tights-stock-1GWGg2.jpg"
+			"index": "bottoms6",
+			"dialogID": "my-bottoms6",
+			"borrowTemp": "borrowBottom6",
+			"borrowDialog": "my-borrowBottom6",
+			"cost": "779 Pts",
+			"owner": "Timmy",
+			"brand": "Rhude",
+			"item": "Cargo Pant",
+			 "description": "Black | size: L",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/1/8/18-10-2019_rhude_nyloncargopant_black_05apa10101-blk_ja_1.jpg",
+			 "duration": "12 days"
+		},
+		{
+			"index": "bottoms7",
+			"dialogID": "my-bottoms7",
+			"borrowTemp": "borrowBottom7",
+			"borrowDialog": "my-borrowBottom7",
+			"cost": "105 Pts",
+			"owner": "Cillian",
+			"brand": "Carhartt",
+			"item": "Barnes Pant",
+			 "description": "Navy | size: M",
+			 "imageURL": "https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/0/6/06-09-2019_carhartt_barnespant_darknavydarkfir_wax_i027133-1c90_tc_1.jpg",
+			 "duration": "10 days"
 		}
 	],
 

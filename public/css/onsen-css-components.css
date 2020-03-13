@@ -875,7 +875,7 @@ h4, h5, h6 {
 .toolbar__title {
   line-height: 44px;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 550;
   color: #1f1f21;
   margin: 0;
   padding: 0;
@@ -2270,7 +2270,7 @@ h4, h5, h6 {
   padding: 0;
 }
 :checked + .tabbar__button {
-  color: #0076ff;
+  color: black;
   background-color: transparent;
   box-shadow: none;
   border-top: none;

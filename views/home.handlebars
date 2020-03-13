@@ -10,6 +10,9 @@
   <link href="css/onsen-css-components.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <link href="css/mystyle.css" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
@@ -20,29 +23,36 @@
   <script src="js/jquery-1.11.0.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
  
     {{> facebook}}
   <script src="/js/facebook.js"></script>
   <script src="/js/introHCI.js"></script>
   <!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-159639041-1', 'auto');
-ga('require', 'GTM-MGMXH6P');
-ga('send', 'pageview');
-</script>
+  ga('create', 'UA-159639041-1', 'auto');
+  ga('require', 'GTM-MGMXH6P');
+  ga('send', 'pageview');
+  </script>
 <!-- End Google Analytics -->
 </head>
 
-<body>
-  
+<body onload="showHomePanel(0)"> 
 <!-- Tabbar-bottom -->
 <ons-page>
-  <ons-tabbar swipeable position="auto">
+  <ons-tabbar swipeable position="none" >
     <ons-tab page="tab1.html" label="Home" icon="md-home" active></ons-tab>
 
     <ons-tab page="tab2.html" label="Post" icon="md-plus"></ons-tab>
@@ -51,535 +61,291 @@ ga('send', 'pageview');
     <ons-tab page="tab3.html" label="Request" icon="md-globe" onclick="showPanel(0)"></ons-tab>
 
     
-    <ons-tab page="tab4.html" label="My Closet" icon="md-face"></ons-tab>
+    <ons-tab page="tab4.html" label="Listing" icon="md-face"></ons-tab>
   </ons-tabbar>
 </ons-page>
 
 <!-- Home-tab -->
 <template id="tab1.html">
   <ons-page id="Tab1">
-  
+    <div class="tabHomeContainer">
 
-  <ons-page>
-    <!-- Horizontal-toolbar -->
-    <ons-toolbar>
-      
-      <div class="center" style="font-size: 150%; font-weight: bolder;">
-       Borrow 'n Go 
+      <div class="buttonHomeContainer">
+        <button class='homeBts' onclick="showHomePanel(0)">sneakers</button>
+        <button class='homeBts' onclick="showHomePanel(1)">tops</button>
+        <button class='homeBts' onclick="showHomePanel(2)">bottoms</button>
       </div>
-      
+    
 
-    </ons-toolbar>
-
-    <!--Search Bar-->
-    <div class="center">
-      <p style="text-align: center; margin-top: 10px;">
-        <form id="searchShoesForm" role="form" method="get" action="/searchshoes">
-            <h3>Search for a brand!</h3>
-            <div class="form-group">
-              <input style="border: 2px solid black" type="text" class="form-control" id="brand" placeholder="Ex: Nike" name="brand">
-             </div>
-        </form>
-      </p>
+    <!-- Sneakers Panel Start -->
+    <div class="tabHomePanel">
+     <!-- Cover Photo -->
+     <div class="jumbotron" style="margin-bottom:0; padding:0">
+      <img src="https://media.endclothing.com/end-features/prodfeatures/3adb0f51-56bd-4e48-bc8f-f5473ddb655c_BV0073-101_launches_hero_landscape_1.jpg" class="img-responsive">
     </div>
-  <br>
-    <!-- SHOES START-->
-    <h style="text-align: left;">Sneakers</h>
-    <div class="scrollmenu">
-      <!-- Sneakers -->
-      {{#each shoes}}
-      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
+     <!-- Items -->
+      <div class="container" style="padding:0; overflow:hidden;">
+        <div class="row">
+          {{#each shoes}}
+          <div class="col-6" onclick="showDescriptionDialog('{{dialogID}}', '{{index}}')">
+              <img src="{{imageURL}}" class="img-responsive">
+              <br>
+              <h5>{{brand}}</h5>
+              <h5>{{item}}</h5>
+              <h5 style="color:grey;">{{cost}}</h5>
+          </div>
 
-      <!-- Dialog for Clothes -->
-      <template id="sneakers.html">
-      <ons-dialog id="my-sneakers">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="{{imageURL}}" width= "175" height="175">
-            <p><b>Owner:</b> {{owner}}<br>
-            <b>Item:</b> {{item}}<br>
-            <b>Brand:</b> {{brand}}<br>
-            <b>Description:</b> {{description}}</p>
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
-            <!-- Dialog template -->
-             <template id="borrowItem.html">
-              <ons-dialog id="my-borrowItem">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
-                  </p>
-                  </div>
-                </ons-dialog>
-              </template>
-              <!-- Hide Button -->
-              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
-      {{/each}}
+          <!-- Dialog for Clothes -->
+          <template id="{{index}}">
+            <ons-dialog id="{{dialogID}}">
+              <div style="text-align: center; padding: 10px;">
+                <!-- Description -->
+                <img src="{{imageURL}}" style="max-width: 55%">
+                <hr>
+                <h5><b>Owner:</b> {{owner}}</h5>
+                <h5><b>Item:</b> {{item}}</h5>
+                <h5><b>Description:</b> {{description}}</h5>
+                <h5><b>Duration:</b> {{duration}}</h5>
+                <!-- Buttons -->
+                <p>   
+                  <!-- Borrow Button -->
+                  <ons-button style="background-color: white; color: black;border: 1px solid lightgrey;" onclick="showBorrowDialog('{{borrowDialog}}', '{{borrowTemp}}'), hideDescriptionDialog('{{dialogID}}')">Borrow</ons-button>
+                  <!-- Dialog template -->
+                  <template id="{{borrowTemp}}">
+                    <ons-dialog id="{{borrowDialog}}">
+                      <div class="jumbotron bg-warning" style="text-align:center; margin-bottom:0; padding:0">
+                        <i class="far fa-check-circle fa-lg"></i>
+                      </div>
+                      <div class="container" style="text-align:center">
+                      <h2>Request Sent!</h2>
+                      <h4>Track your requests in <kbd>Request</kbd>.</h4>
+                      <br>
+                      <button type="button" class="btn btn-outline-secondary btn-lg" onclick="hideBorrowDialog('{{borrowDialog}}')"><span style="color:black">Keep Exploring </span><i class="fas fa-arrow-right" style="color:black"></i></button>
+                      </div>
+                    </ons-dialog>
+                  </template>
+                  <!-- Hide Button -->
+                  <ons-button style="background-color: white; color: black;border: 1px solid lightgrey;" onclick="hideDescriptionDialog('{{dialogID}}')">Close</ons-button>
+                </p>
+              </div>
+            </ons-dialog>
+          </template>
+
+          {{/each}}
+        <!-- Rows end -->
+        </div>
+        <!-- Container div end -->
+      </div>
+     
+    <!-- End sneakers div -->
     </div>
-    <!-- SHOES END-->
-    <br>
-    <br>
-   <!-- SHIRTS START-->
-    <h style="text-align: left;">Shirts</h>
-    <div class="scrollmenu"> 
-      {{#each shirts}}
-      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
-      <!-- Dialog for Clothes -->
-      <template id="sneakers.html">
-      <ons-dialog id="my-sneakers">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="{{imageURL}}" width= "175" height="175">
-            <p><b>Owner:</b> {{owner}}<br>
-            <b>Item:</b> {{item}}<br>
-            <b>Brand:</b> {{brand}}<br>
-            <b>Description:</b> {{description}}</p>
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
-            <!-- Dialog template -->
-             <template id="borrowItem.html">
-              <ons-dialog id="my-borrowItem">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
-                  </p>
-                  </div>
-                </ons-dialog>
-              </template>
-              <!-- Hide Button -->
-              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
-      {{/each}}
+
+    <!-- Tops Panel Start -->
+    <div class="tabHomePanel">
+      <!-- Cover photo-->
+      <div class="jumbotron" style="margin-bottom:0; padding:0">
+        <img src="https://media.endclothing.com/end-features/f_auto,q_auto,w_780/prodfeatures/dc2bc408-fd52-4449-93e6-e8c9f0570916_N391_SJA_FEAROFGOD_30-13.jpg?auto=compress,format" class="img-responsive">
       </div>
-  <!-- END SHIRTS-->
-<br>
-    <br>
-   <!-- BOTTOMS START-->
-    <h style="text-align: left;">Bottoms</h>
-    <div class="scrollmenu"> 
-      {{#each bottoms}}
-      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
-      <!-- Dialog for Clothes -->
-      <template id="sneakers.html">
-      <ons-dialog id="my-sneakers">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="{{imageURL}}" width= "175" height="175">
-            <p><b>Owner:</b> {{owner}}<br>
-            <b>Item:</b> {{item}}<br>
-            <b>Brand:</b> {{brand}}<br>
-            <b>Description:</b> {{description}}</p>
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
-            <!-- Dialog template -->
-             <template id="borrowItem.html">
-              <ons-dialog id="my-borrowItem">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
-                  </p>
-                  </div>
-                </ons-dialog>
-              </template>
-              <!-- Hide Button -->
-              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
-            </p>
+      <!-- Items -->
+      <div class="container" style="padding:0; overflow:hidden;">
+        <div class="row">
+          {{#each tops}}
+          <div class="col-6" onclick="showDescriptionDialog('{{dialogID}}', '{{index}}')">
+              <img src="{{imageURL}}" class="img-responsive">
+              <br>
+              <h5>{{brand}}</h5>
+              <h5>{{item}}</h5>
+              <h5 style="color:grey;">{{cost}}</h5>
           </div>
-        </ons-dialog>
-      </template>
-      {{/each}}
+
+          <!-- Dialog for Clothes -->
+          <template id="{{index}}">
+            <ons-dialog id="{{dialogID}}">
+              <div style="text-align: center; padding: 10px;">
+                <!-- Description -->
+                <img src="{{imageURL}}" style="max-width: 55%">
+                <hr>
+                <h5><b>Owner:</b> {{owner}}</h5>
+                <h5><b>Item:</b> {{item}}</h5>
+                <h5><b>Description:</b> {{description}}</h5>
+                <h5><b>Duration:</b> {{duration}}</h5>
+                <!-- Buttons -->
+                <p>   
+                  <!-- Borrow Button -->
+                  <ons-button style="background-color: white; color: black;border: 1px solid lightgrey;" onclick="showBorrowDialog('{{borrowDialog}}', '{{borrowTemp}}'), hideDescriptionDialog('{{dialogID}}')">Borrow</ons-button>
+                  <!-- Dialog template -->
+                  <template id="{{borrowTemp}}">
+                    <ons-dialog id="{{borrowDialog}}">
+                      <div class="jumbotron bg-warning" style="text-align:center; margin-bottom:0; padding:0">
+                        <i class="far fa-check-circle fa-lg"></i>
+                      </div>
+                      <div class="container" style="text-align:center">
+                      <h2>Request Sent!</h2>
+                      <h4>Track your requests in <kbd>Request</kbd>.</h4>
+                      <br>
+                      <button type="button" class="btn btn-outline-secondary btn-lg" onclick="hideBorrowDialog('{{borrowDialog}}')"><span style="color:black">Keep Exploring </span><i class="fas fa-arrow-right" style="color:black"></i></button>
+                      </div>
+                    </ons-dialog>
+                  </template>
+                  <!-- Hide Button -->
+                  <ons-button style="background-color: white; color: black;border: 1px solid lightgrey;" onclick="hideDescriptionDialog('{{dialogID}}')">Close</ons-button>
+                </p>
+              </div>
+            </ons-dialog>
+          </template>
+
+          {{/each}}
+        <!-- Rows end -->
+        </div>
+        <!-- Container div end -->
       </div>
-  <!-- END BOTTOMS-->
-  <br>
-    <br>
-   <!-- OUTERWEAR START-->
-    <h style="text-align: left;">Outerwear</h>
-    <div class="scrollmenu"> 
-      {{#each outerwear}}
-      <img src="{{imageURL}}" width="38%" height="38%" id="item1" onclick="showDescriptionDialog()">
-      <!-- Dialog for Clothes -->
-      <template id="sneakers.html">
-      <ons-dialog id="my-sneakers">
-        <div style="text-align: center; padding: 10px;">
-          <!-- Description -->
-          <p>
-            <img src="{{imageURL}}" width= "175" height="175">
-            <p><b>Owner:</b> {{owner}}<br>
-            <b>Item:</b> {{item}}<br>
-            <b>Brand:</b> {{brand}}<br>
-            <b>Description:</b> {{description}}</p>
-          <p>
-            <!-- Borrow Button -->
-            <ons-button onclick="showBorrowDialog()">Borrow</ons-button>
-            <!-- Dialog template -->
-             <template id="borrowItem.html">
-              <ons-dialog id="my-borrowItem">
-                <div style="text-align: center; padding: 10px;">
-                  <p>Borrow Request Sent!</p>
-                  <p>
-                    <ons-button onclick="hideBorrowDialog('my-borrowItem'), hideDescriptionDialog('my-sneakers'), showRequest()">Close</ons-button>
-                  </p>
-                  </div>
-                </ons-dialog>
-              </template>
-              <!-- Hide Button -->
-              <ons-button onclick="hideDescriptionDialog('my-sneakers')">Close</ons-button>
-            </p>
+    <!-- Tops Panel End -->
+    </div>
+
+    <!-- Bottoms Panel Start -->
+    <div class="tabHomePanel">
+      <!-- Cover photo-->
+      <div class="jumbotron" style="margin-bottom:0; padding:0">
+        <img src="https://media.endclothing.com/end-features/f_auto,q_auto,w_780/prodfeatures/73d33b2f7ebf8c88e3d581e9e48fbf42f6a630f4_ste-wing-visionarism-flight-case-2.jpg" class="img-responsive">
+      </div>
+      <!-- Items -->
+      <div class="container" style="padding:0; overflow:hidden;">
+        <div class="row">
+          {{#each bottoms}}
+          <div class="col-6" onclick="showDescriptionDialog('{{dialogID}}', '{{index}}')">
+              <img src="{{imageURL}}" class="img-responsive">
+              <br>
+              <h5>{{brand}}</h5>
+              <h5>{{item}}</h5>
+              <h5 style="color:grey;">{{cost}}</h5>
           </div>
-        </ons-dialog>
-      </template>
-      {{/each}}
+
+          <!-- Dialog for Clothes -->
+          <template id="{{index}}">
+            <ons-dialog id="{{dialogID}}">
+              <div style="text-align: center; padding: 10px;">
+                <!-- Description -->
+                <img src="{{imageURL}}" style="max-width: 55%">
+                <hr>
+                <h5><b>Owner:</b> {{owner}}</h5>
+                <h5><b>Item:</b> {{item}}</h5>
+                <h5><b>Description:</b> {{description}}</h5>
+                <h5><b>Duration:</b> {{duration}}</h5>
+                <!-- Buttons -->
+                <p>   
+                  <!-- Borrow Button -->
+                  <ons-button style="background-color: white; color: black;border: 1px solid lightgrey;" onclick="showBorrowDialog('{{borrowDialog}}', '{{borrowTemp}}'), hideDescriptionDialog('{{dialogID}}')">Borrow</ons-button>
+                  <!-- Dialog template -->
+                  <template id="{{borrowTemp}}">
+                    <ons-dialog id="{{borrowDialog}}">
+                      <div class="jumbotron bg-warning" style="text-align:center; margin-bottom:0; padding:0">
+                        <i class="far fa-check-circle fa-lg"></i>
+                      </div>
+                      <div class="container" style="text-align:center">
+                      <h2>Request Sent!</h2>
+                      <h4>Track your requests in <kbd>Request</kbd>.</h4>
+                      <br>
+                      <button type="button" class="btn btn-outline-secondary btn-lg" onclick="hideBorrowDialog('{{borrowDialog}}')"><span style="color:black">Keep Exploring </span><i class="fas fa-arrow-right" style="color:black"></i></button>
+                      </div>
+                    </ons-dialog>
+                  </template>
+                  <!-- Hide Button -->
+                  <ons-button style="background-color: white; color: black;border: 1px solid lightgrey;" onclick="hideDescriptionDialog('{{dialogID}}')">Close</ons-button>
+                </p>
+              </div>
+            </ons-dialog>
+          </template>
+
+          {{/each}}
+        <!-- Rows end -->
+        </div>
+        <!-- Container div end -->
       </div>
-  <!-- END OUTERWEAR-->
-  </ons-page>
-</template>
-    <!-- End home-tab template -->
+    <!-- Tops Panel End -->
+    </div>
+
+    <!-- End tabHomeContainer div -->
+    </div>
   </ons-page>
 </template>
 
 <!-- Add-tab -->
 <template id="tab2.html">
   <ons-page id="Tab2">
-    <ons-toolbar>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">Post an item</div>
-    </ons-toolbar>
+    <!-- Cover photo-->
+      <div class="jumbotron" style="margin-bottom:0; padding:0">
+        <img src="https://media.endclothing.com/end-features/f_auto,q_auto,w_780/prodfeatures/43bf5e0eb5a452aed7ecbc679213598e06c99bd6_aime-leon-dore-aw18-lookbook-thumb.jpg?auto=compress,format" class="img-responsive">
+      </div>
+    
+      <div class="container" style="overflow:hidden; background-color:black; padding:30px">
+        <!-- Background Pic -->
+        <h1 class="lTitle" style="margin-bottom: 36px">Listing Info</h1>
+        <!-- Form -->
+        <form id="addItemForm" role="form" method="get" action="/add">
+          <div class="form-group">
+            <input type="text" class="form-control-lg" id="brandInput" placeholder="Brand" name="brand" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white;background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
 
-    <form id="addItemForm" role="form" method="get" action="/add">
-      <div class="form-group">
-        <label for="item" style="font-size: 30px">Item:</label>
-        <input type="text" class="form-control" id="itemInput" placeholder="Ex. brand, item type, etc." name="item" style="border: 2px solid black">
-      </div>
-      <div class="form-group">
-        <label for="description" style="font-size: 30px">Description:</label>
-        <input type="text" class="form-control" id="descriptionInput" placeholder="Ex. colorway, condition, etc." name="description" style="border: 2px solid black">
-      </div>
-      <div class="form-group">
-        <label for="size" style="font-size: 30px">Size:</label>
-        <input type="text" class="form-control" id="sizeInput" placeholder="Ex. item size"name="size" style="border: 2px solid black">
-      </div>
-      <div class="form-group">
-        <input id="imgInput" type="file" accept="image/*">
-        <!-- photo icon
-        <ons-button modifier="large"><ons-icon icon="camera"></ons-icon></ons-button>-->
-      </div>
+          <div class="form-group">
+            <input type="text" class="form-control-lg" id="itemInput" placeholder="Item" name="item" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white;background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
 
-      <!-- Submit input 
-      <input onclick="addItem()" type="submit" id="submitBtn" class="btn btn-default" value="Submit"></input> -->
-      <div>
-        <ons-button onclick="addItem()" id=testBt style="background-color: black; width: 100%; text-align: center;">Post</ons-button>
-      </div>
+           <div class="form-group">
+            <input type="text" class="form-control-lg" id="sizeInput" placeholder="Size" name="size" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white; background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control-lg" id="descriptionInput" placeholder="Description" name="description" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white; background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control-lg" id="pointInput" placeholder="Point" name="point" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white;background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control-lg" id="durationInput" placeholder="Days" name="duration" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white;background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
+
+          <div class="form-group" style="overflow:hidden">
+            <input id="imgInput" type="file" accept="image/*" style="padding:5px 0px; margin: 10px 0; border:none; border-bottom:1px solid white; background-color: black; color:#ccc; font-size:18px; font-weight:bold">
+          </div>
+
+          <div>
+            <ons-button onclick="addItem()" id=testBt class="btn btn-warning" style="font-size:20px; border-radius:20px; padding:5px 25px; margin-top:10px">Post</ons-button>
+          </div>
 
       <!-- Dialog for add complete-->
       <template id="added.html">
         <ons-dialog id="my-added">
-          <div style="text-align: center; padding: 10px;">
-            <p>Item is added to your Closet!</p>
-            <p>
-              <ons-button onclick="hideAddedDialog('my-added')">X</ons-button>
-            </p>
+          <div class="jumbotron bg-success" style="text-align:center; margin-bottom:0; padding:0">
+              <i class="far fa-check-circle fa-lg"></i>
+          </div>
+
+          <div class="container" style="text-align:center">
+            <h2>Success!</h2>
+            <h4>Item was posted to your <kbd>Listing</kbd></h4>
           </div>
         </ons-dialog>
       </template>
 
-      <script>
-        function hideAddedDialog(id) {
-          document
-          .getElementById(id)
-          .hide();
-        };
-      </script>
-
-
   </form>
+  </div>
   </ons-page>
 </template>
 
-<!-- Notification-tab -->
+<!-- Request-tab -->
 <template id="tab3.html">
   <ons-page id="Tab3">
 
-  {{#if pageA}}
-
-  <!-- Side-menu -->
-  <ons-splitter>
-  <ons-splitter-side id="menu2" side="left" width="220px" collapse swipeable>
-    <ons-page>
-      <ons-list>
-        <!-- Labels on menu -->
-        <ons-list-item onclick="fn.load2('borrow.html')" tappable>
-          Borrow
-        </ons-list-item>
-        <ons-list-item onclick="fn.load2('lend.html')" tappable>
-          Lend
-        </ons-list-item>
-        <ons-list-item onclick="fn.load2('notification.html')" tappable>
-          Notification
-        </ons-list-item>
-      </ons-list>
-    </ons-page>
-  </ons-splitter-side>
-  <!-- Default-page on menu -->
-  <ons-splitter-content id="content2" page="notification.html"></ons-splitter-content>
-</ons-splitter>
-
-  <!-- Borrow template -->
-<template id="borrow.html">
-  <!-- Horizontal toolbar -->
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open2()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">
-        Borrow Item
-      </div>
-    </ons-toolbar>
-
-    <!-- Contents -->
-
-    <!-- Image for item -->
-    <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 100px; float: left">
-
-    <h3 style="font-size:140%; font-weight:bold; padding:3px">Acne Studio Pant</h3>
-    <h4 style="font-size:140%; text-color:light gray; padding:3px">Khaki | size: 29 | Owner: Jason</h4>
-    <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 3</h4>
-      <!-- Return and message buttons -->
-    <ons-button style="background-color: black; padding: 9px" onclick="showTemplateDialog()">Return item</ons-button>
-    <ons-button style="background-color: black; padding: 9px" onclick="openChat1('chat1')">Message Owner</ons-button>
-      
-        <!-- Dialog for return button -->
-  <template id="dialog.html">
-  <ons-dialog id="my-dialog">
-    <div style="text-align: center; padding: 10px;">
-      <p>
-         Return completed!
-      </p>
-
-      <p>
-        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
-      </p>
-    </div>
-  </ons-dialog>
-</template>
-
-      <!-- Chat-popup -->
-  <div style="position:absolute; bottom:0px; right:0px" class="chat-popup" id="chat1">
-  <form action="/action_page.php" class="form-container">
-    <h1>Chat</h1>
-
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-
-    <button type="button" class="btn" onclick="chatSent()">Send</button>
-    <button type="button" class="btn cancel" onclick="closeChat1('chat1')">Close</button>
-  </form>
-</div>
-
-<!-- Script for Chat-popup close and open -->
-  <script type="text/javascript">
-    function closeChat1(id){
-      document.getElementById(id).style.display = "none";
-    }
-
-    function openChat1(id){
-      document.getElementById(id).style.display = "block";
-    }
-  </script>
-
-<!-- End borrow template -->
-  </ons-page>
-</template>
-
-
-<!-- Lend template -->
-<template id="lend.html">
-  <!-- Horizontal toolbar -->
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open2()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">
-        Lend
-      </div>
-    </ons-toolbar>
-
-    <!-- Contents -->
-
-    <!-- Image for item -->
-    <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px; float: left">
-
-    <h3 style="font-size:140%; font-weight:bold; padding:3px">Comme des Garcons Hoodie</h3>
-    <h4 style="font-size:140%; text-color:light gray; padding:3px">Gray | size: M | Owner: Kyle</h4>
-    <h4 style="font-size:140%; text-color:light gray; padding:3px">Day Left: 7</h4>
-      <!-- Return and message buttons -->
-    <ons-button style="background-color: black; padding: 9px; float:right" onclick="showTemplateDialog()">Request item</ons-button>
-    <ons-button style="background-color: black; padding: 9px; float:right" onclick="openChat2('chat2')">Message User</ons-button>
-
-
-    <!-- Dialog for request button -->
-  <template id="dialog.html">
-  <ons-dialog id="my-dialog">
-    <div style="text-align: center; padding: 10px;">
-      <p>
-        Request completed!
-      </p>
-
-      <p>
-        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
-      </p>
-    </div>
-  </ons-dialog>
-</template>
-
-  <!-- Chat-popup -->
-  <div style="position:absolute; bottom:0px; right:0px"class="chat-popup" id="chat2">
-  <form action="/action_page.php" class="form-container">
-    <h1>Chat</h1>
-
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-
-    <button type="button" class="btn" onclick="chatSent()">Send</button>
-    <button type="button" class="btn cancel" onclick="closeChat2('chat2')">Close</button>
-  </form>
-</div>
-
-<!-- Script for Chat-popup close and open -->
-  <script type="text/javascript">
-    function closeChat2(id){
-      document.getElementById(id).style.display = "none";
-    }
-
-    function openChat2(id){
-      document.getElementById(id).style.display = "block";
-    }
-  </script>
-
-  <!-- End lend-tab -->
-  </ons-page>
-</template>
-
-<!-- Notification template -->
-<template id="notification.html">
-  <!-- Horizontal toolbar -->
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open2()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">
-        Notification
-      </div>
-    </ons-toolbar>
-
-    <!-- Content -->
-    <!-- Notification 1 -->
-    <div class="notification1">
-      <p><img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175" align = "middle">Ryan has requested to borrow "Kobe Bryant Jersey"</p>
-    </div>
-    <!-- See item button -->
-    <ons-button onclick="showNotificationDialog()">See Item</ons-button>
-      <template id="notification1.html">
-      <ons-dialog id="my-notification1">
-        <div style="text-align: center; padding: 10px;">
-          <p>
-            <img src="https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/n/i/niaq2106-100.jpg" width= "175" height="175">
-            <p><b>Owner:</b> User<br>
-            <b>Item:</b> Kobe Bryant Jersey<br>
-            <b>Brand:</b> Lakers<br>
-            <b>Description:</b> size: M, borrowed twice already</p>
-          </p>
-          <p>
-            <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-    <!-- Accept button -->
-    <ons-button onclick="showAcceptDialog()">Accept</ons-button>
-      <template id="accept.html">
-        <ons-dialog id="my-accept">
-          <div style="text-align: center; padding: 10px;">
-            <p>Request accepted!</p>
-            <p>
-              <ons-button onclick="hideAcceptDialog('my-accept')">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
-         <!-- Decline button -->
-    <ons-button onclick="showDeclineDialog()">Decline</ons-button>
-      <template id="decline.html">
-        <ons-dialog id="my-decline">
-          <div style="text-align: center; padding: 10px;">
-            <p>Request declined!</p>
-            <p>
-              <ons-button onclick="hideDeclineDialog('my-decline')">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
-
-      <!-- Notification 2 -->
-    <div class="notification2">
-      <p><img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175" align = "middle">Daniel accepted your request to borrow "Black Vans"</p>
-    </div>
-    <!-- See item -->
-    <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
-      <template id="notification2.html">
-      <ons-dialog id="my-notification2">
-        <div style="text-align: center; padding: 10px;">
-          <p>
-            <img src="https://www.famousfootwear.com/ProductImages/shoes_ib00129.jpg?preset=details" width= "175" height="175">
-            <p><b>Owner:</b> Daniel<br>
-            <b>Item:</b> Black Vans<br>
-            <b>Brand:</b> Vans<br>
-            <b>Description:</b> size: 8</p>
-          </p>
-          <p>
-            <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-
-  <!-- End Notificaion-tab -->
-  </ons-page>
-</template>
-
-{{else}}
 <!-- Horizontal-toolbar -->
     <ons-toolbar>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">My Requests</div>
+      <div class="center" style="font-size: 150%; font-weight: bolder;">Request</div>
     </ons-toolbar>
 
     <div class="tabContainer">
 
       <div class="buttonContainer">
-        <button class='noBts' onclick="showPanel(0)">Request</button>
+        <button class='noBts' onclick="showPanel(0)">Requested</button>
         <button class='noBts' onclick="showPanel(1)">Borrow</button>
         <button class='noBts' onclick="showPanel(2)">Lend</button>
       </div>
@@ -587,85 +353,141 @@ ga('send', 'pageview');
       <!-- Noti Panel Start -->
       <div class="tabPanel">
         <!-- Content -->
-    <div>
-    <div style="position: relative; padding-bottom: 15px; padding-top: 0px">
-    <!-- Notification 1 -->
-      <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px;height: 130px; float: left">
-      <h3 style="font-size:80%; font-weight:bold; padding:0px"> New request from Jason:</h3>
-      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Comme des Garcons Hoodie</h4>
-      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Duration: 7 days</h4>
-      
-    <!-- See item button -->
-    <ons-button onclick="showNotificationDialog()">See Item</ons-button>
-      <template id="notification1.html">
-      <ons-dialog id="my-notification1">
-        <div style="text-align: center; padding: 10px;">
-          <p>
-            <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" width= "175" height="175">
-            <p><b>Owner:</b> Me<br>
-            <b>Item:</b> Comme des Garcons Hoodie<br>
-            <b>Description:</b> Gray | size: M<br></p>
-          </p>
-          <p>
-            <ons-button onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
-    <!-- Accept button -->
-    <ons-button onclick="showAcceptDialog()">Accept</ons-button>
-      <template id="accept.html">
-        <ons-dialog id="my-accept">
-          <div style="text-align: center; padding: 10px;">
-            <p><b>Request completed!</b><br><br>
-        You can track the item in your <b>Lend</b></p>
-            <p>
-              <ons-button onclick="hideAcceptDialog('my-accept'); showPanel(2);">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
-         <!-- Decline button -->
-    <ons-button onclick="showDeclineDialog()">Decline</ons-button>
-      <template id="decline.html">
-        <ons-dialog id="my-decline">
-          <div style="text-align: center; padding: 10px;">
-            <p>Request declined!</p>
-            <p>
-              <ons-button onclick="hideDeclineDialog('my-decline')">Close</ons-button>
-            </p>
-          </div>
-        </ons-dialog>
-      </template>
-    </div>
-    <div style="position: relative;">
-      <!-- Notification 2 -->
-      <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 120px;height: 130px; float: left">
-      <h3 style="font-size:80%; font-weight:bold; padding:0px">Daniel accepted your request!</h3>
-      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Acne Studio Pant</h4>
-      <h4 style="font-size:80%; text-color: lightgray; padding:0px">Duration: 3 days</h4>
-    
-    <!-- See item -->
-    <ons-button onclick="showNotification2Dialog()">See Item</ons-button>
-      <template id="notification2.html">
-      <ons-dialog id="my-notification2">
-        <div style="text-align: center; padding: 10px;">
-          <p>
-            <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" width= "175" height="175">
-            <p><b>Owner:</b> Daniel<br>
-            <b>Item:</b> Acne Studio Pant<br>
-            <b>Description:</b> Khaki | size: 29</p>
-          </p>
-          <p>
-            <ons-button onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
-          </p>
-        </div>
-      </ons-dialog>
-    </template>
+        <div class="container" style="padding:0; overflow:hidden;">
+          <!-- Notification 1-->
+          <div class="row shadow p-4 mb-4 bg-white">
+            <div class="col-4">
+              <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" class="img-responsive" style="float:left;">
+            </div>
+            <div class="col-8">
+              <h3 style="font-size:80%; font-weight:bold; padding-top:0; margin-top:0"><kbd>Jason</kbd> sent a request for:</h3>
+              <h4 style="font-size:70%; color:black">Commedes Garcons Hoodie</h4>
+              <h4 id="stat1" style="font-size:70%; color:grey">Status: Pending</h4>
+              <!-- Buttons -->
+              <div class="d-flex justify-content-center">
+                <!-- Detail Button -->
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="showNotificationDialog()">Detail</ons-button>
+                  <template id="notification1.html">
+                    <ons-dialog id="my-notification1">
+                      <div class="media border p-3">
+                        <img src="https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" class="mr-3 rounded-circle" style="width:90px;">
+                          <div class="media-body">
+                            <h3><b>Borrow Request</b></h3>
+                            <h4><kbd>Jason Lanse</kbd> <i class="far fa-check-circle"></i></h4>
+                            <hr>
+                            <h5 style="color:grey">Location:</h5>
+                            <h5><i class="fas fa-map-marker-alt"></i> Brooklyn,NY 11213</h5>
+                            <hr>
+                            <h5>Commedes Garcons Hoodie</h5>
+                            <h5>Grey | size: M | 15d</h5>
+                            <p>
+                              <ons-button style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="hideNotificationDialog('my-notification1')">Close</ons-button>
+                            </p>
+                          </div>
+                      </div>
+                    </ons-dialog>
+                  </template>
 
-    <ons-button onclick="showPanel(1)">View</ons-button>
-  </div>
-</div>
+                <!-- Accept Button -->
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="showPanel(2), acceptStat('stat1')">Accept</ons-button>
+                <!-- Decline Button -->
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="declineStat('stat1')">Decline</ons-button>
+              </div>
+            </div>
+          <!-- row end --> 
+          </div>
+
+          <!-- Notification 2 -->
+          <div class="row shadow p-4 mb-4 bg-white">
+            <div class="col-4">
+              <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" class="img-responsive" style="float:left;">
+            </div>
+            <div class="col-8">
+              <h3 style="font-size:80%; font-weight:bold; padding-top:0; margin-top:0"><kbd>Daniel</kbd> accepted request:</h3>
+              <h4 style="font-size:70%; color:black">Acne Studio Pant</h4>
+              <h4 style="font-size:70%; color:grey">Status: Accepted</h4>
+              <!-- Buttons -->
+              <div class="d-flex justify-content-center">
+                <!-- Detail Button -->
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="showNotification2Dialog()">Detail</ons-button>
+                  <template id="notification2.html">
+                    <ons-dialog id="my-notification2">
+                      <div class="media border p-3">
+                        <img src="https://thumbs.dreamstime.com/b/male-avatar-icon-flat-style-male-user-icon-cartoon-man-avatar-vector-stock-91602735.jpg" class="mr-3 rounded-circle" style="width:90px;">
+                          <div class="media-body">
+                            <h3><b>Request Accept</b></h3>
+                            <h4><kbd>Daniel Lai</kbd> <i class="far fa-check-circle"></i></h4>
+                            <hr>
+                            <h5 style="color:grey">Location:</h5>
+                            <h5><i class="fas fa-map-marker-alt"></i> Fairport,NY 14450</h5>
+                            <hr>
+                            <h5>Acne Studio Pant</h5>
+                            <h5>Khaki | size: 29 | 10d</h5>
+                            <p>
+                              <ons-button style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="hideNotificationDialog('my-notification2')">Close</ons-button>
+                            </p>
+                          </div>
+                      </div>
+                    </ons-dialog>
+                  </template>
+
+                <!-- View Button -->
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="showPanel(1)">View</ons-button>
+              </div>
+            </div>
+          <!-- row end --> 
+          </div>
+
+          <!-- Notification 3 -->
+          <div class="row shadow p-4 mb-4 bg-white">
+            <div class="col-4">
+              <img src="https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/6/26-11-2019_aimeleondorexwoolrich_aimeknit_parmesan_ald-ksw00-pm_mb_1x.jpg" class="img-responsive" style="float:left;">
+            </div>
+            <div class="col-8">
+              <h3 style="font-size:80%; font-weight:bold; padding-top:0; margin-top:0">Aime Leon Dore woolrich Knit</h3>
+              <h4 id="stat3"style="font-size:70%; color:grey">Status: Pending</h4>
+              <h4 style="font-size:80%;">Duration: 7 days</h4>
+
+              <div class="d-flex justify-content-center">
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="cancelStat('stat3')">Cancel request</ons-button>
+            </div>
+            </div>
+          <!-- row end --> 
+          </div>
+
+          <!-- Notification 4 -->
+          <div class="row shadow p-4 mb-4 bg-white">
+            <div class="col-4">
+              <img src="https://image.goat.com/crop/1800/attachments/product_template_additional_pictures/images/008/488/331/original/14957_01.jpg.jpeg?1513115759" class="img-responsive" style="float:left;">
+            </div>
+            <div class="col-8">
+              <h3 style="font-size:80%; font-weight:bold; padding-top:0; margin-top:0">Nike Fragment Design x Air Jordan1</h3>
+              <h4 id="stat4"style="font-size:70%; color:grey">Status: Pending</h4>
+              <h4 style="font-size:80%;">Duration: 7 days</h4>
+
+              <div class="d-flex justify-content-center">
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="cancelStat('stat4')">Cancel request</ons-button>
+            </div>
+            </div>
+          <!-- row end --> 
+          </div>
+
+          <script type="text/javascript">
+            function cancelStat(id) {
+              document.getElementById(id).innerHTML="Status: Cancelled";
+            }
+
+            function acceptStat(id) {
+              document.getElementById(id).innerHTML="Status: Accepted";
+            }
+
+            function declineStat(id) {
+              document.getElementById(id).innerHTML="Status: Declined";
+            }
+            
+          </script>
+        <!-- container end -->
+        </div>
       <!-- Noti Panel End -->
       </div>
 
@@ -673,43 +495,57 @@ ga('send', 'pageview');
       <!-- Borrow Panel Start -->
       <div class="tabPanel">
         <!-- Contents -->
+        <!-- Image for item -->
+        <div class="container" style="padding:0; overflow:hidden;">
+          <div class="row shadow p-4 mb-4 bg-white">
+            <div class="col-4">
+               <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" class="img-responsive"style="float: left" onclick="showTemplateDialog1()">
+            </div>
 
-    <!-- Image for item -->
-    <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="width: 120px;height: 130px; float: left">
+            <div class="col-8">
+              <h3 style="font-size:80%; font-weight:bold; padding-top:0; margin-top:0">Acne Studio Pant</h3>
+              <h4 id="borrowStat" style="font-size:70%; color:gray;">Status: Received</h4>
+              <h4 style="font-size:80%">Day Left: 10</h4>
 
-    <h3 style="font-size:80%; font-weight:bold; padding:0px">Acne Studio Pant</h3>
-    <h4 style="font-size:80%; text-color:light gray; padding:0px">Khaki | size: 29 | Owner: Daniel</h4>
-    <h4 style="font-size:80%; text-color:light gray; padding:0px">Day Left: 3</h4>
-      <!-- Return and message buttons -->
-    <ons-button style="background-color: black; padding: 9px" onclick="showTemplateDialog()">Return item</ons-button>
-    <ons-button style="background-color: black; padding: 9px" onclick="openChat1('chat1')">Message Owner</ons-button>
+              <!-- Return and message buttons -->
+              <div class="d-flex justify-content-center">
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="changeStatus('borrowStat')">Return</ons-button>
+                <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="openChat1('chat1')">Message</ons-button>
+              </div>
+
+            </div>
+          </div>
       
-        <!-- Dialog for return button -->
-  <template id="dialog.html">
-  <ons-dialog id="my-dialog">
-    <div style="text-align: center; padding: 10px;">
-      <p>
-         Return completed!
-      </p>
-
-      <p>
-        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
-      </p>
-    </div>
-  </ons-dialog>
-</template>
+        <!-- Dialog for item image -->
+        <template id="dialog1.html">
+        <ons-dialog id="my-dialog1">
+          <div style="text-align:center; padding:10px;">
+            <!-- Description -->
+            <img src="https://www.barrow-bibas.com/14416-large_default/acne-studios-cuffed-cropped-trousers-bk0072.jpg" style="max-width: 55%">
+            <hr>
+            <h5><b>Owner:</b> Daniel </h5>
+            <h5><b>Item:</b> Acne Studio Pant</h5>
+            <h5><b>Description:</b> Khaki | size: 29</h5>
+            <h5><b>Point:</b> 200 Pts</h5>
+            <!-- Close Button -->
+            <p>
+            <ons-button onclick="hideDialog('my-dialog1')" style="background-color: white; color: black;border: 1px solid black;">Close</ons-button>
+            </p>
+          </div>
+        </ons-dialog>
+      </template>
 
       <!-- Chat-popup -->
-  <div style="position:absolute; bottom:0px; right:0px" class="chat-popup" id="chat1">
-  <form action="/action_page.php" class="form-container">
-    <h1>Chat</h1>
+      <div style="position:absolute; bottom:-15px; right:0px" class="chat-popup shadow-lg p-4 mb-4 bg-white" id="chat1">
+      <form action="/action_page.php" class="form-container">
+      <h1>Chat</h1>
 
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
 
-    <button type="button" class="btn" onclick="chatSent()">Send</button>
-    <button type="button" class="btn cancel" onclick="closeChat1('chat1')">Close</button>
-  </form>
+      <button type="button" class="btn" onclick="chatSent()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeChat1('chat1')">Close</button>
+    </form>
 </div>
 
   <!-- Script for Chat-popup close and open -->
@@ -721,71 +557,92 @@ ga('send', 'pageview');
     function openChat1(id){
       document.getElementById(id).style.display = "block";
     }
+
+    function changeStatus(id) {
+      document.getElementById(id).innerHTML="Status: Returned";
+    }
   </script>
-    <!-- Borrow Panel End -->
+  <!-- Container End -->
+  </div>
+<!-- Borrow Panel End -->
 </div>
       
       <!-- Lend Panel Start -->
       <div class="tabPanel">
+      <!-- Contents -->
+      <!-- Image for item -->
+      <div class="container" style="padding:0; overflow:hidden;">
+          <div class="row shadow p-4 mb-4 bg-white">
+            <div class="col-4">
+              <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" class="img-responsive" style="float:left" onclick="showTemplateDialog2()">
+            </div>
 
-        <!-- Contents -->
-    <!-- Image for item -->
-    <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" style="width: 120px; height: 120px; float: left">
+            <div class="col-8">
+              <h3 style="font-size:80%; font-weight:bold; padding-top:0; margin-top:0">Commedes Garcons Hoodie</h3>
+              <h4 id="lendStat" style="font-size:70%; color:gray;">Status: Shipping soon</h4>
+              <h4 style="font-size:80%;">Day Left: 15</h4>
 
-    <h3 style="font-size:80%; font-weight:bold; padding:0px">Comme des Garcons Hoodie</h3>
-    <h4 style="font-size:80%; text-color:light gray; padding:0px">Gray | size: M | To: Jason</h4>
-    <h4 style="font-size:80%; text-color:light gray; padding:0px">Day Left: 7</h4>
-      <!-- Return and message buttons -->
-    <ons-button style="background-color: black; padding: 9px;" onclick="showTemplateDialog()">Request item</ons-button>
-    <ons-button style="background-color: black; padding: 9px;" onclick="openChat2('chat2')">Message User</ons-button>
+              <!-- Return and message buttons -->
+              <div class="d-flex justify-content-center">
+              <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="changeStatus2('lendStat')">Ship</ons-button>
+              <ons-button class="p-1 flex-fill" style="background-color:white; color:black;border: 1px solid lightgrey; text-align:center;" onclick="openChat2('chat2')">Message</ons-button>
+            </div>
+          </div>
+        </div>
 
+        <!-- Dialog for request button -->
+        <template id="dialog2.html">
+          <ons-dialog id="my-dialog2">
+            <div style="text-align:center; padding:10px;">
+              <!-- Description -->
+              <img src="https://blvcks.com/wp-content/uploads/2019/11/Hooded-Sweatshirt-With-5-Hearts-2_grande-600x600.jpg" class="img-responsive" style="max-width: 55%; display:block; margin-left:auto; margin-right:auto">
+              <hr>
+              <h5><b>Owner:</b> Me</h5>
+              <h5><b>Item:</b> Commedes Garcons Hoodie</h5>
+              <h5><b>Description:</b> Grey | size: M</h5>
+              <h5><b>Point:</b> 150 Pts</h5>
+              <!-- Close Button -->
+              <p>
+              <ons-button style="background-color: white; color: black;border: 1px solid black;" onclick="hideDialog('my-dialog2')">Close</ons-button>
+              </p>
+            </div>
+          </ons-dialog>
+        </template>
 
-    <!-- Dialog for request button -->
-  <template id="dialog.html">
-  <ons-dialog id="my-dialog">
-    <div style="text-align: center; padding: 10px;">
-      <p>
-        Request completed!
-      </p>
+      <!-- Chat-popup -->
+      <div style="position:absolute; bottom:-35px; right:0px; "class="chat-popup shadow-lg p-4 mb-4 bg-white" id="chat2">
 
-      <p>
-        <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
-      </p>
-    </div>
-  </ons-dialog>
-</template>
+        <form action="/action_page.php" class="form-container">
+        <h1>Chat</h1>
 
-  <!-- Chat-popup -->
+        <label for="msg"><b>Message</b></label>
+        <textarea placeholder="Type message.." name="msg" required></textarea>
 
-  <div style="position:absolute; bottom:0px; right:0px; "class="chat-popup" id="chat2">
+        <button type="button" class="btn" onclick="chatSent()">Send</button>
+        <button type="button" class="btn cancel" onclick="closeChat2('chat2')">Close</button>
+        </form>
+      </div>
 
-  <form action="/action_page.php" class="form-container">
-    <h1>Chat</h1>
-
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-
-    <button type="button" class="btn" onclick="chatSent()">Send</button>
-    <button type="button" class="btn cancel" onclick="closeChat2('chat2')">Close</button>
-  </form>
-  </div>
-
-  <!-- Script for Chat-popup close and open -->
-  <script type="text/javascript">
-    function closeChat2(id){
+    <!-- Script for Chat-popup close and open -->
+    <script type="text/javascript">
+      function closeChat2(id){
       document.getElementById(id).style.display = "none";
     }
 
-    function openChat2(id){
+      function openChat2(id){
       document.getElementById(id).style.display = "block";
+    }
+
+      function changeStatus2(id) {
+      document.getElementById(id).innerHTML="Status: Shipped";
     }
   </script>
 
       <!-- End Lend tab --> 
-      </div>
+        </div>
+     </div>
     <!-- End Lend Panel -->
     </div>
-{{/if}}
     <!-- End Notification-bottomtab -->
   </ons-page>
 </template>
@@ -795,30 +652,22 @@ ga('send', 'pageview');
 <template id="tab4.html">
   <ons-page id="Tab4">
 
-    <ons-toolbar>
-      <div class="center" style="font-size: 150%; font-weight: bolder;">My Items</div>
+    <ons-toolbar style="background-color:black">
+      <div class="right">
+        <ons-toolbar-button style="background-color:black; color:white;border: 1px solid white; margin-right:80px" onclick="">1,000 Pts</ons-toolbar-button>
+      </div>
+
+      <div class="center" style="font-size: 150%; font-weight: bolder; margin:auto; color:white">Listings</div>
     </ons-toolbar>
 
-    <!-- Content -->
-    
+    <div class="container" style="padding:0; overflow:hidden">
+      <div class="row" id="listRow">
+        
 
-    <!-- Old items
-    <ons-button onclick = "deleteItem()"><ons-icon icon="trash"></ons-icon></ons-button>
-
-    {{#each add}}
-      <div class="add">
-      <h3><a href="#">{{brand}}</a></h3>
-      <p>Description: {{description}}</p>
-      <img src="{{imageURL}}" class="img-responsive" style="width: 200px">
+        
       </div>
-      <hr>
-    {{/each}}
-    <ons-button onclick="allItems()">Show Data</ons-button>-->
-    <ul style='list-style: none; padding: 0'>
-
-    </ul>
+    </div>
     
-
     <!-- End closet-tab -->
   </ons-page>
 </template>
@@ -852,15 +701,21 @@ const database = firebase.database();
 const storage = firebase.storage();
 
   function addItem() {
+    const brand = document.getElementById('brandInput').value;
     const item = document.getElementById('itemInput').value;
     const description = document.getElementById('descriptionInput').value;
     const size = document.getElementById('sizeInput').value;
+    const point = document.getElementById('pointInput').value;
+    const duration = document.getElementById('durationInput').value;
     const imgFile = document.getElementById('imgInput').files[0];
 
     var data = {
+      brand: brand,
       item: item,
       description: description,
       size: size,
+      point: point,
+      duration: duration,
     }
 
     //database.ref('closet/').remove();
@@ -908,10 +763,12 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 
   if (dialog) {
             dialog.show();
+            setTimeout(function() {dialog.hide();}, 1000);
           } else {
             ons.createElement('added.html', { append: true })
               .then(function(dialog) {
                 dialog.show();
+                setTimeout(function() {dialog.hide();}, 1000);
               });
           }
 
@@ -924,83 +781,95 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   
   function gotData(data) {
     
-    const list = document.querySelector('ul');
-    list.innerHTML = '';
+    const row = document.getElementById('listRow');
+    row.innerHTML = '';
 
     if(data.exists()) {
 
     var items = data.val();
     var keys = Object.keys(items);
 
-    for (var i = 0; i < keys.length; i++) {
+for (var i = 0; i < keys.length; i++) {
       var k = keys[i];
       var item = items[k].item;
       var description = items[k].description;
       var size = items[k].size;
       var img = items[k].img;
+      var cost = items[k].point;
+      var brand = items[k].brand;
+      var owner = items[k].owner;
+      var duration = items[k].duration;
 
-      // Create li element
-      const addItem = document.createElement('li');
-      addItem.id = k;
-      addItem.setAttribute('style', 'white-space:pre; margin-bottom: 60px');
+
+      // Create div element
+      const column = document.createElement('div');
+      column.id = k;
+      column.setAttribute('class','col-6');
 
       // Create elements for info
-      var newline = '\r\n';
-      var itemDiv = document.createElement('div');
-      var descriptionDiv = document.createElement('div');
+      var itemBrand = document.createElement('h5');
+      var itemIT = document.createElement('h5');
+      var itemDes = document.createElement('h5');
+      var itemCost = document.createElement('h5');
+      var space = document.createElement('br');
 
-      itemDiv.textContent = item + newline; 
-      descriptionDiv.textContent = description + " | " + "size: " + size + newline;
+      itemCost.setAttribute('style','color:grey;');
 
-      itemDiv.setAttribute('style', 'font-size:140%; font-weight:bold; padding:3px');
-      
-      descriptionDiv.setAttribute('style', 'font-size:140%; text-color:light gray; padding:3px');
+      itemBrand.textContent = brand;
+      itemIT.textContent = item;
+      itemDes.textContent = description + " | " + size + " | " + duration + "d";
+      itemCost.textContent = cost + " Pts";
+
+
      
 
       // Create img element
       const itemImg = document.createElement('img');
+
       var imgRef = storage.ref('images/' + k).getDownloadURL().then(function(url){
           itemImg.src = url;
       }).catch(function(error) {
             console.log('error: ' + error);
         });
+
+      let itemDialogID = k + '-my';
+      let itemTemplateID = k + '.html';
+
       
-      itemImg.setAttribute('width', '130px');
-      itemImg.setAttribute('height', '170px');
-      itemImg.setAttribute('style', 'float:left');
+      itemImg.className = "center-block";
+      itemImg.setAttribute('style', 'height:114px');
+
 
       // Create delelete button element
       var button = document.createElement('ons-button');
       button.innerHTML = 'delete';
-      button.setAttribute('style', 'float:none; background-color: black; padding: 9px');
+      button.setAttribute('style', 'background-color: white; color: black;border: 1px solid lightgrey;');
 
-      // Create horizontal rule
-      var elem = document.createElement('hr');
-      elem.setAttribute('height', '100px');
 
-  
+      column.appendChild(itemImg);
+      column.appendChild(space);
+      column.appendChild(itemBrand);
+      column.appendChild(itemIT);
+      column.appendChild(itemDes);
+      column.appendChild(itemCost);
+      column.appendChild(button);
 
-      addItem.appendChild(itemImg);
-      addItem.appendChild(itemDiv);
-      addItem.appendChild(descriptionDiv);
-      addItem.appendChild(button);
-      addItem.appendChild(elem);
+      row.appendChild(column);
 
-      list.appendChild(addItem);
-
-      // Event for delete button
+      //Event for delete button
       button.addEventListener('click', (e) =>{
         e.stopPropagation();
         var idTG = e.target.parentNode.id;
         console.log(idTG);
         database.ref('borrowing-clothes/closet/' + idTG).remove();
-        storage.ref('items/' + idTG).delete().
-        then(function() {
+        console.log('images/' + idTG);
+        storage.ref().child('images/' + idTG).delete().then(function() {
             console.log('Delete storage completed!')
         }).catch(function(error) {
             console.log('error: ' + error);
         });
       });
+
 
       //End for-loop
       };
@@ -1031,8 +900,8 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   
   function gotData(data) {
     
-    const list = document.querySelector('ul');
-    list.innerHTML = '';
+    const row = document.getElementById('listRow');
+    row.innerHTML = '';
 
     if(data.exists()) {
 
@@ -1045,63 +914,81 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
       var description = items[k].description;
       var size = items[k].size;
       var img = items[k].img;
+      var cost = items[k].point;
+      var brand = items[k].brand;
+      var owner = items[k].owner;
+      var duration = items[k].duration;
 
-      // Create li element
-      const addItem = document.createElement('li');
-      addItem.id = k;
-      addItem.setAttribute('style', 'white-space:pre; margin-bottom: 60px');
+
+      // Create div element
+      const column = document.createElement('div');
+      column.id = k;
+      column.setAttribute('class','col-6');
 
       // Create elements for info
-      var newline = '\r\n';
-      var itemDiv = document.createElement('div');
-      var descriptionDiv = document.createElement('div');
+      var itemBrand = document.createElement('h5');
+      var itemIT = document.createElement('h5');
+      var itemDes = document.createElement('h5');
+      var itemCost = document.createElement('h5');
+      var space = document.createElement('br');
 
-      itemDiv.textContent = item + newline; 
-      descriptionDiv.textContent = description + " | " + "size: " + size + newline;
+      itemCost.setAttribute('style','color:grey;');
 
-      itemDiv.setAttribute('style', 'font-size:140%; font-weight:bold; padding:3px');
-      
-      descriptionDiv.setAttribute('style', 'font-size:140%; text-color:light gray; padding:3px');
+      itemBrand.textContent = brand;
+      itemIT.textContent = item;
+      itemDes.textContent = description + " | " + size + " | " + duration + "d";
+      itemCost.textContent = cost + " Pts";
+
+
      
 
       // Create img element
       const itemImg = document.createElement('img');
+
       var imgRef = storage.ref('images/' + k).getDownloadURL().then(function(url){
           itemImg.src = url;
       }).catch(function(error) {
             console.log('error: ' + error);
         });
+
+      let itemDialogID = k + '-my';
+      let itemTemplateID = k + '.html';
+
       
-      itemImg.setAttribute('width', '130px');
-      itemImg.setAttribute('height', '170px');
-      itemImg.setAttribute('style', 'float:left');
+      itemImg.className = "center-block";
+      itemImg.setAttribute('style', 'height:114px');
+
 
       // Create delelete button element
       var button = document.createElement('ons-button');
       button.innerHTML = 'delete';
-      button.setAttribute('style', 'float:none; background-color: black; padding: 9px');
+      button.setAttribute('style', 'background-color: white; color: black;border: 1px solid lightgrey;');
 
-  
 
-      addItem.appendChild(itemImg);
-      addItem.appendChild(itemDiv);
-      addItem.appendChild(descriptionDiv);
-      addItem.appendChild(button);
+      column.appendChild(itemImg);
+      column.appendChild(space);
+      column.appendChild(itemBrand);
+      column.appendChild(itemIT);
+      column.appendChild(itemDes);
+      column.appendChild(itemCost);
+      column.appendChild(button);
 
-      list.appendChild(addItem);
+      row.appendChild(column);
 
-      // Event for delete button
+      //Event for delete button
       button.addEventListener('click', (e) =>{
         e.stopPropagation();
         var idTG = e.target.parentNode.id;
         console.log(idTG);
         database.ref('borrowing-clothes/closet/' + idTG).remove();
-        storage.ref().child('items/' + idTG).delete().then(function() {
+        console.log('images/' + idTG);
+        storage.ref().child('images/' + idTG).delete().then(function() {
             console.log('Delete storage completed!')
         }).catch(function(error) {
             console.log('error: ' + error);
         });
       });
+
 
     //End for-loop
     };
@@ -1114,9 +1001,9 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 
 
 <script type="text/javascript">
-  //for profile- borrow, lend dialogs  
-var showTemplateDialog = function() {
-  var dialog = document.getElementById('my-dialog');
+  //for request- borrow(1), lend(2) dialogs  
+var showTemplateDialog1 = function() {
+  var dialog = document.getElementById('my-dialog1');
 
 
   ga('create', 'UA-159639041-1', 'auto');
@@ -1125,7 +1012,19 @@ var showTemplateDialog = function() {
   if (dialog) {
     dialog.show();
   } else {
-    ons.createElement('dialog.html', { append: true })
+    ons.createElement('dialog1.html', { append: true })
+      .then(function(dialog) {
+        dialog.show();
+      });
+  }
+};
+var showTemplateDialog2 = function() {
+  var dialog = document.getElementById('my-dialog2');
+
+  if (dialog) {
+    dialog.show();
+  } else {
+    ons.createElement('dialog2.html', { append: true })
       .then(function(dialog) {
         dialog.show();
       });
@@ -1226,383 +1125,45 @@ window.onclick = function(event) {
 
     <!-- Borrow -->
     <script type="text/javascript">
-        var showBorrowDialog = function() {
-      var dialog = document.getElementById('my-borrowItem');
-      if (dialog) {
-        dialog.show();
+    var showBorrowDialog = function(dialog, temp ) {
+       var dialogBox = document.getElementById(dialog);
+      if (dialogBox) {
+        dialogBox.show();
+        //setTimeout(function() {hideBorrowDialog(dialog);}, 800);
       } else {
-        ons.createElement('borrowItem.html', { append: true })
-          .then(function(dialog) {
-            dialog.show();
+        ons.createElement(temp, { append: true })
+          .then(function(dialogBox) {
+            dialogBox.show();
+            //setTimeout(function() {hideBorrowDialog(dialog);}, 800);
           });
       }
     };
-    var hideBorrowDialog = function(id) {
+
+    var hideBorrowDialog = function(dialog) {
       document
-        .getElementById(id)
+        .getElementById(dialog)
         .hide();
     };
     </script>
 
 <!-- For Home-tab items -->
 <script type="text/javascript">
-//For item 1
-var showItem1Dialog = function() {
-  var dialog = document.getElementById('my-item1');
 
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item1.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem1Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 1
-var showRequest1Dialog = function() {
-  var dialog = document.getElementById('my-request1');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request1.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest1Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For item 2
-var showItem2Dialog = function() {
-  var dialog = document.getElementById('my-item2');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item2.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem2Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 2
-var showRequest2Dialog = function() {
-  var dialog = document.getElementById('my-request2');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request2.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest2Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For item 3
-var showItem3Dialog = function() {
-  var dialog = document.getElementById('my-item3');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item3.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem3Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 3
-var showRequest3Dialog = function() {
-  var dialog = document.getElementById('my-request3');
+var showDescriptionDialog = function(dialog, temp) {
+  var dialog = document.getElementById(dialog);
 
             if (dialog) {
             dialog.show();
           } else {
-            ons.createElement('request3.html', { append: true })
+            ons.createElement(temp, { append: true })
               .then(function(dialog) {
                 dialog.show();
               });
           }
 };
-var hideRequest3Dialog = function(id) {
+var hideDescriptionDialog = function(dialog) {
       document
-        .getElementById(id)
-        .hide();
-    };
-
-//For Item 4
-var showItem4Dialog = function() {
-  var dialog = document.getElementById('my-item4');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item4.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem4Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 4
-var showRequest4Dialog = function() {
-  var dialog = document.getElementById('my-request4');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request4.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest4Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For Item 5
-var showItem5Dialog = function() {
-  var dialog = document.getElementById('my-item5');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item5.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem5Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 5
-var showRequest5Dialog = function() {
-  var dialog = document.getElementById('my-request5');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request5.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest5Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-// For Item 6
-var showItem6Dialog = function() {
-  var dialog = document.getElementById('my-item6');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item6.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem6Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 6
-var showRequest6Dialog = function() {
-  var dialog = document.getElementById('my-request6');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request6.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest6Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For Item 7
-var showItem7Dialog = function() {
-  var dialog = document.getElementById('my-item7');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item7.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem7Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 7
-var showRequest6Dialog = function() {
-  var dialog = document.getElementById('my-request6');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request6.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest7Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For Item 8
-var showItem8Dialog = function() {
-  var dialog = document.getElementById('my-item8');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item8.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem8Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 8
-var showRequest8Dialog = function() {
-  var dialog = document.getElementById('my-request8');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request8.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest8Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For Item 9
-var showItem9Dialog = function() {
-  var dialog = document.getElementById('my-item9');
-
-  if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('item9.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideItem9Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-//For request 9
-var showRequest9Dialog = function() {
-  var dialog = document.getElementById('my-request9');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('request9.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideRequest9Dialog = function(id) {
-      document
-        .getElementById(id)
-        .hide();
-    };
-
-var showDescriptionDialog = function() {
-  var dialog = document.getElementById('my-sneakers');
-
-            if (dialog) {
-            dialog.show();
-          } else {
-            ons.createElement('sneakers.html', { append: true })
-              .then(function(dialog) {
-                dialog.show();
-              });
-          }
-};
-var hideDescriptionDialog = function(id) {
-      document
-        .getElementById(id)
+        .getElementById(dialog)
         .hide();
     };
 
@@ -1621,8 +1182,10 @@ function showBorrow(url, item) {
     for(var i = 0; i < tabButtons.length; i++){
       tabButtons[i].style.backgroundColor='';
       tabButtons[i].style.color='';
+      tabButtons[i].style.borderBottom='';
     };
-    tabButtons[panelIndex].style.backgroundColor='gray';
+    tabButtons[panelIndex].style.color='black';
+    tabButtons[panelIndex].style.borderBottom='solid black';
 
     for(var k = 0; k < tabPanels.length; k++){
       tabPanels[k].style.display='none';
@@ -1630,8 +1193,28 @@ function showBorrow(url, item) {
 
     tabPanels[panelIndex].style.display='block';
   }
-  //Set default panel
-  showPanel(0);
+</script>
+
+<!-- For home topbar -->
+<script type="text/javascript">
+  var tabHomeButtons=document.getElementsByClassName('homeBts');
+  var tabHomePanels=document.getElementsByClassName('tabHomePanel');
+
+  function showHomePanel(panelIndex) {
+    for(var i = 0; i < tabHomeButtons.length; i++){
+      tabHomeButtons[i].style.backgroundColor='';
+      tabHomeButtons[i].style.color='';
+      tabHomeButtons[i].style.borderBottom='';
+    };
+    tabHomeButtons[panelIndex].style.color='black';
+    tabHomeButtons[panelIndex].style.borderBottom='solid black';
+
+    for(var k = 0; k < tabHomePanels.length; k++){
+      tabHomePanels[k].style.display='none';
+    };
+
+    tabHomePanels[panelIndex].style.display='block';
+  }
 </script>
 
 <!-- Script for new request and chat sent -->
@@ -1643,6 +1226,7 @@ function showBorrow(url, item) {
   function chatSent(){
     alert("Your message has been delivered!");
   }
+
 </script>
 
 </html>
