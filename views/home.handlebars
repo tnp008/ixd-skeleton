@@ -3,7 +3,7 @@
 <head>
   <title> Borrow Clothes App</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <link href="css/login.css" rel="stylesheet">
   <link href="css/notification.css" rel="stylesheet">
   <link href="css/onsenui.css" rel="stylesheet">
@@ -87,7 +87,7 @@
       <div class="container" style="padding:0; overflow:hidden;">
         <div class="row">
           {{#each shoes}}
-          <div class="col-xs-6" onclick="showDescriptionDialog('{{dialogID}}', '{{index}}')">
+          <div class="col-6" onclick="showDescriptionDialog('{{dialogID}}', '{{index}}')">
               <img src="{{imageURL}}" class="img-responsive">
               <br>
               <h5>{{brand}}</h5>
