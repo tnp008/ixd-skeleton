@@ -11,6 +11,16 @@ body {
 	flex: 0 0 49%;
 	max-width: 49%
 }
+.col-4 {
+	width: 32%;
+	flex: 0 0 32%;
+	max-width: 32%
+}
+.col-8 {
+	width: 66%;
+	flex: 0 0 66%;
+	max-width: 66%
+}
 
 .lTitle {
   font-size: 24px;
